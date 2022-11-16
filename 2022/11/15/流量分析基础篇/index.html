@@ -1,0 +1,380 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>流量分析基础篇 | 平博社</title><meta name="keywords" content="CTF"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="1.流量分析是什么？　　网络流量分析是指捕捉网络中流动的数据包，并通过查看包内部数据以及进行相关的协议、流量分析、统计等来发现网络运行过程中出现的问题。 　　CTF比赛中，通常比赛中会提供一个包含流量数据的 PCAP 文件，进行分析。 2.数据包分析 总体把握  –    协议分级 –    端点统计  过滤赛选  –    过滤语法 –    Host，Protocol特征值  发现异常  –">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流量分析基础篇">
+<meta property="og:url" content="https://wdpname.github.io/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="1.流量分析是什么？　　网络流量分析是指捕捉网络中流动的数据包，并通过查看包内部数据以及进行相关的协议、流量分析、统计等来发现网络运行过程中出现的问题。 　　CTF比赛中，通常比赛中会提供一个包含流量数据的 PCAP 文件，进行分析。 2.数据包分析 总体把握  –    协议分级 –    端点统计  过滤赛选  –    过滤语法 –    Host，Protocol特征值  发现异常  –">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-15T07:10:14.000Z">
+<meta property="article:modified_time" content="2022-11-15T10:54:14.047Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '流量分析基础篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-15 18:54:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">流量分析基础篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-15T07:10:14.000Z" title="发表于 2022-11-15 15:10:14">2022-11-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-15T10:54:14.047Z" title="更新于 2022-11-15 18:54:14">2022-11-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="流量分析基础篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="1-流量分析是什么？"><a href="#1-流量分析是什么？" class="headerlink" title="1.流量分析是什么？"></a>1.流量分析是什么？</h1><p>　　网络流量分析是指捕捉网络中流动的数据包，并通过查看包内部数据以及进行相关的协议、流量分析、统计等来发现网络运行过程中出现的问题。</p>
+<p>　　CTF比赛中，通常比赛中会提供一个包含流量数据的 PCAP 文件，进行分析。</p>
+<h1 id="2-数据包分析"><a href="#2-数据包分析" class="headerlink" title="2.数据包分析"></a>2.数据包分析</h1><ul>
+<li>总体把握</li>
+</ul>
+<p>–    协议分级</p>
+<p>–    端点统计</p>
+<ul>
+<li>过滤赛选</li>
+</ul>
+<p>–    过滤语法</p>
+<p>–    Host，Protocol特征值</p>
+<ul>
+<li>发现异常</li>
+</ul>
+<p>–    特殊字符串</p>
+<p>–    协议某字段</p>
+<ul>
+<li>数据提取</li>
+</ul>
+<p>–    字符串提取</p>
+<p>–    文件提取</p>
+<h1 id="3-工欲善其事，必先利其器。"><a href="#3-工欲善其事，必先利其器。" class="headerlink" title="3.工欲善其事，必先利其器。"></a>3.工欲善其事，必先利其器。</h1><ul>
+<li>———-wireshark<ul>
+<li>Wireshark（前称Ethereal）是一个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/网络封包?fromModule=lemma_inlink">网络封包</a>分析软件。<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/网络封包分析/17608901?fromModule=lemma_inlink">网络封包分析</a>软件的功能是截取网络封包，并尽可能显示出最为详细的网络封包资料。Wireshark使用WinPCAP作为接口，直接与网卡进行数据报文交换。</li>
+</ul>
+</li>
+<li>———-tcpdump<ul>
+<li>TCPDump可以将网络中传送的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/数据包/489739?fromModule=lemma_inlink">数据包</a>完全截获下来提供分析。它支持针对网络层、协议、主机、网络或端口的过滤，并提供and、or、not等逻辑语句来帮助你去掉无用的信息。</li>
+</ul>
+</li>
+<li><p>———-RawCap</p>
+</li>
+<li><p>一般情况下，非HTTP协议的网络分析，在服务器端用tcpdump比较多，在客户端用wireshark比较多，两个抓包软件的语法是一样的。</p>
+</li>
+</ul>
+<h1 id="4-宝刀初现"><a href="#4-宝刀初现" class="headerlink" title="4.宝刀初现"></a>4.宝刀初现</h1><ul>
+<li>Wireshark捕获任何类型的网络数据包。</li>
+<li>同时wireshark作为一个开源项目，来自全世界的开发者不断的优化wireshark</li>
+<li>wireshark是用C语言进行编写的。C语言的好处是直接操作内存，效率高<a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/wireshark-manual/content/">https://wizardforcel.gitbooks.io/wireshark</a><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/wireshark-manual/content/">-</a><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/wireshark-manual/content/">manual/content</a><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/wireshark-manual/content/">/</a>（中文使用文档）</li>
+</ul>
+<h1 id="5-宝刀长这个样子"><a href="#5-宝刀长这个样子" class="headerlink" title="5.宝刀长这个样子"></a>5.宝刀长这个样子</h1><p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151524656.png" alt="img"></p>
+<h1 id="6-这个包到底有多少协议"><a href="#6-这个包到底有多少协议" class="headerlink" title="6.这个包到底有多少协议"></a>6.这个包到底有多少协议</h1><ul>
+<li>Protocol Hierarchy 选项</li>
+</ul>
+<p>–   Statistics选项中的Protocol Hierarchy 选项中包含此数据包出现的所有协议</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151535613.png" alt="img"></p>
+<h1 id="7-到底谁和谁对话"><a href="#7-到底谁和谁对话" class="headerlink" title="7.到底谁和谁对话"></a>7.到底谁和谁对话</h1><ul>
+<li>Conversations选项</li>
+</ul>
+<p>　　　　Statistics选项中的Conversations选项中包含了谁和谁进行了通信</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151524341.png" alt="img"></p>
+<p>　　　　　　事不过三，其余的大家自己研究。</p>
+<h1 id="统统过滤"><a href="#统统过滤" class="headerlink" title="统统过滤"></a>统统过滤</h1><h2 id="字符串过滤："><a href="#字符串过滤：" class="headerlink" title="字符串过滤："></a>字符串过滤：</h2><p>　　　　<img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151524569.png" alt="img"></p>
+<h2 id="常用过滤："><a href="#常用过滤：" class="headerlink" title="常用过滤："></a>常用过滤：</h2><ul>
+<li>过滤ip，如源IP或者目标x.x.x.x：</li>
+</ul>
+<p>–   ip.src eq xxxx or ip.dst eq xxxx 或者 ip.addr eq xxxx</p>
+<ul>
+<li>过滤端口：</li>
+</ul>
+<p>–   tcp.port eq(等于) 80 or udp.port eq 80</p>
+<ul>
+<li>过滤MAC:</li>
+</ul>
+<p>–   eth.dst == MAC地址</p>
+<ul>
+<li>协议过滤:</li>
+</ul>
+<p>–   直接在Filter框中直接输入协议名即可，http udp dns</p>
+<h2 id="HTTP过滤"><a href="#HTTP过滤" class="headerlink" title="HTTP过滤"></a>HTTP过滤</h2><ul>
+<li>http模式过滤</li>
+<li>http.request.method=”POST” 过滤全部POST数据包</li>
+<li>http.request.uri==”/img/logo-edu.gif”</li>
+<li>http contains”GET” 模糊匹配 http头中有这个关键字</li>
+<li>http contains”HTTP/1.” 版本号</li>
+<li>http.request.method==”GET”&amp;&amp; http contains”User-Agent:”</li>
+</ul>
+<p>实践是检验真理的唯一标准</p>
+<ul>
+<li>1.发现异常</li>
+<li>2.指纹识别</li>
+<li>3.明文传输</li>
+<li><p>4.图片提取</p>
+<p>　　一双明亮的大眼睛：</p>
+</li>
+</ul>
+<p>　　　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109163724386-1231386911.png" alt="img"></p>
+<p>　　　　明文传输</p>
+<p>　　　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109163751433-1396194579.png" alt="img"></p>
+<p>　　　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109163758159-493517039.png" alt="img"></p>
+<p>　　　　指纹识别</p>
+<p>　　　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109163819201-1020416454.png" alt="img"></p>
+<p>　　　　</p>
+<p>　　其余常用指纹</p>
+<ul>
+<li><p>Awvs: 网络漏洞扫描工具</p>
+<ul>
+<li>acunetix_wvs_security_test acunetix</li>
+<li>acunetix_wvs acunetix_test</li>
+<li>Acunetix-Aspect-Password:Cookie:</li>
+<li>acunetix_wvs_security_test X-Forwarded-Host:</li>
+<li>acunetix_wvs_security_test X-Forwarder-For:</li>
+<li>acunetix_wvs-security_test Host:</li>
+<li>acunetix_wvs_security_test</li>
+</ul>
+</li>
+<li><p>Netsparker: 一款综合型的 web 应用安全漏洞扫描工具</p>
+<ul>
+<li>X-Scanner:NetsparkerLocation:</li>
+<li>NetsparkerAccept:netsparker/chechCookie:</li>
+<li>netsparkerCookie:NETSPARKER</li>
+</ul>
+</li>
+<li><p>Appscan:</p>
+<ul>
+<li>Headers Content-Type:Appscan</li>
+<li>Content-Type:AppScanHeader</li>
+<li>Accept:Appscan User-Agent:Appscan</li>
+</ul>
+</li>
+<li><p>Nessus:</p>
+<ul>
+<li>x_forwarded_for:nessus</li>
+<li>referer:nessus</li>
+<li>host:nessus</li>
+</ul>
+</li>
+<li><p>sqlmap:</p>
+<ul>
+<li>User-Agent:sqlmap1.2.8#stable</li>
+</ul>
+</li>
+</ul>
+<p>　　图片提取　　</p>
+<p>　　　　　1.找到上传图片的数据包　</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151523200.png" alt="img"></p>
+<p>　　　　2.追踪TCP流，选中右键追踪TCP流。</p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109164224381-702403796.png" alt="img"></p>
+<p>　　　　3.点击保存，使用winhex打开。删除红框中的东西，保存打开即可。</p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109164305502-1412389859.png" alt="img"></p>
+<p>等级提升　　</p>
+<ul>
+<li>1.目录扫描</li>
+<li>2.一句话木马</li>
+<li>3.流量包解密</li>
+</ul>
+<p>目录扫描</p>
+<p> 　　　1.分析流量包，看到是进行目录扫描</p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109164454854-2020710059.png" alt="img"></p>
+<p>　　　　2.在最后发现可疑操作。</p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109164521589-1678335084.png" alt="img"></p>
+<p>　　　　3.使用HTTP导出数据，使用php进行解压。</p>
+<p>　　　　　　<img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151523464.png" alt="img"></p>
+<p>骑个马</p>
+<p>　1.由目录看出，应该是一句话木马上传之后</p>
+<p> 　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109164728705-1023603239.png" alt="img"></p>
+<p>　2.追踪流量发现为中国菜刀的流量</p>
+<p> 　　　<img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151523554.png" alt="img"></p>
+<p>　3.继续追踪发现有rar文件和一个png文件。提取即可</p>
+<p>　　　　<img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151523737.png" alt="img"></p>
+<p> 　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109164823619-784794534.png" alt="img"></p>
+<p>　　流量包解密</p>
+<p>　　　　1.打开如下。</p>
+<p>　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109164903072-2127321760.png" alt="img"></p>
+<p>　　　　2.先破解无线密码</p>
+<p>　　　　　　使用aircrack-ng.exe shipin.cap检查包信息得到无线的ESSID  0719</p>
+<p>　　　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109164954152-1446266672.png" alt="img"></p>
+<p>　　　　　　使用aircrack-ng.exe shipin.cap -w password.txt破解WPA密码</p>
+<p>　　　　　　<img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151524732.png" alt="img"></p>
+<p>　　　　　　</p>
+<ul>
+<li><ul>
+<li><p>知道了无线ESSID和密码。然后解密数据包。</p>
+</li>
+<li><p>然后用airdecap-ng.exe shipin.cap -e 0719 -p 88888888利用ESSID和WPA密码进行解密</p>
+</li>
+<li><p><img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109165158984-512378783.png" alt="img"></p>
+</li>
+</ul>
+<p>FTP协议分析</p>
+</li>
+</ul>
+<p>　　1.直接搜索ftp，发现三个文件</p>
+<p> 　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109165301847-220158876.png" alt="img"></p>
+<p>　　　　2..把文件提取出来看看。追踪TCP保存出来</p>
+<p>　　　　<img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151524194.png" alt="img"></p>
+<p> 　　　　3.尝试伪加密，解开。09改成00</p>
+<p> 　　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109165339824-523028393.png" alt="img"></p>
+<p>　　　　　　4.然而flag没在这里</p>
+<p> 　　　　　5.还有一个key.log.能发现这是一份NSS Key Log Format的文件，而这个文件是能解密出 Wireshark 里面的 https 流量的。把他保存出来，然后在以密钥发方式导入(Edie-&gt;preferences-&gt;SSL）</p>
+<p>　　　　　　<img src="https://img2018.cnblogs.com/blog/1198450/201811/1198450-20181109165746788-218830359.png" alt="img"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/">https://wdpname.github.io/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">VMware和kali安装教程</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/12/Malware-Detection-with-Malware-Images-using-Deep-Learning-Techniques/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Malware Detection with Malware Images using Deep Learning Techniques</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="VMware和kali安装教程"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-15</div><div class="title">VMware和kali安装教程</div></div></a></div><div><a href="/2022/11/16/wireshark%E6%95%99%E7%A8%8B/" title="wireshark教程"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-16</div><div class="title">wireshark教程</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">1.流量分析是什么？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E5%8C%85%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2.数据包分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B%EF%BC%8C%E5%BF%85%E5%85%88%E5%88%A9%E5%85%B6%E5%99%A8%E3%80%82"><span class="toc-number">3.</span> <span class="toc-text">3.工欲善其事，必先利其器。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AE%9D%E5%88%80%E5%88%9D%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">4.宝刀初现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AE%9D%E5%88%80%E9%95%BF%E8%BF%99%E4%B8%AA%E6%A0%B7%E5%AD%90"><span class="toc-number">5.</span> <span class="toc-text">5.宝刀长这个样子</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E8%BF%99%E4%B8%AA%E5%8C%85%E5%88%B0%E5%BA%95%E6%9C%89%E5%A4%9A%E5%B0%91%E5%8D%8F%E8%AE%AE"><span class="toc-number">6.</span> <span class="toc-text">6.这个包到底有多少协议</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%88%B0%E5%BA%95%E8%B0%81%E5%92%8C%E8%B0%81%E5%AF%B9%E8%AF%9D"><span class="toc-number">7.</span> <span class="toc-text">7.到底谁和谁对话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%9F%E7%BB%9F%E8%BF%87%E6%BB%A4"><span class="toc-number">8.</span> <span class="toc-text">统统过滤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%87%E6%BB%A4%EF%BC%9A"><span class="toc-number">8.1.</span> <span class="toc-text">字符串过滤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%EF%BC%9A"><span class="toc-number">8.2.</span> <span class="toc-text">常用过滤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E8%BF%87%E6%BB%A4"><span class="toc-number">8.3.</span> <span class="toc-text">HTTP过滤</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/wireshark%E6%95%99%E7%A8%8B/" title="wireshark教程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="wireshark教程"/></a><div class="content"><a class="title" href="/2022/11/16/wireshark%E6%95%99%E7%A8%8B/" title="wireshark教程">wireshark教程</a><time datetime="2022-11-16T05:22:35.000Z" title="发表于 2022-11-16 13:22:35">2022-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="VMware和kali安装教程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VMware和kali安装教程"/></a><div class="content"><a class="title" href="/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="VMware和kali安装教程">VMware和kali安装教程</a><time datetime="2022-11-15T11:40:07.000Z" title="发表于 2022-11-15 19:40:07">2022-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/" title="流量分析基础篇"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流量分析基础篇"/></a><div class="content"><a class="title" href="/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/" title="流量分析基础篇">流量分析基础篇</a><time datetime="2022-11-15T07:10:14.000Z" title="发表于 2022-11-15 15:10:14">2022-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/Malware-Detection-with-Malware-Images-using-Deep-Learning-Techniques/" title="Malware Detection with Malware Images using Deep Learning Techniques"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Malware Detection with Malware Images using Deep Learning Techniques"/></a><div class="content"><a class="title" href="/2022/11/12/Malware-Detection-with-Malware-Images-using-Deep-Learning-Techniques/" title="Malware Detection with Malware Images using Deep Learning Techniques">Malware Detection with Malware Images using Deep Learning Techniques</a><time datetime="2022-11-12T09:33:33.000Z" title="发表于 2022-11-12 17:33:33">2022-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/10/SpringMVC%E5%9F%BA%E7%A1%80/" title="SpringMVC基础"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC基础"/></a><div class="content"><a class="title" href="/2022/11/10/SpringMVC%E5%9F%BA%E7%A1%80/" title="SpringMVC基础">SpringMVC基础</a><time datetime="2022-11-10T07:32:32.000Z" title="发表于 2022-11-10 15:32:32">2022-11-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

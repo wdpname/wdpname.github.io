@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>VMware和kali安装教程 | 平博社</title><meta name="keywords" content="CTF"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="以下是关于操作系统和vmw版本适配选择的方案  安装vmw访问 https:&#x2F;&#x2F;www.vmware.com&#x2F;cn&#x2F;products&#x2F;workstation-pro&#x2F;workstation-pro-evaluation.html ，  打开安装文件    更改vmw安装路径  将【启动时检查产品更新】和【加入VMware客户体验提升计划】此两项勾选去掉&gt;然后一路点击【下一步】直到安装页面后再">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VMware和kali安装教程">
+<meta property="og:url" content="https://wdpname.github.io/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="以下是关于操作系统和vmw版本适配选择的方案  安装vmw访问 https:&#x2F;&#x2F;www.vmware.com&#x2F;cn&#x2F;products&#x2F;workstation-pro&#x2F;workstation-pro-evaluation.html ，  打开安装文件    更改vmw安装路径  将【启动时检查产品更新】和【加入VMware客户体验提升计划】此两项勾选去掉&gt;然后一路点击【下一步】直到安装页面后再">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-15T11:40:07.000Z">
+<meta property="article:modified_time" content="2022-11-15T14:40:31.550Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'VMware和kali安装教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-15 22:40:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">VMware和kali安装教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-15T11:40:07.000Z" title="发表于 2022-11-15 19:40:07">2022-11-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-15T14:40:31.550Z" title="更新于 2022-11-15 22:40:31">2022-11-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="VMware和kali安装教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>以下是关于操作系统和vmw版本适配选择的方案</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151940851.png" alt="image-20221115194041764"></p>
+<h1 id="安装vmw"><a href="#安装vmw" class="headerlink" title="安装vmw"></a>安装vmw</h1><p>访问 <a target="_blank" rel="noopener" href="https://www.vmware.com/cn/products/workstation-pro/workstation-pro-evaluation.html">https://www.vmware.com/cn/products/workstation-pro/workstation-pro-evaluation.html</a> ，</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151949032.png" alt="image-20221115194932963"></p>
+<p>打开安装文件</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151950306.png" alt="image-20221115195023260"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151950117.png" alt="image-20221115195051080"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151952603.png" alt="image-20221115195233550"></p>
+<p>更改vmw安装路径</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151953629.png" alt="image-20221115195346603"></p>
+<p>将【启动时检查产品更新】和【加入VMware客户体验提升计划】此两项勾选去掉&gt;然后一路点击【下一步】直到安装页面后再点击【安装】即可</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151955337.png" alt="image-20221115195512305"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151955088.png" alt="image-20221115195529062"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151955391.png" alt="image-20221115195552364"></p>
+<p>点击【许可证】然后输入安装密匙：ZF3R0-FHED2-M80TY-8QYGC-NPKYF，待密匙验证通过后点击【完成】&gt;最后【重启电脑】即可</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211151957597.png" alt="image-20221115195753559"></p>
+<p>完成vmw的安装。</p>
+<h1 id="安装及配置kali-2022-3"><a href="#安装及配置kali-2022-3" class="headerlink" title="安装及配置kali-2022.3"></a>安装及配置kali-2022.3</h1><h2 id="下载kali镜像"><a href="#下载kali镜像" class="headerlink" title="下载kali镜像"></a>下载kali镜像</h2><p>访问<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/kali-images/">http://mirrors.ustc.edu.cn/kali-images/</a></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152007971.png" alt="image-20221115200655909"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152007317.png" alt="image-20221115200725284"></p>
+<h2 id="VMware虚拟机配置kali"><a href="#VMware虚拟机配置kali" class="headerlink" title="VMware虚拟机配置kali"></a>VMware虚拟机配置kali</h2><p><strong>1、打开vmware，点击创建新的虚拟机</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152009606.png" alt="image-20221115200955547"></p>
+<p><strong>2、选择自定义(高级)选项，点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152010208.png" alt="image-20221115201058172"></p>
+<p><strong>3、继续下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152107115.png" alt="image-20221115210700061"></p>
+<p><strong>4、选择【稍后安装操作系统】，然后点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152109590.png" alt="image-20221115210917548"></p>
+<p><strong>5、客户机操作系统选择【Linux】，版本选择【Debian】，至于64位还是32位我们根据镜像选择对应的版本，当然也可以直接选择64位，毕竟可以向下兼容。其次之所以选的Debian是因为Kali Linux是基于Debian的Linux发行版，所以我们选择Debian，选择完成之后继续点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152110051.png" alt="image-20221115211043013"></p>
+<p><strong>6、命名虚拟机：关于虚拟机名称可根据自己喜好去改。位置选择C盘以外最好。完成之后点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152112133.png" alt="image-20221115211209093"></p>
+<p><strong>7、处理器配置：根据自己的需求以及电脑的硬件限制合理进行配置，这里处理器数量和每个处理器的内核数量我都给的2个，也就是处理器内核总数给了4个。完成之后继续点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152113409.png" alt="image-20221115211335373"></p>
+<p><strong>8、虚拟机的内存：这里同样根据自己的需求进行分配。然后点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152114814.png" alt="image-20221115211444773"></p>
+<p><strong>9、网络类型：这里先选择第二项【使用网络地址转换(NAT)】，后期也可以更改，然后点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152115049.png" alt="image-20221115211516006"></p>
+<p><strong>10、默认点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152115631.png" alt="image-20221115211545600"></p>
+<p><strong>11、继续点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152116964.png" alt="image-20221115211612930"></p>
+<p><strong>12、选择磁盘：这里选择创建新的虚拟磁盘，然后点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152116808.png" alt="image-20221115211647774"></p>
+<p><strong>13、指定磁盘容量：同样这里根据自己的需求按需分配，分配好之后选择最下面一项【将虚拟磁盘拆分成多个文件】，然后下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152117248.png" alt="image-20221115211743214"></p>
+<p><strong>14、默认点击下一步</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152118695.png" alt="image-20221115211832659"></p>
+<p><strong>15、点击自定义硬件</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152118014.png" alt="image-20221115211858980"></p>
+<p><strong>16、在硬件里先选择左边的【CD/DVD(IDE)】，然后点击使用ISO映像文件，选择浏览，然后选择提前下载好的ISO镜像文件，然后点击关闭</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152120316.png" alt="image-20221115212017255"></p>
+<p><strong>17、然后点击完成</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152120974.png" alt="image-20221115212039941"></p>
+<h2 id="这时虚拟机配置完成了，接下来就可以直接安装Kali操作系统"><a href="#这时虚拟机配置完成了，接下来就可以直接安装Kali操作系统" class="headerlink" title="这时虚拟机配置完成了，接下来就可以直接安装Kali操作系统"></a>这时虚拟机配置完成了，接下来就可以直接安装Kali操作系统</h2><p><strong>1、先点击【开启此虚拟机】</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152122643.png" alt="image-20221115212254572"></p>
+<p><strong>2、点击【我已经完成安装】，将底下的黄色栏框消除</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152124705.png" alt="image-20221115212403679"></p>
+<p><strong>3、选择Graphical install(图形化安装)</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152125711.png" alt="image-20221115212540668"></p>
+<p><strong>4、选择【Chinese(Simplified)-中文(简体)】，然后点击Continue</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152126335.png" alt="image-20221115212653307"></p>
+<p><strong>5、选择中国然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152127699.png" alt="image-20221115212710670"></p>
+<p><strong>6、选择语言然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152127676.png" alt="image-20221115212726649"></p>
+<p><strong>7、稍等片刻</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152127384.png" alt="image-20221115212744356"></p>
+<p><strong>8、【配置网络】这里输入一个主机名，然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152128288.png" alt="image-20221115212819254"></p>
+<p><strong>9、【设置用户名和密码】这里输入一个普通用户账号的用户名，然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152128058.png" alt="image-20221115212848031"></p>
+<p><strong>10、【设置用户名和密码】这里输入一个账号的用户名，并且记住该用户名，然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152132315.png" alt="image-20221115213230284"></p>
+<p><strong>11、【设置用户名和密码】这里为刚刚的用户设置一个密码，然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152133402.png" alt="image-20221115213314377"></p>
+<p><strong>12、【磁盘分区】这里选择【向导-使用整个磁盘】，然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152133359.png" alt="image-20221115213348330"></p>
+<p><strong>13、【磁盘分区】这一步保持默认继续就行</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152134333.png" alt="image-20221115213411307"></p>
+<p><strong>14、【对磁盘进行分区】这里分区方案选择推荐的第一个【将所有文件放在同一个分区中(推荐新手使用)】，然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152134713.png" alt="image-20221115213442684"></p>
+<p><strong>15、【对磁盘进行分区】这里我们选择【完成分区设定并将修改写入磁盘】这个选项，然后点击继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152136784.png" alt="image-20221115213605750"></p>
+<p><strong>16、【对磁盘进行分区】这里我们选【是】然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152136916.png" alt="image-20221115213657881"></p>
+<p><strong>17、这里保持默认，直接点击继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152140447.png" alt="image-20221115214053414"></p>
+<p><strong>18、耐心等待，时间会有点儿长</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152141280.png" alt="image-20221115214115253"></p>
+<p><strong>19、安装GRUB启动引导器】选【是】然后点击继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152141383.png" alt="image-20221115214151352"></p>
+<p><strong>20、【安装GRUB启动引导器】这里一定得选择/dev/sda，然后继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152142689.png" alt="image-20221115214202662"></p>
+<p><strong>21、安装完成，点击继续</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152142254.png" alt="image-20221115214215226"></p>
+<h2 id="进入Kali系统"><a href="#进入Kali系统" class="headerlink" title="进入Kali系统"></a>进入Kali系统</h2><p><strong>1、输入刚刚的用户名和密码点击登录就可以进入到桌面</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152211201.png" alt="image-20221115221104134"></p>
+<p><strong>2、进入到桌面，即可使用Kali</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152211429.png" alt="image-20221115221117338"></p>
+<h2 id="添加root用户及密码"><a href="#添加root用户及密码" class="headerlink" title="添加root用户及密码"></a>添加root用户及密码</h2><p><strong>1、打开终端，在里面输入【sudo -i】这个命令</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152212494.png" alt="image-20221115221229410"></p>
+<p><strong>2、输入登录用户的登录密码，然后回车，紧接着输入【passwd root】这个命令</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152212575.png" alt="image-20221115221247487"></p>
+<p><strong>3、然后输入新的root密码，接着回车，注意的是输入的密码不会显示。然后再重新输入新的root密码，然后回车就可以将root用户的密码给修改了</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152213311.png" alt="image-20221115221318227"></p>
+<p><strong>4、重新启动</strong></p>
+<p><strong>5、输入用户名root，以及密码，就可以使用超级管理员身份进入到系统中</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152216673.png" alt="image-20221115221616613"></p>
+<h2 id="设置快照"><a href="#设置快照" class="headerlink" title="设置快照"></a>设置快照</h2><p><strong>1、先关闭虚拟机，然后在该虚拟机的启动前界面上点击下图一个类似表下面有个扳手一样的图标，点击它</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152219399.png" alt="image-20221115221908353"></p>
+<p><strong>2、先选择当前位置，再点击拍摄快照</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152219648.png" alt="image-20221115221940619"></p>
+<p><strong>3、然后填入快照名称以及描述，这里需要强调一下描述里面建议写上该系统的用户名和密码，以防止后期遗忘。填写完成后点击拍摄快照，这样快照就设置好了</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152220320.png" alt="image-20221115222025288"></p>
+<p><strong>4、当你想要返回到之前的某个状态的时候，只需要选择需要回到的状态，然后点击转到，然后确认是就可以恢复到之前所保存的某一个状态点上了</strong></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152220008.png" alt="image-20221115222056977"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152221896.png" alt="image-20221115222107866"></p>
+<p>这样的好处是，避免后期系统出现问题需要重新再安装，省去了重装系统的步骤以及时间。</p>
+<h2 id="apt-更新及操作"><a href="#apt-更新及操作" class="headerlink" title="apt 更新及操作"></a>apt 更新及操作</h2><p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152235063.png" alt="image-20221115223558992"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152236336.png" alt="image-20221115223606266"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152236039.png" alt="image-20221115223614968"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152236192.png" alt="image-20221115223624127"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152236270.png" alt="image-20221115223634203"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152236635.png" alt="image-20221115223645571"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152236464.png" alt="image-20221115223655399"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152237316.png" alt="image-20221115223703247"></p>
+<h2 id="更改kali的源仓库"><a href="#更改kali的源仓库" class="headerlink" title="更改kali的源仓库"></a>更改kali的源仓库</h2><p><strong>因为kali官方源是国外的会比较慢；此处建议改用的是清华源</strong></p>
+<blockquote>
+<p>deb <a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/kali">http://mirrors.tuna.tsinghua.edu.cn/kali</a> kali-rolling main contrib non-freedeb-src<br><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/kali">https://mirrors.tuna.tsinghua.edu.cn/kali</a> kali-rolling main contrib non-free</p>
+</blockquote>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152238881.png" alt="image-20221115223820828"></p>
+<h2 id="kali-Linux的文件如何共享到物理机"><a href="#kali-Linux的文件如何共享到物理机" class="headerlink" title="kali Linux的文件如何共享到物理机"></a>kali Linux的文件如何共享到物理机</h2><p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152238129.png" alt="image-20221115223848093"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152239659.png" alt="image-20221115223956630"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152240362.png" alt="image-20221115224005330"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152240523.png" alt="image-20221115224016462"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211152240309.png" alt="image-20221115224029286"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">https://wdpname.github.io/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/16/wireshark%E6%95%99%E7%A8%8B/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">wireshark教程</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">流量分析基础篇</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/16/wireshark%E6%95%99%E7%A8%8B/" title="wireshark教程"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-16</div><div class="title">wireshark教程</div></div></a></div><div><a href="/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/" title="流量分析基础篇"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-15</div><div class="title">流量分析基础篇</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85vmw"><span class="toc-number">1.</span> <span class="toc-text">安装vmw</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEkali-2022-3"><span class="toc-number">2.</span> <span class="toc-text">安装及配置kali-2022.3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDkali%E9%95%9C%E5%83%8F"><span class="toc-number">2.1.</span> <span class="toc-text">下载kali镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AEkali"><span class="toc-number">2.2.</span> <span class="toc-text">VMware虚拟机配置kali</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E6%97%B6%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%AE%8C%E6%88%90%E4%BA%86%EF%BC%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85Kali%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.3.</span> <span class="toc-text">这时虚拟机配置完成了，接下来就可以直接安装Kali操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5Kali%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.4.</span> <span class="toc-text">进入Kali系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0root%E7%94%A8%E6%88%B7%E5%8F%8A%E5%AF%86%E7%A0%81"><span class="toc-number">2.5.</span> <span class="toc-text">添加root用户及密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%BF%AB%E7%85%A7"><span class="toc-number">2.6.</span> <span class="toc-text">设置快照</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#apt-%E6%9B%B4%E6%96%B0%E5%8F%8A%E6%93%8D%E4%BD%9C"><span class="toc-number">2.7.</span> <span class="toc-text">apt 更新及操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9kali%E7%9A%84%E6%BA%90%E4%BB%93%E5%BA%93"><span class="toc-number">2.8.</span> <span class="toc-text">更改kali的源仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kali-Linux%E7%9A%84%E6%96%87%E4%BB%B6%E5%A6%82%E4%BD%95%E5%85%B1%E4%BA%AB%E5%88%B0%E7%89%A9%E7%90%86%E6%9C%BA"><span class="toc-number">2.9.</span> <span class="toc-text">kali Linux的文件如何共享到物理机</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/16/wireshark%E6%95%99%E7%A8%8B/" title="wireshark教程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="wireshark教程"/></a><div class="content"><a class="title" href="/2022/11/16/wireshark%E6%95%99%E7%A8%8B/" title="wireshark教程">wireshark教程</a><time datetime="2022-11-16T05:22:35.000Z" title="发表于 2022-11-16 13:22:35">2022-11-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="VMware和kali安装教程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VMware和kali安装教程"/></a><div class="content"><a class="title" href="/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="VMware和kali安装教程">VMware和kali安装教程</a><time datetime="2022-11-15T11:40:07.000Z" title="发表于 2022-11-15 19:40:07">2022-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/" title="流量分析基础篇"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流量分析基础篇"/></a><div class="content"><a class="title" href="/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/" title="流量分析基础篇">流量分析基础篇</a><time datetime="2022-11-15T07:10:14.000Z" title="发表于 2022-11-15 15:10:14">2022-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/Malware-Detection-with-Malware-Images-using-Deep-Learning-Techniques/" title="Malware Detection with Malware Images using Deep Learning Techniques"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Malware Detection with Malware Images using Deep Learning Techniques"/></a><div class="content"><a class="title" href="/2022/11/12/Malware-Detection-with-Malware-Images-using-Deep-Learning-Techniques/" title="Malware Detection with Malware Images using Deep Learning Techniques">Malware Detection with Malware Images using Deep Learning Techniques</a><time datetime="2022-11-12T09:33:33.000Z" title="发表于 2022-11-12 17:33:33">2022-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/10/SpringMVC%E5%9F%BA%E7%A1%80/" title="SpringMVC基础"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC基础"/></a><div class="content"><a class="title" href="/2022/11/10/SpringMVC%E5%9F%BA%E7%A1%80/" title="SpringMVC基础">SpringMVC基础</a><time datetime="2022-11-10T07:32:32.000Z" title="发表于 2022-11-10 15:32:32">2022-11-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
