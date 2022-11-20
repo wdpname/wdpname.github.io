@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CTF基础概念 | 平博社</title><meta name="keywords" content="CTF"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="web安全的相关概念1.POC POC，Proof ofConcept，中文意思是“观点证明”。这个短语会在漏洞报告中使用，漏洞报告中的POC则是一段说明或者一个攻击的样例，使得读者能够确认这个漏洞是真实存在的。2.EXP EXP，Exploit，中文意思是“漏洞利用”。意思是一段对漏洞如何利用的详细说明或者一个演示的漏洞攻击代码，可以使得读者完全了解漏洞的机理以及利用的方法。3.VUL VUL，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTF基础概念">
+<meta property="og:url" content="https://wdpname.github.io/2022/11/20/CTF%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="web安全的相关概念1.POC POC，Proof ofConcept，中文意思是“观点证明”。这个短语会在漏洞报告中使用，漏洞报告中的POC则是一段说明或者一个攻击的样例，使得读者能够确认这个漏洞是真实存在的。2.EXP EXP，Exploit，中文意思是“漏洞利用”。意思是一段对漏洞如何利用的详细说明或者一个演示的漏洞攻击代码，可以使得读者完全了解漏洞的机理以及利用的方法。3.VUL VUL，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-20T07:52:01.000Z">
+<meta property="article:modified_time" content="2022-11-20T07:56:36.215Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2022/11/20/CTF%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CTF基础概念',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-11-20 15:56:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">CTF基础概念</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-20T07:52:01.000Z" title="发表于 2022-11-20 15:52:01">2022-11-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-20T07:56:36.215Z" title="更新于 2022-11-20 15:56:36">2022-11-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CTF基础概念"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>web安全的相关概念<br>1.POC</p>
+<p>POC，Proof ofConcept，中文意思是“观点证明”。这个短语会在漏洞报告中使用，漏洞报告中的POC则是一段说明或者一个攻击的样例，使得读者能够确认这个漏洞是真实存在的。<br>2.EXP</p>
+<p>EXP，Exploit，中文意思是“漏洞利用”。意思是一段对漏洞如何利用的详细说明或者一个演示的漏洞攻击代码，可以使得读者完全了解漏洞的机理以及利用的方法。<br>3.VUL</p>
+<p>VUL，Vulnerability的缩写，泛指漏洞。</p>
+<p>4.payload（有效攻击负载）是包含在你用于一次漏洞利用（exploit）中的ShellCode中的主要功能代码</p>
+<p>5.shellcode（可提权代码） 对于一个漏洞来说，ShellCode就是一个用于某个漏洞的二进制代码框架，有了这个框架你可以在这个ShellCode中包含你需要的Payload来做一些事情</p>
+<p>6.CVE漏洞编号</p>
+<p>CVE 的英文全称是“Common Vulnerabilities &amp; Exposures”公共漏洞和暴露，例如CVE-2015-0057、CVE-1999-0001等等。CVE就好像是一个字典表，为广泛认同的信息安全漏洞或者已经暴露出来的弱点给出一个公共的名称。如果在一个漏洞报告中指明的一个漏洞，如果有CVE名称，你就可以快速地在任何其它CVE兼容的数据库中找到相应修补的信息，解决安全问题。</p>
+<p>可以在<a target="_blank" rel="noopener" href="https://cve.mitre.org/网站根据漏洞的CVE编号搜索该漏洞的介绍。">https://cve.mitre.org/网站根据漏洞的CVE编号搜索该漏洞的介绍。</a></p>
+<p>也可以在中文社区<a target="_blank" rel="noopener" href="http://www.scap.org.cn/上搜索关于漏洞的介绍">http://www.scap.org.cn/上搜索关于漏洞的介绍</a></p>
+<p>5.0DAY漏洞和0DAY攻击</p>
+<p>在计算机领域中，零日漏洞或零时差漏洞（英语：Zero-dayexploit）通常是指还没有补丁的安全漏洞，而零日攻击或零时差攻击（英语：Zero-dayattack）则是指利用这种漏洞进行的攻击。提供该漏洞细节或者利用程序的人通常是该漏洞的发现者。零日漏洞的利用程序对网络安全具有巨大威胁，因此零日漏洞不但是黑客的最爱，掌握多少零日漏洞也成为评价黑客技术水平的一个重要参数。<br>零日漏洞及其利用代码不仅对犯罪黑客而言，具有极高的利用价值，一些国家间谍和网军部队，例如美国国家安全局和美国网战司令部也非常重视这些信息[1]。据路透社报告称美国政府是零日漏洞黑市的最大买家</p>
+<p>信息收集<br>[ 信息收集之CMS指纹识别 ]</p>
+<ol>
+<li>指纹识别<br>1.1了解CMS指纹识别<br>CMS：快速搭建网站的内容管理系统</li>
+</ol>
+<p>Web应用框架：快速二次开发的Web应用框架，例如网站，小程序</p>
+<p>1.2 指纹的特性<br>唯一性<br>终身不变性<br>方便性<br>1.3 指纹识别的方式<br>云悉在线 <a target="_blank" rel="noopener" href="https://www.yunsee.cn/">https://www.yunsee.cn/</a></p>
+<p>WhatWeb <a target="_blank" rel="noopener" href="https://whatweb.net/">https://whatweb.net/</a> <a target="_blank" rel="noopener" href="http://whatweb.bugscaner.com/look">http://whatweb.bugscaner.com/look</a></p>
+<p>插件Wappalyzer： <a target="_blank" rel="noopener" href="https://www.wappalyzer.com">https://www.wappalyzer.com</a></p>
+<p>脚本：</p>
+<p>CMSeek：</p>
+<pre><code>kali下安装：
+    git clone https://github.com/Tuhinshubhra/CMSeeK
+    cd CMSeeK
+    pip/pip3 install -r requirements.txt
+python3 cmseek.py -u 目标    //使用
+
+python3 cmseek.py –update   //检查更新
+</code></pre><p>Webfinger： <a target="_blank" rel="noopener" href="https://github.com/se55i0n/Webfinger">https://github.com/se55i0n/Webfinger</a></p>
+<ol>
+<li>WAF<br>专针对Web应用攻击的防护产品</li>
+</ol>
+<p>Awesome-WAF项目 ：<br><a target="_blank" rel="noopener" href="https://github.com/0xInfection/Awesome-WAF">https://github.com/0xInfection/Awesome-WAF</a></p>
+<p>检测脚本wafw00f ：<br><a target="_blank" rel="noopener" href="https://github.com/EnableSecurity/wafw00f">https://github.com/EnableSecurity/wafw00f</a></p>
+<p>kali下安装wafw00f<br>    git clone <a target="_blank" rel="noopener" href="https://github.com/EnableSecurity/wafw00f">https://github.com/EnableSecurity/wafw00f</a><br>    cd wafw00f<br>    python setup.py install</p>
+<ol>
+<li>CDN<br>CDN： 内容分发网络</li>
+</ol>
+<p>基本思路是 尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快，更稳定</p>
+<p>改善网络加载时间，减少服务器负载，降低成本，提高网络安全行</p>
+<p>CDN检测<br>国内在线 CDN云观测 <a target="_blank" rel="noopener" href="http://cdn.chinaz.com">http://cdn.chinaz.com</a><br>国外在线 CDNplanet <a target="_blank" rel="noopener" href="https://www.cdnplanet.com">https://www.cdnplanet.com</a><br>脚本探测：xcdn <a target="_blank" rel="noopener" href="https://github.com/3xp10it/xcdn">https://github.com/3xp10it/xcdn</a><br>kali下安装xcdn<br>     git clone <a target="_blank" rel="noopener" href="https://github.com/3xp10it/xcdn">https://github.com/3xp10it/xcdn</a></p>
+<p>4.常见的寻找真实IP的方法：<br>超级ping：<a target="_blank" rel="noopener" href="http://ping.chinaz.com/">http://ping.chinaz.com/</a><br>历史解析：<br>微步在线：<a target="_blank" rel="noopener" href="https://x.threatbook.cn/">https://x.threatbook.cn/</a><br>历史Whois：<a target="_blank" rel="noopener" href="https://www.benmi.com/whoishistory/">https://www.benmi.com/whoishistory/</a><br>历史托管：<a target="_blank" rel="noopener" href="https://toolbar.netcraft.com/site_report?url=">https://toolbar.netcraft.com/site_report?url=</a><br>内部邮箱源：对方发送邮件，查看邮件来源IP<br>二级域名：寻找子域名，找到未绑定CDN站点。<br>手机App：使用Brup抓取收集App数据包<br>微信公众号：使用Brup抓取微信公众号数据包<br>国外ping：<br>ping.ge：<a target="_blank" rel="noopener" href="http://www.ping.pe">http://www.ping.pe</a><br>海外测速：<a target="_blank" rel="noopener" href="http://tool.chinaz.com/speedworld/">http://tool.chinaz.com/speedworld/</a><br>网络空间搜索引擎：fofa：<a target="_blank" rel="noopener" href="https://fofa.so">https://fofa.so</a></p>
+<ol>
+<li>CDN漏洞案例：<br>CloudFlare防护下的破绽：<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/41533.html">https://www.freebuf.com/articles/web/41533.html</a><br>都是通过寻找对方未绑定CDN站点进行突破，从而找到真实站点。</li>
+</ol>
+<p>补充<br>在线知识<br>绿盟 <a target="_blank" rel="noopener" href="http://www.nsfocus.net/index.php?act=sec_bug">http://www.nsfocus.net/index.php?act=sec_bug</a><br>乌云知识库 <a target="_blank" rel="noopener" href="https://wooyun.kieran.top/#!/">https://wooyun.kieran.top/#!/</a><br>安全知识库 <a target="_blank" rel="noopener" href="http://www.aisec.cn/secinfo/index.php">http://www.aisec.cn/secinfo/index.php</a><br>在线工具<br>重大历史漏洞在线检测 <a target="_blank" rel="noopener" href="http://0day.websaas.com.cn">http://0day.websaas.com.cn</a><br>历史IP查询 <a target="_blank" rel="noopener" href="http://site.ip138.com">http://site.ip138.com</a><br>历史IP查询 <a target="_blank" rel="noopener" href="https://webiplookup.com">https://webiplookup.com</a><br>公开漏洞<br>乌云 <a target="_blank" rel="noopener" href="https://wooyun.website">https://wooyun.website</a><br>SRC<br>hackerone <a target="_blank" rel="noopener" href="https://hackerone.com/hacktivity">https://hackerone.com/hacktivity</a><br>同城艺龙SRC <a target="_blank" rel="noopener" href="https://sec.ly.com/bugs">https://sec.ly.com/bugs</a><br>PHITHON 的公开漏洞 <a target="_blank" rel="noopener" href="https://bugs.leavesongs.com">https://bugs.leavesongs.com</a><br>漏洞数据库<br>中文CVE <a target="_blank" rel="noopener" href="http://cve.scap.org.cn">http://cve.scap.org.cn</a><br>exp库 <a target="_blank" rel="noopener" href="http://www.expku.com">http://www.expku.com</a><br>洞悉漏洞 <a target="_blank" rel="noopener" href="https://seebug.org">https://seebug.org</a><br>googlehack语法<br>intext：关键字<br>搜索网页正文中含有这些关键字的网页。</p>
+<p>intitle：关键字<br>搜索网页标题中含有这些关键字的网页。</p>
+<p>cache：关键字<br>搜索含有关键字内容的cache。</p>
+<p>define：关键字<br>搜索关键字的定义。</p>
+<p>filetype：文件名.后缀名<br>搜索特定的文件。</p>
+<p>info：关键字<br>搜索指定站点的一些基本信息。</p>
+<p>inurl：关键字<br>搜索含有关键字的URL地址。</p>
+<p>（示例：“inurl:php?id=” 意为 搜索网站url中包括了”php?id=”关键字的网站，寻找可能含有sql注入的网页）</p>
+<p>（注：”inurl:”后不能接空格，应直接接关键词）</p>
+<p>（inurl在搜索资源的功能上十分的强大，目前filetype:用法google无法使用）</p>
+<p>（示例：“inurl:“say something” mp3” 可搜索到say something的mp3文件）</p>
+<p>例：inurl：.edu.cn</p>
+<p>link：关键字<br>查找与关键字做了链接的URL地址。</p>
+<p>site：域名<br>返回域名中所有的URL地址。</p>
+<p>related：URL<br>搜索与指定URL相关的页面。</p>
+<p>目录扫描脚本dirsearch<br>python dirsearch.py -u 网址 -e php</p>
+<p>-u 指定网址</p>
+<p>-e 指定网站语言</p>
+<p>-w 指定字典</p>
+<p>-r 递归目录（跑出目录后，继续跑目录下面的目录）</p>
+<p>注意扫描/.index.php.swp, index.php~ 等备份文件</p>
+<p>扫描的记录会生成到文件中</p>
+<p>根据需要扩充字典，</p>
+<p>注意以下文件</p>
+<p>www.zip 网站备份源码</p>
+<p>readme.md</p>
+<p>robots.txt</p>
+<p>.swp</p>
+<p>.swo</p>
+<p>.swn</p>
+<p>子域名爆破工具layer<br>指纹识别<br>wappalyzer，火狐插件</p>
+<p>git 泄露<br> githack 注意要在python2下环境运行</p>
+<blockquote>
+<p>p GitHacker.py <a target="_blank" rel="noopener" href="http://XXXXXXXXXXX/.git/">http://XXXXXXXXXXX/.git/</a></p>
+</blockquote>
+<p>sql注入基础<br>mysql<br>sql的注释</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211201555396.png" alt="image-20221120155544360"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202211201556961.png" alt="image-20221120155604921"></p>
+<p>MySQL 创建数据表<br>创建MySQL数据表需要以下信息：</p>
+<p>表名<br>表字段名<br>定义每个表字段<br>语法<br>以下为创建MySQL数据表的SQL通用语法：</p>
+<p>CREATE TABLE table_name (column_name column_type);</p>
+<p>以下例子中我们将在 RUNOOB 数据库中创建数据表runoob_tbl：</p>
+<p>CREATE TABLE IF NOT EXISTS <code>runoob_tbl</code>(<br>   <code>runoob_id</code> INT UNSIGNED AUTO_INCREMENT,<br>   <code>runoob_title</code> VARCHAR(100) NOT NULL,<br>   <code>runoob_author</code> VARCHAR(40) NOT NULL,<br>   <code>submission_date</code> DATE,<br>   PRIMARY KEY ( <code>runoob_id</code> )<br>)ENGINE=InnoDB DEFAULT CHARSET=utf8;</p>
+<p>实例解析：</p>
+<p>如果你不想字段为 NULL 可以设置字段的属性为 NOT NULL， 在操作数据库时如果输入该字段的数据为NULL ，就会报错。<br>AUTO_INCREMENT定义列为自增的属性，一般用于主键，数值会自动加1。<br>PRIMARY KEY关键字用于定义列为主键。 您可以使用多列来定义主键，列间以逗号分隔。<br>ENGINE 设置存储引擎，CHARSET 设置编码<br>MySQL 查询数据<br>MySQL 数据库使用SQL SELECT语句来查询数据。</p>
+<p>你可以通过 mysql&gt; 命令提示窗口中在数据库中查询数据，或者通过PHP脚本来查询数据。</p>
+<p>select语法<br>以下为在MySQL数据库中查询数据通用的 SELECT 语法：</p>
+<p>SELECT column_name,column_name<br>FROM table_name<br>[WHERE Clause]<br>[LIMIT N][ OFFSET M]</p>
+<p>查询语句中你可以使用一个或者多个表，表之间使用逗号(,)分割，并使用WHERE语句来设定查询条件。<br>SELECT 命令可以读取一条或者多条记录。<br>你可以使用星号（<em>）来代替其他字段，SELECT语句会返回表的所有字段数据<br>你可以使用 WHERE 语句来包含任何条件。<br>你可以使用 LIMIT 属性来设定返回的记录数。<br>你可以通过OFFSET指定SELECT语句开始查询的数据偏移量。默认情况下偏移量为0。<br>select </em> from runoob_tbl;例如*返回数据表runoob_tbl的所有记录</p>
+<p>我们知道从 MySQL 表中使用 SQL SELECT 语句来读取数据。</p>
+<p>如需有条件地从表中选取数据，可将 WHERE 子句添加到 SELECT 语句中。</p>
+<p>以下是 SQL SELECT 语句使用 WHERE 子句从数据表中读取数据的通用语法：</p>
+<p>SELECT field1, field2,…fieldN FROM table_name1, table_name2…<br>[WHERE condition1 [AND [OR]] condition2…..</p>
+<p>查询语句中你可以使用一个或者多个表，表之间使用逗号, 分割，并使用WHERE语句来设定查询条件。<br>你可以在 WHERE 子句中指定任何条件。<br>你可以使用 AND 或者 OR 指定一个或多个条件。<br>WHERE 子句也可以运用于 SQL 的 DELETE 或者 UPDATE 命令。<br>WHERE 子句类似于程序语言中的 if 条件，根据 MySQL 表中的字段值来读取指定的数据。<br>以下为操作符列表，可用于 WHERE 子句中。</p>
+<p>MySQL 的 WHERE 子句的字符串比较是不区分大小写的。 你可以使用 BINARY 关键字来设定 WHERE 子句的字符串比较是区分大小写的。</p>
+<p>LIKE 子句<br>我们知道在 MySQL 中使用 SQL SELECT 命令来读取数据， 同时我们可以在 SELECT 语句中使用 WHERE 子句来获取指定的记录。</p>
+<p>WHERE 子句中可以使用等号 = 来设定获取数据的条件，如 “runoob_author = ‘RUNOOB.COM’”。</p>
+<p>但是有时候我们需要获取 runoob_author 字段含有 “COM” 字符的所有记录，这时我们就需要在 WHERE 子句中使用 SQL LIKE 子句。</p>
+<p>SQL LIKE 子句中使用百分号 %字符来表示任意字符，类似于UNIX或正则表达式中的星号 *。</p>
+<p>如果没有使用百分号 %, LIKE 子句与等号 = 的效果是一样的。</p>
+<p>以下是 SQL SELECT 语句使用 LIKE 子句从数据表中读取数据的通用语法：</p>
+<p>SELECT field1, field2,…fieldN<br>FROM table_name<br>WHERE field1 LIKE condition1 [AND [OR]] filed2 = ‘somevalue’</p>
+<p>你可以在 WHERE 子句中指定任何条件。<br>你可以在 WHERE 子句中使用LIKE子句。<br>你可以使用LIKE子句代替等号 =。<br>LIKE 通常与 % 一同使用，类似于一个元字符的搜索。<br>你可以使用 AND 或者 OR 指定一个或多个条件。<br>你可以在 DELETE 或 UPDATE 命令中使用 WHERE…LIKE 子句来指定条件。<br>union子句<br>UNION 语句：用于将不同表中相同列中查询的数据展示出来；（不包括重复数据）</p>
+<p>UNION ALL 语句：用于将不同表中相同列中查询的数据展示出来；（包括重复数据）</p>
+<p>使用形式如下：</p>
+<p>SELECT 列名称 FROM 表名称 UNION SELECT 列名称 FROM 表名称 ORDER BY 列名称；<br>SELECT 列名称 FROM 表名称 UNION ALL SELECT 列名称 FROM 表名称 ORDER BY 列名称；</p>
+<p>ORDER BY 子句<br>以下是 SQL SELECT 语句使用 ORDER BY 子句将查询数据排序后再返回数据：</p>
+<p>SELECT field1, field2,…fieldN FROM table_name1, table_name2…<br>ORDER BY field1 [ASC [DESC][默认 ASC]], [field2…] [ASC [DESC][默认 ASC]]</p>
+<p>你可以使用任何字段来作为排序的条件，从而返回排序后的查询结果。<br>你可以设定多个字段来排序。<br>你可以使用 ASC 或 DESC 关键字来设置查询结果是按升序或降序排列。 默认情况下，它是按升序排列。<br>你可以添加 WHERE…LIKE 子句来设置条件。<br>其他sql函数<br>一、万能密码<br>原验证登陆语句:</p>
+<p>SELECT * FROM admin WHERE Username= ‘“.$username.”‘ AND Password= ‘“.md5($password).”‘</p>
+<p>输入 1′ or 1=1 or ‘1’=’1#万能密码语句变为:</p>
+<p>SELECT * FROM admin WHERE Username=’1’ OR 1=1 OR ‘1’=’1’ AND Password=’EDFKGMZDFSDFDSFRRQWERRFGGG’</p>
+<p>逻辑运算的优先顺序是NOT&gt;OR&gt;AND</p>
+<p>因为1=1恒为真所以并且注释掉了后面的语句，导致密码无论是啥都可以登录</p>
+<p>二、数字型注入<br>可以对传入表达式进行计算 来判断是否为数字型注入</p>
+<p>后端语句为</p>
+<p>$res=mysqli_query($conn,”select title,content from wp_news where id=”.$_GET[‘id’])</p>
+<p>构造？id=1 union select user,pwd from wp_user limit 1,1limit 是指取查询结果第一条记录的后一条记录，或者使用id=-1</p>
+<p>1.通过information_schema爆表名<br>select 1返回1</p>
+<p>id=-1 union select 1,group_conact(table_name)from information_schema.tables where table_schema=database()</p>
+<p>2.爆字段<br>id=-1 union select 1,group_conact(column_name)from information_schema.columns where table_name=’wp_user’</p>
+<p>3.爆用户密码<br>？id=1 union select user,pwd from wp_user limit 1,1</p>
+<p>三、字符型注入<br>后端语句get输入处若被包裹了单引号或者双引号</p>
+<p>判断方法利用mysql的强制类型转化例如id=1a转化为id=1有页面回显则说明为字符型注入</p>
+<p>则构造方法为id=1’—+ 或者 id=1’# 加号在url中会被编码为空格</p>
+<p>接下来的操作就与数字型操作一样</p>
+<p>四、无回显的注入<br>布尔盲注（页面的回显有两种情况时）<br>布尔盲注通过页面的回显来判断0或者1</p>
+<p>例如a为被猜测的数据id=1’and ‘a’&lt;‘n’</p>
+<p>用二分法来缩小范围，就能够很快猜出字符</p>
+<p>多字符的情况</p>
+<p>利用，substring mid substr 函数等来截取数据的中的一位再用单字符的清况来继续判断</p>
+<p>例如？id=1’and mid((select concat(user,0x7e,pwd) from wp_user，1，1))=a来猜测用户名和密码</p>
+<p>时间盲注（页面无回显）<br>报错注入<br>常见的利用函数有：exp()、floor()+rand()、updatexml()、extractvalue()等</p>
+<p>如：select * from users where username=$username (and | or) updatexml(1,concat(0x7e,(select user()),0x7e),1)</p>
+<p>‘ or updatexml(1,concat(‘~’,database()),1) #</p>
+<p>实战环节利用安装sqli-lab修炼</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2022/11/20/CTF%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/">https://wdpname.github.io/2022/11/20/CTF%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF/">CTF</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/20/Apache-Struts2%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9ECVE-2016-4438/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Apache Struts2远程代码执行漏洞CVE-2016-4438</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/20/tomcat-pass-getshell/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">tomcat pass getshell</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/15/VMware%E5%92%8Ckali%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" title="VMware和kali安装教程"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-15</div><div class="title">VMware和kali安装教程</div></div></a></div><div><a href="/2022/11/19/awd%E5%85%A5%E9%97%A8%E6%80%BB%E7%BB%93/" title="awd入门总结"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-19</div><div class="title">awd入门总结</div></div></a></div><div><a href="/2022/11/20/webshell%E7%AE%80%E4%BB%8B/" title="webshell简介"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-20</div><div class="title">webshell简介</div></div></a></div><div><a href="/2022/11/16/wireshark%E6%95%99%E7%A8%8B/" title="wireshark教程"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-16</div><div class="title">wireshark教程</div></div></a></div><div><a href="/2022/11/17/%E5%85%A5%E9%97%A8%E8%B5%84%E6%BA%90%E5%BF%85%E5%A4%87/" title="入门资源必备"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-17</div><div class="title">入门资源必备</div></div></a></div><div><a href="/2022/11/15/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80%E7%AF%87/" title="流量分析基础篇"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-15</div><div class="title">流量分析基础篇</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/Apache-Struts2%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9ECVE-2016-4438/" title="Apache Struts2远程代码执行漏洞CVE-2016-4438"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Apache Struts2远程代码执行漏洞CVE-2016-4438"/></a><div class="content"><a class="title" href="/2022/11/20/Apache-Struts2%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9ECVE-2016-4438/" title="Apache Struts2远程代码执行漏洞CVE-2016-4438">Apache Struts2远程代码执行漏洞CVE-2016-4438</a><time datetime="2022-11-20T08:25:45.000Z" title="发表于 2022-11-20 16:25:45">2022-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/CTF%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" title="CTF基础概念"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTF基础概念"/></a><div class="content"><a class="title" href="/2022/11/20/CTF%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" title="CTF基础概念">CTF基础概念</a><time datetime="2022-11-20T07:52:01.000Z" title="发表于 2022-11-20 15:52:01">2022-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/tomcat-pass-getshell/" title="tomcat pass getshell"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="tomcat pass getshell"/></a><div class="content"><a class="title" href="/2022/11/20/tomcat-pass-getshell/" title="tomcat pass getshell">tomcat pass getshell</a><time datetime="2022-11-20T07:25:14.000Z" title="发表于 2022-11-20 15:25:14">2022-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/webshell%E7%AE%80%E4%BB%8B/" title="webshell简介"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webshell简介"/></a><div class="content"><a class="title" href="/2022/11/20/webshell%E7%AE%80%E4%BB%8B/" title="webshell简介">webshell简介</a><time datetime="2022-11-20T06:19:33.000Z" title="发表于 2022-11-20 14:19:33">2022-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/Tomcat-%E4%BB%BB%E6%84%8F%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2017-12615%EF%BC%89/" title="Tomcat 任意写入文件漏洞（CVE-2017-12615）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Tomcat 任意写入文件漏洞（CVE-2017-12615）"/></a><div class="content"><a class="title" href="/2022/11/20/Tomcat-%E4%BB%BB%E6%84%8F%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2017-12615%EF%BC%89/" title="Tomcat 任意写入文件漏洞（CVE-2017-12615）">Tomcat 任意写入文件漏洞（CVE-2017-12615）</a><time datetime="2022-11-20T03:55:49.000Z" title="发表于 2022-11-20 11:55:49">2022-11-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
