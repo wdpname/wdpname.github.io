@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>名词解释 | 平博社</title><meta name="keywords" content="ML"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="白化：可能在深度学习领域比较常遇到，挺起来就是高大上的名词，然而其实白化是一个比PCA稍微高级一点的算法而已，所以如果熟悉PCA，那么其实会发现这是一个非常简单的算法。 白化的目的是去除输入数据的冗余信息  协同过滤：简单来说是利用某兴趣相投、拥有共同经验之群体的喜好来推荐用户感兴趣的信息，个人通过合作的机制给予信息相当程度的回应（如评分）并记录下来以达到过滤的目的进而帮助别人筛选信息，回应不一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="名词解释">
+<meta property="og:url" content="https://wdpname.github.io/2022/12/19/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="白化：可能在深度学习领域比较常遇到，挺起来就是高大上的名词，然而其实白化是一个比PCA稍微高级一点的算法而已，所以如果熟悉PCA，那么其实会发现这是一个非常简单的算法。 白化的目的是去除输入数据的冗余信息  协同过滤：简单来说是利用某兴趣相投、拥有共同经验之群体的喜好来推荐用户感兴趣的信息，个人通过合作的机制给予信息相当程度的回应（如评分）并记录下来以达到过滤的目的进而帮助别人筛选信息，回应不一">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-19T15:05:13.000Z">
+<meta property="article:modified_time" content="2022-12-21T14:10:17.324Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="ML">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2022/12/19/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '名词解释',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-12-21 22:10:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">名词解释</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-19T15:05:13.000Z" title="发表于 2022-12-19 23:05:13">2022-12-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-21T14:10:17.324Z" title="更新于 2022-12-21 22:10:17">2022-12-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="名词解释"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><ul>
+<li><p><strong>白化</strong>：可能在深度学习领域比较常遇到，挺起来就是高大上的名词，然而其实白化是一个比PCA稍微高级一点的算法而已，所以如果熟悉PCA，那么其实会发现这是一个非常简单的算法。 白化的目的是去除输入数据的冗余信息</p>
+</li>
+<li><p><strong>协同过滤</strong>：简单来说是利用某<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/兴趣/5720174?fromModule=lemma_inlink">兴趣</a>相投、拥有共同经验之群体的喜好来推荐用户感兴趣的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/信息/111163?fromModule=lemma_inlink">信息</a>，个人通过合作的机制给予信息相当程度的回应（如评分）并记录下来以达到过滤的目的进而帮助别人<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/筛选/10883707?fromModule=lemma_inlink">筛选</a>信息，回应不一定局限于特别感兴趣的，特别不感兴趣信息的纪录也相当重要。</p>
+<p>分为 评比 和 群体过滤</p>
+</li>
+<li><p><strong>生成模型</strong>：可以用来直接对数据建模（例如根据某个变量的概率密度函数进行数据采样），也可以用来建立变量间的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/条件概率分布">条件概率分布</a>。条件概率分布可以由生成模型根据<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/贝叶斯定理">贝叶斯定理</a>形成。</p>
+<p>生成模型的定义与<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/判别模型">判别模型</a>相对应：生成模型是所有变量的全概率模型，而判别模型是在给定观测变量值前提下目标变量条件概率模型。因此生成模型能够用于模拟（即<em>生成</em>）模型中任意变量的分布情况，而判别模型只能根据观测变量得到目标变量的采样。判别模型不对观测变量的分布建模，因此它不能够表达观测变量与目标变量之间更复杂的关系。因此，生成模型更适用于无监督的任务，如<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/分类问题">分类</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据聚类">聚类</a>。</p>
+</li>
+<li><p><strong>数据挖掘</strong>：是一个跨学科的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/计算机科学">计算机科学</a>分支 。它是用<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/人工智能">人工智能</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/机器学习">机器学习</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/统计学">统计学</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据库">数据库</a>的交叉方法在相对较大型的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/数据集">数据集</a>中发现模式的计算过程。</p>
+<p>数据挖掘过程的总体目标是从一个数据集中提取信息，并将其转换成可理解的结构，以进一步使用</p>
+</li>
+<li><p><strong>稀疏编码</strong>：稀疏编码算法是一种无监督学习方法，它用来寻找一组“超完备”基向量来更高效地表示样本数据。稀疏编码算法的目的就是找到一组基向量 ，使得我们能将输入向量表示为这些基向量的线性组合。</p>
+</li>
+<li><p><strong>相对熵</strong>：相对熵为 0 表示所讨论的两个分布具有相同数量的信息。相对熵是两个分布或度量的非负函数</p>
+</li>
+<li><p><strong>詹森-香农散度</strong>：<strong><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Johan_Jensen_(mathematician">詹森</a>)-<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Claude_Shannon">香农</a>散度</strong>是一种衡量两个<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Probability_distribution">概率分布</a>之间相似性的方法。它也被称为<strong>信息半径</strong>( <strong>IRad</strong> ) 或<strong>与平均值的总差异</strong>，它基于<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Kullback–Leibler_divergence">Kullback–Leibler 散度</a>（相对熵），具有一些显着（和有用）的差异，包括它是对称的并且始终具有有限值。Jensen-Shannon 散度的平方根是通常称为 Jensen-Shannon 距离的度量。</p>
+</li>
+<li><p><strong>布雷格曼散度</strong>：<strong>Bregman 散度</strong>或<strong>Bregman 距离</strong>是衡量两点之间差异的量度，定义：$D_F(p,q)=F(p)-F(q)-\langle\nabla F(q),p-q\rangle$  </p>
+</li>
+<li><p>HIDC：MTrick假设这些领域在它们的词簇背后有相似的概念。与此相反，TriTL假设这些领域的概念可以进一步分为三种类型，即独立于领域的概念、可转移的特定于领域的概念和不可转移的特定于领域的概念，这与HIDC类似</p>
+</li>
+<li><p><strong>对抗深度学习（AdversarialDeep Learning）</strong>： </p>
+</li>
+<li><p><strong>DAN</strong>： DAN解决的是迁移学习和机器学习中经典的domain adaptation问题，只不过是以深度网络为载体来进行适配迁移。主要应用在分类和回归问题上。通过明确地减少域差异来增强深度学习神经网络的具体任务层的特征迁移性</p>
+</li>
+<li><p><strong>域适应方法</strong>：一般要求源域的数据是有标签的，目标域上的数据是无标签的，即实现目标域能够和源域相似的分类。</p>
+</li>
+<li><p><strong>域适应</strong>：解决有来自两个相关域但分布不同的数据问题。比如汽车图像问题。域差异是不同域之间适应预测模型的主要障碍。</p>
+</li>
+<li><p>传统机器学习：机器学习可以分为传统机器学习和深度学习，传统机器学习诸如：KNN，决策树，AdaBoost，朴素贝叶斯</p>
+</li>
+<li><p>样本选择偏差：<img src="https://gitee.com/fjkf/images/raw/master/imgs/202212202138503.png" alt="image-20221220213843450"></p>
+</li>
+<li><p>上下文特征偏差：例如，在情感分类问题中，一个词在不同的领域中可能具有不同的意义倾向</p>
+</li>
+<li><p>多视图学习：就是从多个角度去学习，然后数据进行预测提高准确性</p>
+</li>
+<li><p>多任务学习：共同学习一组相关的任务，更具体地说，多任务学习通过利用任务之间的相互联系，即同时考虑任务间相关性和任务间的差异，来加强每个任务</p>
+</li>
+<li><p>领域适应：指适应一个或多个源领域以转移知识并提高目标学习者的性能的过程，该过程试图减少领域之间的差异</p>
+</li>
+<li><p><strong>再生核希尔伯特空间</strong>RKHS：空间里保存着源数据和目标数据之间的均值</p>
+</li>
+<li><p>核均值匹配KMM：是一种非参数统计量，用来衡量分布差异$\begin{align<em>}\min<em>{\beta}\left|E</em>{x’\sim P’<em>r}\left[\Phi\left(x’\right)\right]-E</em>{x\sim P<em>r}[\beta(x)\Phi(x)]\right|\ \text{s.t.}\quad\beta(x)\geq0,E</em>{x\sim P_r}[\beta(x)]=1\end{align</em>}$ </p>
+<p>通过最小化 域之间的MMD距离来产生实例的权重</p>
+</li>
+<li><p>MMD最大平均差异：<img src="https://gitee.com/fjkf/images/raw/master/imgs/202212211953022.png" alt="image-20221221195301998"></p>
+</li>
+<li><p>奇异值分解：假设M是一个m×n阶矩阵，其中的元素全部属于域 K，也就是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/实数域?fromModule=lemma_inlink">实数域</a>或复数域。如此则存在一个分解使得</p>
+<p>$M=U\Sigma V^*$</p>
+<p>其中U是m×m阶<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/酉矩阵?fromModule=lemma_inlink">酉矩阵</a>；Σ是半正定m×n阶对角矩阵；而V*，即V的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/共轭转置?fromModule=lemma_inlink">共轭转置</a>，是n×n阶<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/酉矩阵?fromModule=lemma_inlink">酉矩阵</a>。这样的分解就称作M的奇异值分解。Σ对角线上的元素Σi，其中Σi即为M的奇异值。</p>
+<p>常见的做法是为了奇异值由大而小排列。如此Σ便能由M唯一确定了。（虽然U和V仍然不能确定）</p>
+</li>
+<li><p>自编码器：自编码器（autoencoder, AE）是一类在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/半监督学习/9075473?fromModule=lemma_inlink">半监督学习</a>和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/非监督学习/16588789?fromModule=lemma_inlink">非监督学习</a>中使用的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/人工神经网络/382460?fromModule=lemma_inlink">人工神经网络</a>（Artificial Neural Networks, ANNs），其功能是通过将输入信息作为学习目标，对输入信息进行特征学习，自编码器具有一般意义上表征学习<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/算法/209025?fromModule=lemma_inlink">算法</a>的功能，被应用于<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/降维/12737059?fromModule=lemma_inlink">降维</a>（dimensionality reduction）和异常值检测（anomaly detection）</p>
+</li>
+<li><p>Frobenius 范数：简称F-范数，是一种矩阵范数，记为||·||F。矩阵A的Frobenius范数定义为矩阵A各项元素的绝对值平方的总和开根，即$|X|<em>F\stackrel{\text{def}}{=}\sqrt{\sum_i\sum_j X</em>{i,j}^2}$ ，</p>
+<p>可用于 利用低秩矩阵来近似单一数据矩阵。<br>用数学表示就是去找一个秩为k的矩阵B，使得矩阵B与原始数据矩阵A的差的F范数尽可能地小。<img src="https://gitee.com/fjkf/images/raw/master/imgs/202212212210505.png" alt="image-20221221221011471"></p>
+</li>
+<li></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2022/12/19/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/">https://wdpname.github.io/2022/12/19/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ML/">ML</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/19/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">迁移学习研究进展</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/19/A-perspective-survey-on-deep-transfer-learning-for-fault-diagnosis-in-industrial-scenarios-Theories-applications-and-challenges/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">A perspective survey on deep transfer learning for fault diagnosis in industrial scenarios: Theories, applications and challenges</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/09/29/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80%EF%BC%88%E5%91%A8%E5%BF%97%E5%8D%8E%E7%89%88%EF%BC%89/" title="机器学习基础（周志华版）"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">机器学习基础（周志华版）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/20/%E6%96%87%E7%8C%AE%E6%80%8E%E4%B9%88%E8%AF%BB/" title="文献怎么读"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文献怎么读"/></a><div class="content"><a class="title" href="/2022/12/20/%E6%96%87%E7%8C%AE%E6%80%8E%E4%B9%88%E8%AF%BB/" title="文献怎么读">文献怎么读</a><time datetime="2022-12-20T10:23:49.000Z" title="发表于 2022-12-20 18:23:49">2022-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/19/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/" title="迁移学习研究进展"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="迁移学习研究进展"/></a><div class="content"><a class="title" href="/2022/12/19/%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0%E7%A0%94%E7%A9%B6%E8%BF%9B%E5%B1%95/" title="迁移学习研究进展">迁移学习研究进展</a><time datetime="2022-12-19T15:13:12.000Z" title="发表于 2022-12-19 23:13:12">2022-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/19/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" title="名词解释"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="名词解释"/></a><div class="content"><a class="title" href="/2022/12/19/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" title="名词解释">名词解释</a><time datetime="2022-12-19T15:05:13.000Z" title="发表于 2022-12-19 23:05:13">2022-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/19/A-perspective-survey-on-deep-transfer-learning-for-fault-diagnosis-in-industrial-scenarios-Theories-applications-and-challenges/" title="A perspective survey on deep transfer learning for fault diagnosis in industrial scenarios: Theories, applications and challenges"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="A perspective survey on deep transfer learning for fault diagnosis in industrial scenarios: Theories, applications and challenges"/></a><div class="content"><a class="title" href="/2022/12/19/A-perspective-survey-on-deep-transfer-learning-for-fault-diagnosis-in-industrial-scenarios-Theories-applications-and-challenges/" title="A perspective survey on deep transfer learning for fault diagnosis in industrial scenarios: Theories, applications and challenges">A perspective survey on deep transfer learning for fault diagnosis in industrial scenarios: Theories, applications and challenges</a><time datetime="2022-12-19T14:13:07.000Z" title="发表于 2022-12-19 22:13:07">2022-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/10/Measuring-and-Modeling-the-Label-Dynamics-of-Online-Anti-Malware-Engines/" title="Measuring and Modeling the Label Dynamics of Online Anti-Malware Engines"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Measuring and Modeling the Label Dynamics of Online Anti-Malware Engines"/></a><div class="content"><a class="title" href="/2022/12/10/Measuring-and-Modeling-the-Label-Dynamics-of-Online-Anti-Malware-Engines/" title="Measuring and Modeling the Label Dynamics of Online Anti-Malware Engines">Measuring and Modeling the Label Dynamics of Online Anti-Malware Engines</a><time datetime="2022-12-10T14:24:39.000Z" title="发表于 2022-12-10 22:24:39">2022-12-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
