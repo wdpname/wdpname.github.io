@@ -1,0 +1,19 @@
+Domain Promt Learning （DPL） 域提示学习
+Domain generalization (DG) 领域泛化  ---> 是一个困难的迁移学习问题来学习一个通用的模型来用于未见领域
+FMs: 基础模型
+distribution shift 
+
+ERM --》一个基线
+DPL（Domain Promt Learning）：
+
+DG是一个迁移学习面临的一个问题   文中使用一个DPL的学习方法，将CLIP适配到一个未见的领域
+
+DG基线  
+
+TTA方法 ： 测试时间适应  （Test-Time Adaptation） 
+
+什么是图像编码器
+
+
+设X表示输入空间，Y表示输出空间。域由从分布中采样的数据组成。我们将来自分布的数据集表示为Si=（xij，yij）nij=1～PiXY，
+其中x∈x⊂Rd是输入图像，y∈y表示与x相关的类，PiXY表示样本和输出标签在域i中的联合分布。x，y表示相应的随机变量。
