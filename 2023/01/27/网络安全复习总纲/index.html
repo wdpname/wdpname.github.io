@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>网络安全复习总纲 | 平博社</title><meta name="keywords" content="研一上"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="1.1 网络安全攻防博宇的套路攻防目标 联网的实体设备 传统的联网设备 （蓝字） 计算机，计算机网络，服务器，交换设备   物联网设备 手机，摄像头，各式传感器 应用场景：工控，智慧城市，车联网，智慧家居等     人（社会工程学） 个体 企业    攻击目的 设备：控制权+数据 控制权：断网，断电，断水。 数据：身份数据，金融数据，用户数据   人：骗财骗色  攻防博弈 攻：  收集数据，从而发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全复习总纲">
+<meta property="og:url" content="https://wdpname.github.io/2023/01/27/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BA%B2/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="1.1 网络安全攻防博宇的套路攻防目标 联网的实体设备 传统的联网设备 （蓝字） 计算机，计算机网络，服务器，交换设备   物联网设备 手机，摄像头，各式传感器 应用场景：工控，智慧城市，车联网，智慧家居等     人（社会工程学） 个体 企业    攻击目的 设备：控制权+数据 控制权：断网，断电，断水。 数据：身份数据，金融数据，用户数据   人：骗财骗色  攻防博弈 攻：  收集数据，从而发">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-27T05:32:32.000Z">
+<meta property="article:modified_time" content="2023-01-28T09:03:31.726Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="研一上">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2023/01/27/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BA%B2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网络安全复习总纲',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-01-28 17:03:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">35</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">网络安全复习总纲</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-27T05:32:32.000Z" title="发表于 2023-01-27 13:32:32">2023-01-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-01-28T09:03:31.726Z" title="更新于 2023-01-28 17:03:31">2023-01-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网络安全复习总纲"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="1-1-网络安全攻防博宇的套路"><a href="#1-1-网络安全攻防博宇的套路" class="headerlink" title="1.1 网络安全攻防博宇的套路"></a>1.1 网络安全攻防博宇的套路</h1><h2 id="攻防目标"><a href="#攻防目标" class="headerlink" title="攻防目标"></a>攻防目标</h2><ul>
+<li>联网的实体设备<ul>
+<li>传统的联网设备 （蓝字）<ul>
+<li>计算机，计算机网络，服务器，交换设备</li>
+</ul>
+</li>
+<li>物联网设备<ul>
+<li>手机，摄像头，各式传感器</li>
+<li>应用场景：工控，智慧城市，车联网，智慧家居等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>人（社会工程学）<ul>
+<li>个体</li>
+<li>企业</li>
+</ul>
+</li>
+</ul>
+<h2 id="攻击目的"><a href="#攻击目的" class="headerlink" title="攻击目的"></a>攻击目的</h2><ul>
+<li>设备：控制权+数据<ul>
+<li>控制权：断网，断电，断水。</li>
+<li>数据：身份数据，金融数据，用户数据</li>
+</ul>
+</li>
+<li>人：骗财骗色</li>
+</ul>
+<h2 id="攻防博弈"><a href="#攻防博弈" class="headerlink" title="攻防博弈"></a>攻防博弈</h2><ul>
+<li><p>攻：</p>
+<ul>
+<li>收集数据，从而发现目标<ul>
+<li>手机号，账号，位置，邮箱，单位，资产</li>
+</ul>
+</li>
+<li><p>借助手段，实施攻击</p>
+<ul>
+<li>夺取控制权<ul>
+<li>后门</li>
+<li>恶意代码</li>
+<li>漏洞利用</li>
+<li>DDos攻击</li>
+</ul>
+</li>
+<li>窃取数据<ul>
+<li>恶意代码</li>
+<li>漏洞利用</li>
+<li>网络嗅探</li>
+<li>口令爆破</li>
+<li>中间人攻击</li>
+<li>网络钓鱼</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>隐藏踪迹，清除痕迹</p>
+<ul>
+<li><p>隐藏踪迹</p>
+<ul>
+<li><p>本地隐藏技术</p>
+<ul>
+<li>文件隐藏：文件名更名为合法文件名</li>
+<li>进程隐藏：附着或系统进程，以合法身份运行</li>
+<li>网络连接隐藏：复用当前网络服务端口，如80</li>
+<li>编译器隐藏：攻击者是编译器开发人员，实施原始分发攻击</li>
+</ul>
+</li>
+<li><p>网络隐藏技术</p>
+<ul>
+<li>通信内容隐藏：对通信内容加密</li>
+<li>传输信道隐藏：一个进程能够直接或者间接访问某存储空间，而该存储空间又能被另外一个进程访问，构成隐蔽存储通道</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>清除痕迹</p>
+<ul>
+<li>清除日志和操作记录<ul>
+<li>如windows事件日志清除</li>
+<li>清除IIS日志</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>防：</p>
+<ul>
+<li>事前 防护 （依靠技术）<ul>
+<li>加密，脱敏，防火墙，身份认证访问控制</li>
+</ul>
+</li>
+<li>事中 检测  （分析行为）<ul>
+<li>精准检测：通过系统环境数据和应用进程数据，网络/主机流量来捕获数据，然后通过结合相关技术，来智能分析实现检测行为。</li>
+</ul>
+</li>
+<li>事后 恢复，取证，溯源，反制<ul>
+<li>取证：利用蜜罐获取攻击指纹</li>
+<li>溯源：描绘攻击者图像</li>
+<li>反制：植入脚本或探针实现绝地反制</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="网络空间攻击链-（Cyber-Kill-Chain）"><a href="#网络空间攻击链-（Cyber-Kill-Chain）" class="headerlink" title="网络空间攻击链 （Cyber Kill Chain）"></a>网络空间攻击链 （Cyber Kill Chain）</h2><p>侦查  武器构建  载荷投递  漏洞利用  安装植入  命令控制  目标达成</p>
+<h2 id="攻击时间轴"><a href="#攻击时间轴" class="headerlink" title="攻击时间轴"></a>攻击时间轴</h2><p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202301271508922.png" alt="image-20230127150818672"></p>
+<h2 id="漏洞分类"><a href="#漏洞分类" class="headerlink" title="漏洞分类"></a>漏洞分类</h2><p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202301271537683.png" alt="image-20230127153707222"></p>
+<h2 id="恶意代码分类"><a href="#恶意代码分类" class="headerlink" title="恶意代码分类"></a>恶意代码分类</h2><ul>
+<li>计算机病毒：可以自我复制和感染其他计算机的恶意代码</li>
+<li>木马：可以伪装成他类的程序。</li>
+<li>蠕虫：像病毒那样可以扩散，但蠕虫可以自我复制，不需要借助其他宿主。</li>
+<li>Rootkit：是攻击者用来隐藏自己踪迹和保留root访问权限的工具</li>
+<li>勒索病毒：利用各种加密算法对文件进行加密，被感染者一般无法解密，必须拿到解密的私钥才有可能破解</li>
+<li>逻辑炸弹：可以有某类事件触发执行。例如一个时间炸弹（再某一特定时刻触执行）</li>
+<li>僵尸网络：是由C&amp;C服务器以及僵尸牧人控制的僵尸网络</li>
+<li>间谍软件：间谍软件就是能偷偷安装在受害者电脑上并收集受害者的敏感信息的软件</li>
+<li>广告软件：自动生成广告的软件</li>
+<li>移动恶意代码：在移动设备上产生</li>
+</ul>
+<h2 id="安全防护方案"><a href="#安全防护方案" class="headerlink" title="安全防护方案"></a>安全防护方案</h2><p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202301271603627.png" alt="image-20230127160357232"></p>
+<h1 id="1-2-网络安全模型和架构"><a href="#1-2-网络安全模型和架构" class="headerlink" title="1.2 网络安全模型和架构"></a>1.2 网络安全模型和架构</h1><h2 id="PDRR模型"><a href="#PDRR模型" class="headerlink" title="PDRR模型"></a>PDRR模型</h2><p>常见的一个网络安全模型PDRR</p>
+<p>Protection（防护）      Detection（检测） Response（响应） Recovery（恢复）</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202301271606412.png" alt="image-20230127160656295"></p>
+<h2 id="APPDRR模型"><a href="#APPDRR模型" class="headerlink" title="APPDRR模型"></a>APPDRR模型</h2><p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202301271607315.png" alt="image-20230127160743917"></p>
+<h2 id="IPDRR模型"><a href="#IPDRR模型" class="headerlink" title="IPDRR模型"></a>IPDRR模型</h2><p>Identification</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202301271609183.png" alt="image-20230127160934981"></p>
+<h2 id="网络安全的三大支柱"><a href="#网络安全的三大支柱" class="headerlink" title="网络安全的三大支柱"></a>网络安全的三大支柱</h2><p>IP啊</p>
+<ul>
+<li>身份</li>
+<li>权限</li>
+<li>资产</li>
+</ul>
+<p><img src="https://gitee.com/fjkf/images/raw/master/imgs/202301271611505.png" alt="image-20230127161140110"></p>
+<h1 id="1-3-网络安全态势感知"><a href="#1-3-网络安全态势感知" class="headerlink" title="1.3 网络安全态势感知"></a>1.3 网络安全态势感知</h1><h2 id="态势感知"><a href="#态势感知" class="headerlink" title="态势感知"></a>态势感知</h2><p>一种基于环境的，动态的，全面的洞察安全风险的能力</p>
+<h1 id="2-1网络安全策略"><a href="#2-1网络安全策略" class="headerlink" title="2.1网络安全策略"></a>2.1网络安全策略</h1><h2 id="安全策略"><a href="#安全策略" class="headerlink" title="安全策略"></a>安全策略</h2><p>指在一个特定的环境里，为保证提供一定安全级别的安全保护所必须遵守的规则</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2023/01/27/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BA%B2/">https://wdpname.github.io/2023/01/27/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BA%B2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%94%E4%B8%80%E4%B8%8A/">研一上</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/01/12/%E5%AE%9E%E7%8E%B0%E5%8D%95%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%A0%81%E7%9A%84%E6%80%BB%E7%BB%93/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">实现单神经网络代码的总结</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/03/%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="复杂网络学习笔记"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-03</div><div class="title">复杂网络学习笔记</div></div></a></div><div><a href="/2022/12/03/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BA%B2/" title="机器学习复习总纲"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-03</div><div class="title">机器学习复习总纲</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">86</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">35</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-1-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%8D%9A%E5%AE%87%E7%9A%84%E5%A5%97%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">1.1 网络安全攻防博宇的套路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E9%98%B2%E7%9B%AE%E6%A0%87"><span class="toc-number">1.1.</span> <span class="toc-text">攻防目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E7%9B%AE%E7%9A%84"><span class="toc-number">1.2.</span> <span class="toc-text">攻击目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E9%98%B2%E5%8D%9A%E5%BC%88"><span class="toc-number">1.3.</span> <span class="toc-text">攻防博弈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%94%BB%E5%87%BB%E9%93%BE-%EF%BC%88Cyber-Kill-Chain%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">网络空间攻击链 （Cyber Kill Chain）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%97%B6%E9%97%B4%E8%BD%B4"><span class="toc-number">1.5.</span> <span class="toc-text">攻击时间轴</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.</span> <span class="toc-text">漏洞分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81%E5%88%86%E7%B1%BB"><span class="toc-number">1.7.</span> <span class="toc-text">恶意代码分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E6%96%B9%E6%A1%88"><span class="toc-number">1.8.</span> <span class="toc-text">安全防护方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-2-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">1.2 网络安全模型和架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PDRR%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">PDRR模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#APPDRR%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">APPDRR模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPDRR%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">IPDRR模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%9A%84%E4%B8%89%E5%A4%A7%E6%94%AF%E6%9F%B1"><span class="toc-number">2.4.</span> <span class="toc-text">网络安全的三大支柱</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-3-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%80%81%E5%8A%BF%E6%84%9F%E7%9F%A5"><span class="toc-number">3.</span> <span class="toc-text">1.3 网络安全态势感知</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%81%E5%8A%BF%E6%84%9F%E7%9F%A5"><span class="toc-number">3.1.</span> <span class="toc-text">态势感知</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">4.</span> <span class="toc-text">2.1网络安全策略</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%AD%96%E7%95%A5"><span class="toc-number">4.1.</span> <span class="toc-text">安全策略</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/01/27/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BA%B2/" title="网络安全复习总纲"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络安全复习总纲"/></a><div class="content"><a class="title" href="/2023/01/27/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BA%B2/" title="网络安全复习总纲">网络安全复习总纲</a><time datetime="2023-01-27T05:32:32.000Z" title="发表于 2023-01-27 13:32:32">2023-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/12/%E5%AE%9E%E7%8E%B0%E5%8D%95%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%A0%81%E7%9A%84%E6%80%BB%E7%BB%93/" title="实现单神经网络代码的总结"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实现单神经网络代码的总结"/></a><div class="content"><a class="title" href="/2023/01/12/%E5%AE%9E%E7%8E%B0%E5%8D%95%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%A0%81%E7%9A%84%E6%80%BB%E7%BB%93/" title="实现单神经网络代码的总结">实现单神经网络代码的总结</a><time datetime="2023-01-12T06:17:46.000Z" title="发表于 2023-01-12 14:17:46">2023-01-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/11/Domain-Prompt-Learning-for-Efficiently-Adapting-CLIP-to-Unseen-Domains/" title="Domain Prompt Learning for Efficiently Adapting CLIP to Unseen Domains"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Domain Prompt Learning for Efficiently Adapting CLIP to Unseen Domains"/></a><div class="content"><a class="title" href="/2023/01/11/Domain-Prompt-Learning-for-Efficiently-Adapting-CLIP-to-Unseen-Domains/" title="Domain Prompt Learning for Efficiently Adapting CLIP to Unseen Domains">Domain Prompt Learning for Efficiently Adapting CLIP to Unseen Domains</a><time datetime="2023-01-11T04:23:23.000Z" title="发表于 2023-01-11 12:23:23">2023-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/10/%E8%AE%BA%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%8D%A1%E8%B5%B7%E4%BD%BF%E7%94%A8pytorch%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E6%82%9F/" title="论如何快速捡起使用pytorch的一些感悟"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="论如何快速捡起使用pytorch的一些感悟"/></a><div class="content"><a class="title" href="/2023/01/10/%E8%AE%BA%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%8D%A1%E8%B5%B7%E4%BD%BF%E7%94%A8pytorch%E7%9A%84%E4%B8%80%E4%BA%9B%E6%84%9F%E6%82%9F/" title="论如何快速捡起使用pytorch的一些感悟">论如何快速捡起使用pytorch的一些感悟</a><time datetime="2023-01-10T13:31:17.000Z" title="发表于 2023-01-10 21:31:17">2023-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/10/pytorch%E5%9F%BA%E7%A1%80%EF%BC%88%E5%B0%8F%E5%9C%9F%E5%A0%86%EF%BC%89/" title="pytorch基础（小土堆）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="pytorch基础（小土堆）"/></a><div class="content"><a class="title" href="/2023/01/10/pytorch%E5%9F%BA%E7%A1%80%EF%BC%88%E5%B0%8F%E5%9C%9F%E5%A0%86%EF%BC%89/" title="pytorch基础（小土堆）">pytorch基础（小土堆）</a><time datetime="2023-01-10T07:35:12.000Z" title="发表于 2023-01-10 15:35:12">2023-01-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
