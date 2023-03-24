@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Influence-Balanced Loss for Imbalanced Visual Classification | 平博社</title><meta name="keywords" content="恶意软件检测"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="针对不平衡数据学习，提出了一种平衡训练方法, 分为标准训练和微调。 比较了不平衡类别学习的三种方法。 数据处理方法：欠采样和过采样。 设计权重平衡的损失函数。对数据样本（并不是样本类别）重新加权 使用元学习方法   a）中由于黑色x对决策边界的影响大，导致决策边界复杂且不平滑 b) 中对黑色x降低权重，再通过微调就可以平滑边界。 影响函数： (1)  IBloss 影响平衡损失IB 权重因子：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Influence-Balanced Loss for Imbalanced Visual Classification">
+<meta property="og:url" content="https://wdpname.github.io/2023/03/24/Influence-Balanced-Loss-for-Imbalanced-Visual-Classification/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="针对不平衡数据学习，提出了一种平衡训练方法, 分为标准训练和微调。 比较了不平衡类别学习的三种方法。 数据处理方法：欠采样和过采样。 设计权重平衡的损失函数。对数据样本（并不是样本类别）重新加权 使用元学习方法   a）中由于黑色x对决策边界的影响大，导致决策边界复杂且不平滑 b) 中对黑色x降低权重，再通过微调就可以平滑边界。 影响函数： (1)  IBloss 影响平衡损失IB 权重因子：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-24T01:26:52.000Z">
+<meta property="article:modified_time" content="2023-03-24T05:21:15.385Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="恶意软件检测">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2023/03/24/Influence-Balanced-Loss-for-Imbalanced-Visual-Classification/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Influence-Balanced Loss for Imbalanced Visual Classification',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-24 13:21:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">111</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Influence-Balanced Loss for Imbalanced Visual Classification</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-24T01:26:52.000Z" title="发表于 2023-03-24 09:26:52">2023-03-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-24T05:21:15.385Z" title="更新于 2023-03-24 13:21:15">2023-03-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Influence-Balanced Loss for Imbalanced Visual Classification"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p> 针对不平衡数据学习，提出了一种平衡训练方法, 分为标准训练和微调。</p>
+<h1 id="比较了不平衡类别学习的三种方法。"><a href="#比较了不平衡类别学习的三种方法。" class="headerlink" title="比较了不平衡类别学习的三种方法。"></a>比较了不平衡类别学习的三种方法。</h1><ol>
+<li>数据处理方法：欠采样和过采样。</li>
+<li>设计权重平衡的损失函数。对数据样本（并不是样本类别）重新加权</li>
+<li>使用元学习方法</li>
+</ol>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202303241018157.png" alt="image-20230324101803004"></p>
+<p>a）中由于黑色x对决策边界的影响大，导致决策边界复杂且不平滑</p>
+<p>b) 中对黑色x降低权重，再通过微调就可以平滑边界。</p>
+<h1 id="影响函数："><a href="#影响函数：" class="headerlink" title="影响函数："></a>影响函数：</h1><p><img src="https://gitee.com/fjkf/images/raw/master/202303241120751.png" alt="image-20230324112019700"> (1)</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202303241122785.png" alt="image-20230324112253759"></p>
+<h1 id="IBloss-影响平衡损失"><a href="#IBloss-影响平衡损失" class="headerlink" title="IBloss 影响平衡损失"></a>IBloss 影响平衡损失</h1><p>IB 权重因子：</p>
+<p>$\mathcal{I B}(x;w)=||\nabla_w L(y,f(x,w))||_1$  (2)</p>
+<p>那怎么将这个权重因子应用到实际的损失呢？</p>
+<ol>
+<li>先算出损失函数对$w<em>{kl}$  的偏导 $\dfrac{\partial}{\partial w</em>{kl}}L(y,f(x,w))=(f_k-y_k)h_l$  (3)</li>
+</ol>
+<blockquote>
+<p>可是我算出来的是$(f<em>{k} y</em>{k}-y_k)h_l$ </p>
+</blockquote>
+<ol>
+<li>那么IB权重因子就等于：</li>
+</ol>
+<p>$\begin{aligned}\mathcal{IB}(x;w)&amp;=\sum<em>{k}^{K}\sum</em>{l}^{L}|(f<em>{k}-y</em>{k})h<em>{l}|\ &amp;=\sum</em>{k}^{K}|(f<em>{k}-y</em>{k})|\sum<em>{l}^{L}|h</em>{l}|\ &amp;=||f(x,w)-y||<em>{1}\cdot||h||</em>{1},\end{aligned}$  (4)</p>
+<ol>
+<li><p>那么就推导出IB loss 了</p>
+<p>$L_{IB}(y,f(x,w)=\dfrac{L(y,f(x,w))}{||f(x,w)-y||_1\cdot||h||_1}.$  (5)</p>
+</li>
+<li><p>IB loss 完整版</p>
+<p>$L<em>{IB}(w)=\dfrac{1}{m}\sum</em>{(x,y)\in D_m}\lambda_k\dfrac{L(y,f(x,w))}{||f(x,w)-y||_1\cdot||h||_1},$  (6)</p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2023/03/24/Influence-Balanced-Loss-for-Imbalanced-Visual-Classification/">https://wdpname.github.io/2023/03/24/Influence-Balanced-Loss-for-Imbalanced-Visual-Classification/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E6%A3%80%E6%B5%8B/">恶意软件检测</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/03/21/%E9%9F%A9%E9%A1%BA%E5%B9%B3%E8%AE%B2mysql/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">韩顺平讲mysql</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/22/Data-Mining-Methods-for-Detection-of-New-Malicious-Executables/" title="Data Mining Methods for Detection of New Malicious Executables"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-22</div><div class="title">Data Mining Methods for Detection of New Malicious Executables</div></div></a></div><div><a href="/2022/10/29/Classification-of-Malware-by-Using-Structural-Entropy-on-Convotional-Neural-Networks/" title="Classification of Malware by Using Structural Entropy on Convotional Neural Networks"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-29</div><div class="title">Classification of Malware by Using Structural Entropy on Convotional Neural Networks</div></div></a></div><div><a href="/2022/11/12/Malware-Detection-with-Malware-Images-using-Deep-Learning-Techniques/" title="Malware Detection with Malware Images using Deep Learning Techniques"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-12</div><div class="title">Malware Detection with Malware Images using Deep Learning Techniques</div></div></a></div><div><a href="/2022/12/10/Measuring-and-Modeling-the-Label-Dynamics-of-Online-Anti-Malware-Engines/" title="Measuring and Modeling the Label Dynamics of Online Anti-Malware Engines"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-10</div><div class="title">Measuring and Modeling the Label Dynamics of Online Anti-Malware Engines</div></div></a></div><div><a href="/2022/11/04/RNN-based-Classifier-to-Detect-Stealthy-Malware-using-Localized-Features-and-Complex-Symbolic-Sequence/" title="RNN-based Classifier to Detect Stealthy Malware using Localized Features and Complex Symbolic Sequence"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-04</div><div class="title">RNN-based Classifier to Detect Stealthy Malware using Localized Features and Complex Symbolic Sequence</div></div></a></div><div><a href="/2022/12/03/When-Malware-is-Packin%E2%80%99-Heat-Limits-of-Machine-Learning-Classifiers-Based-on-Static-Analysis-Features/" title="When Malware is Packin’ Heat; Limits of Machine Learning Classifiers Based on Static Analysis Features 61"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-03</div><div class="title">When Malware is Packin’ Heat; Limits of Machine Learning Classifiers Based on Static Analysis Features 61</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">111</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">37</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E4%BA%86%E4%B8%8D%E5%B9%B3%E8%A1%A1%E7%B1%BB%E5%88%AB%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">比较了不平衡类别学习的三种方法。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">影响函数：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IBloss-%E5%BD%B1%E5%93%8D%E5%B9%B3%E8%A1%A1%E6%8D%9F%E5%A4%B1"><span class="toc-number">3.</span> <span class="toc-text">IBloss 影响平衡损失</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/24/Influence-Balanced-Loss-for-Imbalanced-Visual-Classification/" title="Influence-Balanced Loss for Imbalanced Visual Classification"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Influence-Balanced Loss for Imbalanced Visual Classification"/></a><div class="content"><a class="title" href="/2023/03/24/Influence-Balanced-Loss-for-Imbalanced-Visual-Classification/" title="Influence-Balanced Loss for Imbalanced Visual Classification">Influence-Balanced Loss for Imbalanced Visual Classification</a><time datetime="2023-03-24T01:26:52.000Z" title="发表于 2023-03-24 09:26:52">2023-03-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/21/%E9%9F%A9%E9%A1%BA%E5%B9%B3%E8%AE%B2mysql/" title="韩顺平讲mysql"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="韩顺平讲mysql"/></a><div class="content"><a class="title" href="/2023/03/21/%E9%9F%A9%E9%A1%BA%E5%B9%B3%E8%AE%B2mysql/" title="韩顺平讲mysql">韩顺平讲mysql</a><time datetime="2023-03-21T14:22:05.000Z" title="发表于 2023-03-21 22:22:05">2023-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/20/%E7%BD%91%E7%BB%9C%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="网络多线程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络多线程"/></a><div class="content"><a class="title" href="/2023/03/20/%E7%BD%91%E7%BB%9C%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="网络多线程">网络多线程</a><time datetime="2023-03-20T04:37:49.000Z" title="发表于 2023-03-20 12:37:49">2023-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/17/Visual-Attention-Network/" title="Visual Attention Network"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Visual Attention Network"/></a><div class="content"><a class="title" href="/2023/03/17/Visual-Attention-Network/" title="Visual Attention Network">Visual Attention Network</a><time datetime="2023-03-17T12:52:36.000Z" title="发表于 2023-03-17 20:52:36">2023-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/16/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="java多线程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java多线程"/></a><div class="content"><a class="title" href="/2023/03/16/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="java多线程">java多线程</a><time datetime="2023-03-16T03:01:55.000Z" title="发表于 2023-03-16 11:01:55">2023-03-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
