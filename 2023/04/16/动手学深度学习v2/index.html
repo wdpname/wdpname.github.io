@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>动手学深度学习v2 | 平博社</title><meta name="keywords" content="深度学习"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="Pytorch里，randn函数为正态分布，rand为均匀分布 数组元素访问 对元素进行改写，地址不变  X +&#x3D; Y 原地操作 X &#x3D; X + Y 新内存 数据预处理矩阵运算 向量在下面，所以求偏导是一个转置 自动求导计算图  自动求导的两种模式 反向累积 反向累积总结 复杂度 例子   x.requiredgrad(True)  存储关于x的梯度 x.grad : 访问x的梯度    通过y.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动手学深度学习v2">
+<meta property="og:url" content="https://wdpname.github.io/2023/04/16/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0v2/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="Pytorch里，randn函数为正态分布，rand为均匀分布 数组元素访问 对元素进行改写，地址不变  X +&#x3D; Y 原地操作 X &#x3D; X + Y 新内存 数据预处理矩阵运算 向量在下面，所以求偏导是一个转置 自动求导计算图  自动求导的两种模式 反向累积 反向累积总结 复杂度 例子   x.requiredgrad(True)  存储关于x的梯度 x.grad : 访问x的梯度    通过y.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-16T03:11:05.000Z">
+<meta property="article:modified_time" content="2023-04-25T02:42:07.888Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2023/04/16/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0v2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '动手学深度学习v2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-25 10:42:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">120</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">动手学深度学习v2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-16T03:11:05.000Z" title="发表于 2023-04-16 11:11:05">2023-04-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-25T02:42:07.888Z" title="更新于 2023-04-25 10:42:07">2023-04-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="动手学深度学习v2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>Pytorch里，randn函数为正态分布，rand为均匀分布</p>
+<h1 id="数组元素访问"><a href="#数组元素访问" class="headerlink" title="数组元素访问"></a>数组元素访问</h1><p><img src="https://gitee.com/fjkf/images/raw/master/202304161114052.png" alt="image-20230416111432916"></p>
+<p>对元素进行改写，地址不变</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304161137554.png" alt="image-20230416113700511"></p>
+<p>X += Y 原地操作</p>
+<p>X = X + Y 新内存</p>
+<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><h1 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h1><p><img src="https://gitee.com/fjkf/images/raw/master/202304221515674.png" alt="image-20230422151513594"></p>
+<p>向量在下面，所以求偏导是一个转置</p>
+<h1 id="自动求导"><a href="#自动求导" class="headerlink" title="自动求导"></a>自动求导</h1><h2 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304221531065.png" alt="image-20230422153141006"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304221540864.png" alt="image-20230422154002779"></p>
+<h2 id="自动求导的两种模式"><a href="#自动求导的两种模式" class="headerlink" title="自动求导的两种模式"></a>自动求导的两种模式</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304221542497.png" alt="image-20230422154225438"></p>
+<h3 id="反向累积"><a href="#反向累积" class="headerlink" title="反向累积"></a>反向累积</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304221545783.png" alt="image-20230422154555736"></p>
+<h4 id="反向累积总结"><a href="#反向累积总结" class="headerlink" title="反向累积总结"></a>反向累积总结</h4><p><img src="https://gitee.com/fjkf/images/raw/master/202304221547456.png" alt="image-20230422154741403"></p>
+<h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><p><img src="https://gitee.com/fjkf/images/raw/master/202304221548411.png" alt="image-20230422154833357"></p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304221558297.png" alt="image-20230422155812082"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304221600853.png" alt="image-20230422160034762"></p>
+<blockquote>
+<p>x.required<em>grad</em>(True)  存储关于x的梯度</p>
+<p>x.grad : 访问x的梯度</p>
+</blockquote>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304221637517.png" alt="image-20230422163754425"></p>
+<blockquote>
+<p>通过y.backward()计算x的梯度</p>
+</blockquote>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304221642854.png" alt="image-20230422164229813"></p>
+<blockquote>
+<p>向量y不能使用backward()函数</p>
+</blockquote>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304221647885.png" alt="image-20230422164746841"></p>
+<blockquote>
+<p>条件，循环或任意函数调用，都可以计算变量的梯度</p>
+<p>这里，f(a)只改变了a的系数</p>
+</blockquote>
+<h1 id="模型选择-amp-过拟合和欠拟合"><a href="#模型选择-amp-过拟合和欠拟合" class="headerlink" title="模型选择&amp;过拟合和欠拟合"></a>模型选择&amp;过拟合和欠拟合</h1><h2 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h2><h3 id="训练误差和泛化误差"><a href="#训练误差和泛化误差" class="headerlink" title="训练误差和泛化误差"></a>训练误差和泛化误差</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304221709777.png" alt="image-20230422170919730"></p>
+<h3 id="验证数据集和测试数据集"><a href="#验证数据集和测试数据集" class="headerlink" title="验证数据集和测试数据集"></a>验证数据集和测试数据集</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304221715293.png" alt="image-20230422171528245"></p>
+<h3 id="k-折交叉验证"><a href="#k-折交叉验证" class="headerlink" title="k-折交叉验证"></a>k-折交叉验证</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304221729338.png" alt="image-20230422172937294"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304221731170.png" alt="image-20230422173130105"></p>
+<h2 id="过拟合和欠拟合"><a href="#过拟合和欠拟合" class="headerlink" title="过拟合和欠拟合"></a>过拟合和欠拟合</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304221741766.png" alt="image-20230422174121655"></p>
+<blockquote>
+<p>模型容量：模型的复杂度</p>
+</blockquote>
+<h3 id="模型容量"><a href="#模型容量" class="headerlink" title="模型容量"></a>模型容量</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304221742210.png" alt="image-20230422174246047"></p>
+<h3 id="模型容量的影响"><a href="#模型容量的影响" class="headerlink" title="模型容量的影响"></a>模型容量的影响</h3><blockquote>
+<p>数据集固定的情况下，有下图结论</p>
+</blockquote>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304221744171.png" alt="image-20230422174449114"></p>
+<h3 id="估计模型容量"><a href="#估计模型容量" class="headerlink" title="估计模型容量"></a>估计模型容量</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304221748803.png" alt="image-20230422174802737"></p>
+<h3 id="VC维"><a href="#VC维" class="headerlink" title="VC维"></a>VC维</h3><blockquote>
+<p>对于深度学习衡量不是很准确</p>
+</blockquote>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304221904794.png" alt="image-20230422190419614"></p>
+<h4 id="线性分类器的VC维"><a href="#线性分类器的VC维" class="headerlink" title="线性分类器的VC维"></a>线性分类器的VC维</h4><p><img src="https://gitee.com/fjkf/images/raw/master/202304221908572.png" alt="image-20230422190810524"></p>
+<h4 id="VC维的用处"><a href="#VC维的用处" class="headerlink" title="VC维的用处"></a>VC维的用处</h4><p><img src="https://gitee.com/fjkf/images/raw/master/202304221914230.png" alt="image-20230422191404152"></p>
+<h3 id="数据复杂度"><a href="#数据复杂度" class="headerlink" title="数据复杂度"></a>数据复杂度</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304221915438.png" alt="image-20230422191540392"></p>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202304230948693.png" alt="image-20230423094758585"></p>
+<h1 id="权重衰退-使用最广泛的正则化技术"><a href="#权重衰退-使用最广泛的正则化技术" class="headerlink" title="权重衰退(使用最广泛的正则化技术)"></a>权重衰退(使用最广泛的正则化技术)</h1><h2 id="使用均方范数作为硬性限制"><a href="#使用均方范数作为硬性限制" class="headerlink" title="使用均方范数作为硬性限制"></a>使用均方范数作为硬性限制</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304230951791.png" alt="image-20230423095118748"></p>
+<h2 id="使用均方范数作为柔性限制"><a href="#使用均方范数作为柔性限制" class="headerlink" title="使用均方范数作为柔性限制"></a>使用均方范数作为柔性限制</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304230953177.png" alt="image-20230423095325124"></p>
+<h2 id="演示对最优解的影响"><a href="#演示对最优解的影响" class="headerlink" title="演示对最优解的影响"></a>演示对最优解的影响</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UK4y1o7dy/?spm_id_from=333.788.recommend_more_video.1&amp;vd_source=e7df7b103657feb95364df561d4a15b3">https://www.bilibili.com/video/BV1UK4y1o7dy/?spm_id_from=333.788.recommend_more_video.1&amp;vd_source=e7df7b103657feb95364df561d4a15b3</a> 对这块的讲解 5:35</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304231009485.png" alt="image-20230423100935422"></p>
+<h2 id="参数更新法则"><a href="#参数更新法则" class="headerlink" title="参数更新法则"></a>参数更新法则</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304231014265.png" alt="image-20230423101455216"></p>
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>正则项权重就是$\lambda$</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304231015417.png" alt="image-20230423101559381"></p>
+<h1 id="丢弃法"><a href="#丢弃法" class="headerlink" title="丢弃法"></a>丢弃法</h1><p><strong>给全连接层用的</strong></p>
+<p>丢弃法 其实就是一个 正则项技术，使得参数不要太大而导致过拟合</p>
+<h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304231103103.png" alt="image-20230423110302054"></p>
+<h2 id="无偏差的加入噪音"><a href="#无偏差的加入噪音" class="headerlink" title="无偏差的加入噪音"></a>无偏差的加入噪音</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304231107125.png" alt="image-20230423110748084"></p>
+<h2 id="使用丢弃法"><a href="#使用丢弃法" class="headerlink" title="使用丢弃法"></a>使用丢弃法</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304231111726.png" alt="image-20230423111120676"></p>
+<h2 id="预测中的丢弃法"><a href="#预测中的丢弃法" class="headerlink" title="预测中的丢弃法"></a>预测中的丢弃法</h2><p>预测 == 推理</p>
+<p>dropout只在 训练中使用。因为dropout是一种正则，用来更新模型参数</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202304231112505.png" alt="image-20230423111259461"></p>
+<h2 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202304231117536.png" alt="image-20230423111744498"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2023/04/16/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0v2/">https://wdpname.github.io/2023/04/16/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0v2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/17/Malware-Image-Classification-using-Machine-Learning-with-Local-Binary-Pattern/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Malware Image Classification using Machine Learning with Local Binary Pattern</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/11/%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">恶意代码分析实战</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/10/16/CNN/" title="CNN"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-16</div><div class="title">CNN</div></div></a></div><div><a href="/2022/11/24/RNN/" title="RNN"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-24</div><div class="title">RNN</div></div></a></div><div><a href="/2023/01/10/pytorch%E5%9F%BA%E7%A1%80%EF%BC%88%E5%B0%8F%E5%9C%9F%E5%A0%86%EF%BC%89/" title="pytorch基础（小土堆）"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-10</div><div class="title">pytorch基础（小土堆）</div></div></a></div><div><a href="/2022/11/24/self-attention%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" title="self-attention自注意力机制"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-24</div><div class="title">self-attention自注意力机制</div></div></a></div><div><a href="/2023/04/07/%E5%85%83%E5%AD%A6%E4%B9%A0/" title="元学习"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-07</div><div class="title">元学习</div></div></a></div><div><a href="/2022/10/15/%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9CDNN/" title="深度神经网络DNN"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-15</div><div class="title">深度神经网络DNN</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">120</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E8%AE%BF%E9%97%AE"><span class="toc-number">1.</span> <span class="toc-text">数组元素访问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">数据预处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97"><span class="toc-number">3.</span> <span class="toc-text">矩阵运算</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC"><span class="toc-number">4.</span> <span class="toc-text">自动求导</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%9B%BE"><span class="toc-number">4.1.</span> <span class="toc-text">计算图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">自动求导的两种模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%B4%AF%E7%A7%AF"><span class="toc-number">4.2.1.</span> <span class="toc-text">反向累积</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E7%B4%AF%E7%A7%AF%E6%80%BB%E7%BB%93"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">反向累积总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">4.2.1.2.</span> <span class="toc-text">复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">4.3.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9-amp-%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AC%A0%E6%8B%9F%E5%90%88"><span class="toc-number">5.</span> <span class="toc-text">模型选择&amp;过拟合和欠拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9"><span class="toc-number">5.1.</span> <span class="toc-text">模型选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%AF%AF%E5%B7%AE%E5%92%8C%E6%B3%9B%E5%8C%96%E8%AF%AF%E5%B7%AE"><span class="toc-number">5.1.1.</span> <span class="toc-text">训练误差和泛化误差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE%E9%9B%86%E5%92%8C%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">5.1.2.</span> <span class="toc-text">验证数据集和测试数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#k-%E6%8A%98%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81"><span class="toc-number">5.1.3.</span> <span class="toc-text">k-折交叉验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.1.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AC%A0%E6%8B%9F%E5%90%88"><span class="toc-number">5.2.</span> <span class="toc-text">过拟合和欠拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%B9%E9%87%8F"><span class="toc-number">5.2.1.</span> <span class="toc-text">模型容量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E5%AE%B9%E9%87%8F%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">5.2.2.</span> <span class="toc-text">模型容量的影响</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%B0%E8%AE%A1%E6%A8%A1%E5%9E%8B%E5%AE%B9%E9%87%8F"><span class="toc-number">5.2.3.</span> <span class="toc-text">估计模型容量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VC%E7%BB%B4"><span class="toc-number">5.2.4.</span> <span class="toc-text">VC维</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8%E7%9A%84VC%E7%BB%B4"><span class="toc-number">5.2.4.1.</span> <span class="toc-text">线性分类器的VC维</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#VC%E7%BB%B4%E7%9A%84%E7%94%A8%E5%A4%84"><span class="toc-number">5.2.4.2.</span> <span class="toc-text">VC维的用处</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">5.2.5.</span> <span class="toc-text">数据复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-number">5.2.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%83%E9%87%8D%E8%A1%B0%E9%80%80-%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B9%BF%E6%B3%9B%E7%9A%84%E6%AD%A3%E5%88%99%E5%8C%96%E6%8A%80%E6%9C%AF"><span class="toc-number">6.</span> <span class="toc-text">权重衰退(使用最广泛的正则化技术)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9D%87%E6%96%B9%E8%8C%83%E6%95%B0%E4%BD%9C%E4%B8%BA%E7%A1%AC%E6%80%A7%E9%99%90%E5%88%B6"><span class="toc-number">6.1.</span> <span class="toc-text">使用均方范数作为硬性限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9D%87%E6%96%B9%E8%8C%83%E6%95%B0%E4%BD%9C%E4%B8%BA%E6%9F%94%E6%80%A7%E9%99%90%E5%88%B6"><span class="toc-number">6.2.</span> <span class="toc-text">使用均方范数作为柔性限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA%E5%AF%B9%E6%9C%80%E4%BC%98%E8%A7%A3%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">6.3.</span> <span class="toc-text">演示对最优解的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%9B%B4%E6%96%B0%E6%B3%95%E5%88%99"><span class="toc-number">6.4.</span> <span class="toc-text">参数更新法则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-number">6.5.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%A2%E5%BC%83%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">丢弃法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%9C%BA"><span class="toc-number">7.1.</span> <span class="toc-text">动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%81%8F%E5%B7%AE%E7%9A%84%E5%8A%A0%E5%85%A5%E5%99%AA%E9%9F%B3"><span class="toc-number">7.2.</span> <span class="toc-text">无偏差的加入噪音</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%A2%E5%BC%83%E6%B3%95"><span class="toc-number">7.3.</span> <span class="toc-text">使用丢弃法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E6%B5%8B%E4%B8%AD%E7%9A%84%E4%B8%A2%E5%BC%83%E6%B3%95"><span class="toc-number">7.4.</span> <span class="toc-text">预测中的丢弃法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-number">7.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/25/%E5%AF%B9%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%80%9D%E8%80%83/" title="对文件编码格式的思考"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="对文件编码格式的思考"/></a><div class="content"><a class="title" href="/2023/04/25/%E5%AF%B9%E6%96%87%E4%BB%B6%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%80%9D%E8%80%83/" title="对文件编码格式的思考">对文件编码格式的思考</a><time datetime="2023-04-25T02:40:54.000Z" title="发表于 2023-04-25 10:40:54">2023-04-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/21/%E5%AF%B9%E4%BA%8E%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E9%AA%8C/" title="对于是否使用标准化的数据的一些实验"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="对于是否使用标准化的数据的一些实验"/></a><div class="content"><a class="title" href="/2023/04/21/%E5%AF%B9%E4%BA%8E%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E6%A0%87%E5%87%86%E5%8C%96%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E9%AA%8C/" title="对于是否使用标准化的数据的一些实验">对于是否使用标准化的数据的一些实验</a><time datetime="2023-04-21T13:11:47.000Z" title="发表于 2023-04-21 21:11:47">2023-04-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/17/Malware-Image-Classification-using-Machine-Learning-with-Local-Binary-Pattern/" title="Malware Image Classification using Machine Learning with Local Binary Pattern"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Malware Image Classification using Machine Learning with Local Binary Pattern"/></a><div class="content"><a class="title" href="/2023/04/17/Malware-Image-Classification-using-Machine-Learning-with-Local-Binary-Pattern/" title="Malware Image Classification using Machine Learning with Local Binary Pattern">Malware Image Classification using Machine Learning with Local Binary Pattern</a><time datetime="2023-04-17T01:53:45.000Z" title="发表于 2023-04-17 09:53:45">2023-04-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/16/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0v2/" title="动手学深度学习v2"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="动手学深度学习v2"/></a><div class="content"><a class="title" href="/2023/04/16/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0v2/" title="动手学深度学习v2">动手学深度学习v2</a><time datetime="2023-04-16T03:11:05.000Z" title="发表于 2023-04-16 11:11:05">2023-04-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/11/%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/" title="恶意代码分析实战"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="恶意代码分析实战"/></a><div class="content"><a class="title" href="/2023/04/11/%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E5%AE%9E%E6%88%98/" title="恶意代码分析实战">恶意代码分析实战</a><time datetime="2023-04-11T10:47:15.000Z" title="发表于 2023-04-11 18:47:15">2023-04-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
