@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>密码学笔记 | 平博社</title><meta name="keywords" content="研一下"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="差分分析 攻击方式一：已知两个明密文对，如何恢复密钥          差分特征 差分分析题目 Cipherfour            密钥恢复攻击         有关S盒的方程求解         线性分析  线性掩码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学笔记">
+<meta property="og:url" content="https://wdpname.github.io/2023/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="差分分析 攻击方式一：已知两个明密文对，如何恢复密钥          差分特征 差分分析题目 Cipherfour            密钥恢复攻击         有关S盒的方程求解         线性分析  线性掩码">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-10T02:13:07.000Z">
+<meta property="article:modified_time" content="2023-06-13T11:22:04.862Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="研一下">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2023/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '密码学笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-13 19:22:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">130</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">40</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">密码学笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-10T02:13:07.000Z" title="发表于 2023-06-10 10:13:07">2023-06-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-13T11:22:04.862Z" title="更新于 2023-06-13 19:22:04">2023-06-13</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="密码学笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="差分分析"><a href="#差分分析" class="headerlink" title="差分分析"></a>差分分析</h1><p> 攻击方式一：已知两个明密文对，如何恢复密钥</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306101022337.png" alt="image-20230610102207068"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306101029171.png" alt="image-20230610102953108"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306101952682.png" alt="image-20230610195236595"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306101952269.png" alt="image-20230610195257223"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306101953918.png" alt="image-20230610195305880"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306101953512.png" alt="image-20230610195318467"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306101953699.png" alt="image-20230610195326662"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306102015471.png" alt="image-20230610201535434"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111001196.png" alt="image-20230611100129115"></p>
+<h2 id="差分特征"><a href="#差分特征" class="headerlink" title="差分特征"></a>差分特征</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202306111002571.png" alt="image-20230611100203502"></p>
+<h2 id="差分分析题目"><a href="#差分分析题目" class="headerlink" title="差分分析题目"></a>差分分析题目</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202306110850482.png" alt="image-20230611085041290"></p>
+<h2 id="Cipherfour"><a href="#Cipherfour" class="headerlink" title="Cipherfour"></a>Cipherfour</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202306102010782.png" alt="image-20230610201008739"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306102010470.png" alt="image-20230610201021392"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111014824.png" alt="image-20230611101441751"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111022755.png" alt="image-20230611102214591"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111040425.png" alt="image-20230611104020182"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111058635.png" alt="image-20230611105805546"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111058516.png" alt="image-20230611105814441"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111058509.png" alt="image-20230611105824459"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111059059.png" alt="image-20230611105957990"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111101908.png" alt="image-20230611110129829"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111102295.png" alt="image-20230611110208225"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111108634.png" alt="image-20230611110836572"></p>
+<h1 id="密钥恢复攻击"><a href="#密钥恢复攻击" class="headerlink" title="密钥恢复攻击"></a>密钥恢复攻击</h1><p><img src="https://gitee.com/fjkf/images/raw/master/202306111110350.png" alt="image-20230611111007278"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111114907.png" alt="image-20230611111457811"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111236051.png" alt="image-20230611123652002"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111304945.png" alt="image-20230611130435853"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111307729.png" alt="image-20230611130744612"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111323763.png" alt="image-20230611132306705"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111324435.png" alt="image-20230611132443350"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111325007.png" alt="image-20230611132533956"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111326114.png" alt="image-20230611132631068"></p>
+<h1 id="有关S盒的方程求解"><a href="#有关S盒的方程求解" class="headerlink" title="有关S盒的方程求解"></a>有关S盒的方程求解</h1><p><img src="https://gitee.com/fjkf/images/raw/master/202306111328731.png" alt="image-20230611132816694"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111344913.png" alt="image-20230611134433858"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111351190.png" alt="image-20230611135100141"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111355786.png" alt="image-20230611135559675"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111358393.png" alt="image-20230611135833348"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111401883.png" alt="image-20230611140108836"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111404479.png" alt="image-20230611140433432"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111416167.png" alt="image-20230611141641130"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306111417681.png" alt="image-20230611141734651"></p>
+<h1 id="线性分析"><a href="#线性分析" class="headerlink" title="线性分析"></a>线性分析</h1><p><img src="https://gitee.com/fjkf/images/raw/master/202306130144085.png" alt="image-20230613014427960"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306130144353.png" alt="image-20230613014443306"></p>
+<h2 id="线性掩码"><a href="#线性掩码" class="headerlink" title="线性掩码"></a>线性掩码</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202306130144744.png" alt="image-20230613014451705"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306130154899.png" alt="image-20230613015453847"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306130213080.png" alt="image-20230613021319032"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306130224547.png" alt="image-20230613022445504"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131037006.png" alt="image-20230613103700963"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131045807.png" alt="image-20230613104502765"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131058927.png" alt="image-20230613105829887"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131106765.png" alt="image-20230613110625729"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131113047.png" alt="image-20230613111317995"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131117955.png" alt="image-20230613111715912"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131120926.png" alt="image-20230613112039881"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131121857.png" alt="image-20230613112138808"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131123795.png" alt="image-20230613112307762"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131125925.png" alt="image-20230613112532887"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131455082.png" alt="image-20230613145524010"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131521410.png" alt="image-20230613152123355"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131528488.png" alt="image-20230613152859433"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131558949.png" alt="image-20230613155826909"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131643608.png" alt="image-20230613164341572"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131651996.png" alt="image-20230613165105960"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131703321.png" alt="image-20230613170313274"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131704069.png" alt="image-20230613170438017"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131740273.png" alt="image-20230613174037232"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131746056.png" alt="image-20230613174630017"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131757450.png" alt="image-20230613175742414"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131757147.png" alt="image-20230613175751105"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131841053.png" alt="image-20230613184109007"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131842405.png" alt="image-20230613184253354"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131846851.png" alt="image-20230613184632810"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131851590.png" alt="image-20230613185120554"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131855849.png" alt="image-20230613185504812"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131900899.png" alt="image-20230613190049859"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131901270.png" alt="image-20230613190149215"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131912559.png" alt="image-20230613191247510"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131914342.png" alt="image-20230613191431304"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131915037.png" alt="image-20230613191506988"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131915975.png" alt="image-20230613191546934"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131916730.png" alt="image-20230613191620701"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131921329.png" alt="image-20230613192131297"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202306131922565.png" alt="image-20230613192202530"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2023/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/">https://wdpname.github.io/2023/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%A0%94%E4%B8%80%E4%B8%8B/">研一下</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/05/23/%E5%8F%82%E6%95%B0%E9%87%8F%E5%92%8CFlop%E7%9A%84%E5%AE%9A%E4%B9%89/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">参数量和Flop的定义</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">130</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">40</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%AE%E5%88%86%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">差分分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%AE%E5%88%86%E7%89%B9%E5%BE%81"><span class="toc-number">1.1.</span> <span class="toc-text">差分特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%AE%E5%88%86%E5%88%86%E6%9E%90%E9%A2%98%E7%9B%AE"><span class="toc-number">1.2.</span> <span class="toc-text">差分分析题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cipherfour"><span class="toc-number">1.3.</span> <span class="toc-text">Cipherfour</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E6%81%A2%E5%A4%8D%E6%94%BB%E5%87%BB"><span class="toc-number">2.</span> <span class="toc-text">密钥恢复攻击</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%89%E5%85%B3S%E7%9B%92%E7%9A%84%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">有关S盒的方程求解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">线性分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%8E%A9%E7%A0%81"><span class="toc-number">4.1.</span> <span class="toc-text">线性掩码</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="密码学笔记"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="密码学笔记"/></a><div class="content"><a class="title" href="/2023/06/10/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="密码学笔记">密码学笔记</a><time datetime="2023-06-10T02:13:07.000Z" title="发表于 2023-06-10 10:13:07">2023-06-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/23/%E5%8F%82%E6%95%B0%E9%87%8F%E5%92%8CFlop%E7%9A%84%E5%AE%9A%E4%B9%89/" title="参数量和Flop的定义"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="参数量和Flop的定义"/></a><div class="content"><a class="title" href="/2023/05/23/%E5%8F%82%E6%95%B0%E9%87%8F%E5%92%8CFlop%E7%9A%84%E5%AE%9A%E4%B9%89/" title="参数量和Flop的定义">参数量和Flop的定义</a><time datetime="2023-05-23T09:41:43.000Z" title="发表于 2023-05-23 17:41:43">2023-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/21/Depthwise-%E5%8D%B7%E7%A7%AF-%EF%BC%8CPointwise-%E5%8D%B7%E7%A7%AF%E4%B8%8E%E6%99%AE%E9%80%9A%E5%8D%B7%E7%A7%AF%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Depthwise 卷积 ，Pointwise 卷积与普通卷积的区别"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Depthwise 卷积 ，Pointwise 卷积与普通卷积的区别"/></a><div class="content"><a class="title" href="/2023/05/21/Depthwise-%E5%8D%B7%E7%A7%AF-%EF%BC%8CPointwise-%E5%8D%B7%E7%A7%AF%E4%B8%8E%E6%99%AE%E9%80%9A%E5%8D%B7%E7%A7%AF%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Depthwise 卷积 ，Pointwise 卷积与普通卷积的区别">Depthwise 卷积 ，Pointwise 卷积与普通卷积的区别</a><time datetime="2023-05-21T06:46:49.000Z" title="发表于 2023-05-21 14:46:49">2023-05-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/15/how-to-train-a-state-of-the-art-model/" title="how to train a state-of-the-art model"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="how to train a state-of-the-art model"/></a><div class="content"><a class="title" href="/2023/05/15/how-to-train-a-state-of-the-art-model/" title="how to train a state-of-the-art model">how to train a state-of-the-art model</a><time datetime="2023-05-15T11:32:49.000Z" title="发表于 2023-05-15 19:32:49">2023-05-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/15/ConvNext-Block%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%88%9B%E5%BB%BA/" title="ConvNext Block的模型创建"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ConvNext Block的模型创建"/></a><div class="content"><a class="title" href="/2023/05/15/ConvNext-Block%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%88%9B%E5%BB%BA/" title="ConvNext Block的模型创建">ConvNext Block的模型创建</a><time datetime="2023-05-15T10:44:32.000Z" title="发表于 2023-05-15 18:44:32">2023-05-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
