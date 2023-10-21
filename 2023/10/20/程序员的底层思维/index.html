@@ -1,0 +1,561 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>程序员的底层思维 | 平博社</title><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="第一部分　基础思维能力这部分主要介绍解决日常问题的基础思维能力。这些思维能力不受行业的局限，比如我们在解决数学问题时需要动用抽象思维和逻辑思维；结构化思维更多地被用在写作和表达中；在当今信息爆炸的时代，每个人都需要有一些批判精神，这是批判性思维；化繁为简是我们要一直追寻的目标，这需要具备简单思维；面对困难，要有成长型思维；等等。 1 抽象思维抽象思维是软件工程师最重要的思维能力。因为软件设计是纯思">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序员的底层思维">
+<meta property="og:url" content="https://wdpname.github.io/2023/10/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%BA%95%E5%B1%82%E6%80%9D%E7%BB%B4/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="第一部分　基础思维能力这部分主要介绍解决日常问题的基础思维能力。这些思维能力不受行业的局限，比如我们在解决数学问题时需要动用抽象思维和逻辑思维；结构化思维更多地被用在写作和表达中；在当今信息爆炸的时代，每个人都需要有一些批判精神，这是批判性思维；化繁为简是我们要一直追寻的目标，这需要具备简单思维；面对困难，要有成长型思维；等等。 1 抽象思维抽象思维是软件工程师最重要的思维能力。因为软件设计是纯思">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-20T02:53:14.000Z">
+<meta property="article:modified_time" content="2023-10-20T14:53:23.489Z">
+<meta property="article:author" content="dpWu">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2023/10/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%BA%95%E5%B1%82%E6%80%9D%E7%BB%B4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '程序员的底层思维',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-20 22:53:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">程序员的底层思维</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-20T02:53:14.000Z" title="发表于 2023-10-20 10:53:14">2023-10-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-20T14:53:23.489Z" title="更新于 2023-10-20 22:53:23">2023-10-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B9%A6%E7%B1%8D/">书籍</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="程序员的底层思维"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="第一部分-基础思维能力"><a href="#第一部分-基础思维能力" class="headerlink" title="第一部分　基础思维能力"></a>第一部分　基础思维能力</h1><p>这部分主要介绍解决日常问题的基础思维能力。这些思维能力不受行业的局限，比如我们在解决数学问题时需要动用抽象思维和逻辑思维；结构化思维更多地被用在写作和表达中；在当今信息爆炸的时代，每个人都需要有一些批判精神，这是批判性思维；化繁为简是我们要一直追寻的目标，这需要具备简单思维；面对困难，要有成长型思维；等等。</p>
+<h2 id="1-抽象思维"><a href="#1-抽象思维" class="headerlink" title="1 抽象思维"></a>1 抽象思维</h2><p>抽象思维是软件工程师最重要的思维能力。因为软件设计是纯思维的创造活动，软件技术本质上就是一门抽象的艺术。</p>
+<p>程序员的工作是一场思维的游戏。虽然我们会敲击键盘、观看显示器，有时也把主机拆开更换里面的内存、硬盘、处理器等，但程序的运行完全在我们的视野之外，我们既看不到程序如何被执行，也看不到0101是如何被CPU处理的。</p>
+<p>软件工程师每天都要动用抽象思维，首先对问题域进行分析、归纳、综合、判断、推理，然后抽象出各种概念，挖掘概念和概念之间的关系，再对问题域进行建模，最后通过编程语言实现业务功能。所以我们大部分的时间并不是在写代码，而是在梳理需求、厘清概念，当然，也包括尝试看懂那些“该死的、别人写的”代码。</p>
+<p>在我接触的软件工程师中，能深入理解抽象概念的并不多，能把抽象的概念和软件设计、架构进行有机结合的就更是凤毛麟角了。</p>
+<p>对于我本人而言，每当我对抽象概念有进一步的理解和认知时，我都能切身感受到它给我在编码和设计上带来的变化，同时也不禁感慨之前对它的理解为什么如此肤浅。如果时间可以倒流，我希望在职业生涯的早期就能充分意识到抽象思维的重要性，能多花时间认真研究并深刻理解它，这样应该可以少走很多弯路。</p>
+<h3 id="1-1-抽象-抽离-具象"><a href="#1-1-抽象-抽离-具象" class="headerlink" title="1.1 抽象=抽离+具象"></a>1.1 抽象=抽离+具象</h3><p>在《西方哲学史》中，奥古斯丁说：“至于什么是时间，在没人问我时，我非常清楚；可一旦要向别人解释，我就有点糊涂了。”</p>
+<p>对于抽象的概念也是如此，很多人都介于“懂”但是又“说不清楚”的模棱两可状态，不妨让我们先从定义开始来揭开“抽象”的神秘面纱。</p>
+<p>关于抽象的定义，百度百科中是这样说的：</p>
+<p>抽象是从众多的事物中抽取出共同的、本质性的特征，而舍弃其非本质的特征的过程。具体地说，抽象就是人们在实践的基础上，对于丰富的感性材料通过去粗取精、去伪存真、由此及彼、由表及里的加工制作，形成概念、判断、推理等思维形式，以反映事物的本质和规律的方法。</p>
+<p>实际上，抽象是与具体相对应的概念，具体是事物的多种属性的总和，因而抽象亦可理解为由具体事物的多种属性中舍弃了若干属性而固定了另一些属性的思维活动。</p>
+<p>简而言之，“抽”就是抽离，“象”就是具象。从字面上理解抽象，抽象的过程就是从“具象”事物中归纳共同特征，“抽取”得到一般化的概念的过程。英文的抽象——abstract，来自拉丁文abstractio，它的原意是排除、抽出。</p>
+<p>为了更直观地理解抽象，让我们先来看一幅毕加索的画。如图1-1所示，图的左边是一头水牛，是具象的；右边是毕加索的画，是抽象的。怎么样，是不是感觉自己一下子理解了抽象的含义？</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201100812.png" alt="image-20231020110053657"></p>
+<p>可以看到，抽象牛只有几根线条，不过这几根线条是做了高度抽象之后的线条，过滤了水牛的绝大部分细节，只保留了牛最本质的特征，比如牛角、牛头、牛鞭、牛尾巴等。这种对细节的舍弃使得“抽象牛”具有更好的泛化(Generalization)能力。可以说，抽象概念更接近问题的本质。也就是说，所有的牛都逃不过这几根线条。</p>
+<h3 id="1-2-抽象是哲学思维的基础"><a href="#1-2-抽象是哲学思维的基础" class="headerlink" title="1.2 抽象是哲学思维的基础"></a>1.2 抽象是哲学思维的基础</h3><p>抽象思维是思维的高级形式，为什么这么说呢？西方哲学诞生于古希腊，古人仰望星空，开始思索世界本源的问题，从具象的“水、火、气”到毕达哥拉斯的“数”，类似于老子所说的“道生一，一生二，二生三，三生万物”，再到德谟克利特的原子论，以及柏拉图的“理念世界”。哲学的发展史就是从形象思维到抽象思维、从感性到理性的发展史。</p>
+<p>这种把抽象概念作为世界本真的看法，也是古希腊哲学家柏拉图的最重要的哲学思想之一。柏拉图认为，所有用我们感觉感知到的事物都源于相应的理念。</p>
+<p>在《理想国》第七卷中，柏拉图提出了一个非常经典的比喻——洞穴之喻(Allegory of the Cave)，如图1-2所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201102018.png" alt="image-20231020110238881"></p>
+<p>洞穴之喻的内容大致如下。</p>
+<p>请想象一下：你从一出生就被链条绑在洞穴里，眼睛只能盯着前方的墙，墙上有一些影像可看，你可以听到从墙上反射回来的、仿佛是那些影子彼此在说话的声音。你的全世界就是这些看起来活生生的影子，除此之外，其他东西对你来说都不存在。你被囚禁在幻影的世界里。</p>
+<p>现在你的链条被解开了，你转过头来——几乎无法相信自己的眼睛，你第一次看到三维空间的、立体的物体，而且你也看到那堆制造影子的火光——之前你一直以为那些影子是真实的东西。如今你发现，原来有人拿着一些无生命的雕像走来走去，制造出墙上的影子，他们彼此谈话，让你一直错以为是影子在讲话。也就是说，你过去一直把雕像的影子——也就是仿像的仿像——当成真实的人类，因此是双重的认知错误。现在你看穿了洞穴里真实的情况。</p>
+<p>然而你还没理解到，你是处在洞穴里——直到你看到另一道光，那光远比洞里的火光更加明亮，你顺着那道光往洞口走去，走到日光里。一开始你因为强光什么也看不见，你的眼睛需要一些时间来适应耀眼的阳光。你感到眼睛在刺痛。然而你逐渐看到了东西，那种清晰是你从来不曾体验过的。</p>
+<p>直到此刻你才恍然大悟，你先前住在幻影世界里。你想要走回山洞，对其他囚徒讲述你看到怎样的光亮，然而当你走进山洞，只看到一片漆黑，你的眼睛几乎无法辨认墙上的影子。其他的囚徒以为你精神不正常，把你当成口出狂言的疯子，醉心于旁人无法理解的世界。</p>
+<p>这个比喻一方面在隐喻真理只掌握在少数人手里，另一方面在说我们每天可以触碰的、可见的物质世界只是表象，背后的“理念世界”才是本真的东西。</p>
+<p>柏拉图认为具体事物的“名”要比事物本身更真实，比如具体的一头牛，有大有小，有公有母，颜色、性情、外形各自不同，因此我们不好用个体感觉加以概括。但是这些牛既然都被统称为“牛”，则说明它们必然都源于同一个“理念”，即所谓“牛的理念”或者“理念的牛”，所以它们可以用“牛”加以概括。尚且不论“理念世界”是否真的存在，这是一个哲学问题，但有一点可以确定：我们的思考、对概念的表达都离不开“理念”，离不开语言。</p>
+<h3 id="1-3-语言的抽象性"><a href="#1-3-语言的抽象性" class="headerlink" title="1.3 语言的抽象性"></a>1.3 语言的抽象性</h3><p>关于抽象思维，其定义如下：</p>
+<p>抽象思维，又称词（概念）的思维，是指用词（概念）进行判断、推理并得出结论的过程。抽象思维以词（概念）为中介来反映现实。这是思维的最本质特征，也是人的思维和动物心理的根本区别。</p>
+<p>之所以把抽象思维称为词思维或概念思维，是因为语言和抽象是一体的。我们只能通过语言表达抽象的概念，并进行逻辑判断和推理。</p>
+<p>当我们说牛的时候，说的就是牛的抽象，它代表了所有牛共有的特征。我在演讲中分享抽象思维的时候，会经常给同学们下套。</p>
+<p>我问：“你见过牛吗？”同学说：“见过啊。”我继续问：“你确定你真的见过？！”同学说：“好像——见过——吧——”我继续问：“在哪里见的？”同学说：“在老家的山头上。”我说：“你没有见过牛，你能看到的是那头在老家山头上正在吃草的老黄牛。而牛作为一个抽象概念，你既看不见也摸不着，它只存在于你的思维之中。”</p>
+<p>当你在程序中创建牛(Cow)这个类(Class)的时候，道理也是一样的，它代表了对一类牛的抽象。而每一个实例(instance)代表了一头一头具象的牛，比如那头在山上吃草的老黄牛。</p>
+<p>因为语言的抽象性，我在团队中会要求大家使用通用语言(Ubiquitous Language)进行沟通交流，因为只有大家对概念的认知达成一致，沟通交流起来才会顺畅，而程序只是我们程序员之间的一种交流方式。</p>
+<p>这也是我在做设计和代码审查(Code Review)的时候，会特别关注命名是否合理的原因。因为命名的好坏在很大程度上反映了我们对一个概念的思考是否清晰、抽象是否合理，反映在代码上就是代码的可读性、可理解性是否良好，以及我们的设计是否到位。</p>
+<p>有人做过一个调查，问程序员最头疼的事情是什么。Quora和Ubuntu Forum的调查结果显示，程序员最头疼的事情是命名。如果你曾经为了一个命名而绞尽脑汁，就不会对这个结果感到意外。</p>
+<p>正如Stack Overflow的创始人Joel Spolsky所说：</p>
+<p>“Creating good names is hard，but it should be hard，because a great name captures essential meaning in just one or two words.”（起一个好名字应该很难，因为，一个好名字需要把要义浓缩在一到两个词中。）</p>
+<p>这个浓缩的过程就是抽象的过程。我不止一次发现，当我觉得一个地方的命名有些别扭的时候，往往就意味着要么这个地方我没有思考清楚，要么是我抽象错了。</p>
+<p>关于如何命名，我在《代码精进之路：从码农到工匠》[插图]一书里已给出了比较详尽的阐述，这里就不赘述了。</p>
+<p>我想强调的是：语言是明晰概念的基础，也是抽象思维的基础，在构建一个系统时，值得我们花很多时间去斟酌和推敲语言。我曾经做过一个项目，在过程中针对一个关键实体讨论了两天，因为那是一个新概念，我们尝试了很多名字，却始终感觉别扭、不好理解。随着讨论和对问题域理解的深入，我们最终找到了一个相对比较合适的名字，才算罢休。</p>
+<p>这样的斟酌是有意义的，因为明晰关键概念是我们设计中的重要工作。虽然不合理的命名和不合理的抽象也能实现业务功能，但代价就是维护系统时的极高的认知负荷。随着时间的推移，也许就没人能搞懂系统为何这样设计了。</p>
+<h3 id="1-4-软件设计中的抽象"><a href="#1-4-软件设计中的抽象" class="headerlink" title="1.4 软件设计中的抽象"></a>1.4 软件设计中的抽象</h3><p>软件设计是单纯的思维创造活动，其中最关键的是抽象思维。可以说，抽象是软件设计的核心，特别是在面向对象设计中，如果没有好的抽象概念，就不可能设计和编写出好的面向对象(Object Oriented, OO)程序。</p>
+<h4 id="1-4-1-面向对象的核心是抽象"><a href="#1-4-1-面向对象的核心是抽象" class="headerlink" title="1.4.1 面向对象的核心是抽象"></a>1.4.1 面向对象的核心是抽象</h4><p>作为当今最重要的软件工程技术之一，面向对象(Object Oriented, OO)技术实际上由3个部分组成，分别是面向对象分析(Object Oriented Analysis, OOA)、面向对象设计(Object Oriented Design, OOD)和面向对象编程(Object Oriented Programming, OOP)。</p>
+<p>OOA是一种分析方法，这种方法利用从问题域的词汇表中找到的类和对象来分析需求，也就是我们日常说的“找名词”。当然，实际情况不仅仅是找名词这么简单，更多时间，我们需要使用抽象思维从复杂的需求中挖掘关键概念和实体</p>
+<p>OOD是一种设计方法，包括面向对象分解的过程和表示法，这种表示法用于展现被设计系统的逻辑模型和物理模型、静态模型和动态模型。通常使用UML提供的那套表示法工具。</p>
+<p>OOP是我们常用并且很熟悉的，当今的编程语言基本都是面向对象的。OOP是一种实现方法，在这种方法中，程序被组织成许多组相互协作的类，类之间会通过继承、组合、使用形成一定的层次结构。</p>
+<p>OOA、OOD和OOP之间的关系是，OOA的结果可以帮助我们设计OOD的模型，而OOD的结果可以作为蓝图，最终利用OOP方法实现一个系统。</p>
+<p>由此可见，面向对象技术与传统的结构化设计方法是不同的，它要求以一种不同的方式来思考问题。这种思考方式对我们的抽象能力提出了更高的要求，因为不管是OOA的问题域分析，还是OOD和OOP的对象建模，编程实现都离不开抽象思维。</p>
+<h4 id="1-4-2-抽象设计的评判标准"><a href="#1-4-2-抽象设计的评判标准" class="headerlink" title="1.4.2 抽象设计的评判标准"></a>1.4.2 抽象设计的评判标准</h4><p>类设计是一个增量迭代的过程。坦白地说，除了那些最不重要的抽象设计，我们从来没有在第一次就完全正确地定义一个类。对于最初的抽象设计，需要花一些时间来琢磨它粗糙的概念边界。当然，优化这些抽象设计是有代价的，包括系统的重新设计、系统设计的可理解性和设计结构的完整性等方面，因此我们希望在一开始就尽量正确。</p>
+<p>怎样才能知道某个类的抽象设计是否良好呢？我们可以通过它的耦合性、内聚性、充分性和完整性4个指标来度量。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)耦合性：强耦合使系统变得复杂，因为如果某个模块与其他模块过度相关，它就难以独立地被理解、变化或修正，通过降低耦合性，可以降低复杂性。在耦合和继承的概念之间存在着矛盾关系，继承引入了严重的耦合。一方面，我们希望类之间弱耦合；另一方面，继承又能帮助我们处理抽象之间的共性。我们通常说“组合优于继承”，正是因为继承的耦合性比较强。鉴于此，有些编程语言（比如Go语言）就直接取消了继承。</span><br><span class="line">(2)内聚性：内聚测量了单个模块（类、包、组件）内各个元素的联系程度。我们最不希望出现偶然性内聚，即完全无关的抽象被塞进同一个类或模块中。例如，考虑由狗和航天飞机的抽象组成的一个类。我们最希望出现功能性内聚，即一个类或模块的各元素一同工作，提供某种清晰界定的行为。如果Cow类的语义包含了一头牛的行为——完全是牛，只有牛而没有其他，那么它就是功能性内聚。</span><br><span class="line">(3)充分性：所谓充分，是指类或模块应该记录某个抽象设计足够多的特征，从而允许有意义的交互，否则将使组件变得无用。例如，如果我们设计Set（集合）类，应该包含从集合中添加、删除元素的操作，如果忘记设置这些操作，那么这个Set类的功能就是不充分的。好在只要我们构建一个必须使用这种抽象的客户，这种问题很早就会被发现。</span><br><span class="line">(4)完整性：完整是指类或模块的接口记录了某个抽象全部有意义的特征。充分性意味着最小的接口，但一个完整的接口意味着该接口包含了某个抽象的所有反向。完整性是一种主观判断，我们有可能做过头。为某个抽象提供全部有意义的操作会让用户不知所措，通常也是不必要的，因为许多高级操作可以由低级操作组合得到。例如，向集合里添加4个元素的操作就是不必要的接口，因为可以通过基础的Add操作得到同样的效果。</span><br></pre></td></tr></table></figure>
+<h4 id="1-4-3-抽象缺失之基础类型偏执"><a href="#1-4-3-抽象缺失之基础类型偏执" class="headerlink" title="1.4.3 抽象缺失之基础类型偏执"></a>1.4.3 抽象缺失之基础类型偏执</h4><p>基础类型偏执(Primitive Obsession)是Martin Fowler在《重构：改善既有代码的设计》一书中提到的一种典型的代码“坏味道”，意思是我们使用了太多的基础类型，导致有些应该被抽象成实体类的概念，却以基础类的形式散落在代码各处，这是一种典型的抽象缺失。</p>
+<p>由于抽象缺失，相关的数据和行为将分散在其他抽象概念中，这将导致两个问题。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1)暴露太多的实现细节，从而违反封装原则。</span><br><span class="line">(2)数据和行为分散在代码的多个地方，导致代码重复、类之间耦合度变高、代码难以维护和理解等问题。</span><br></pre></td></tr></table></figure>
+<p>比如在一个图书馆信息管理应用程序中，国际标准书号(International Standard Book Number, ISBN)的存储和处理非常重要。一种自然的做法是将ISBN设计成字符串，毕竟它在数据库中的确也是以字符串形式存储的。然而，这并不是一个好的选择，为什么呢？</p>
+<p>ISBN有两种表示方式，分别是10位和13位的，这两种形式之间可以转换。ISBN的各位都有其含义。例如，13位的ISBN由商品编号（图书产品代码978或979）、地区代码、出版社代码、书序码和校验码组成。</p>
+<p>比如我写的第一本书《代码精进之路》，它的ISBN是978-7-115-52102-6，如图1-3所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201120632.png" alt="image-20231020112036601"></p>
+<p>ISBN的最后一位是校验码，其计算方式如下：从第一位开始，奇数位的值保持不变，而偶数位的值乘以3，将所有这些值相加再除以10，用10减去得到的余数就是最后一位的值。因此，给定一个ISBN，我们可以通过这种方式校验它是否有效。</p>
+<p>对于图书馆管理系统来说，ISBN并不是一个简单的字符串，它本身就是业务核心，包含了一系列业务逻辑，比如关于ISBN的创建、验证、处理和转换，以及通过ISBN获取地区信息、出版社信息、书号等。如果将ISBN设计为基础类型字符串，那么这些处理逻辑将重复分散在很多地方。这种不将ISBN封装为类的行为，将带来因为抽象缺失导致的一系列不良后果。</p>
+<p>因此正确的做法是，我们要对ISBN建立合理的抽象（类）概念，创建一个ISBN的接口，其中包含通用的抽象操作：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201126783.png" alt="image-20231020112610752"></p>
+<p>并创建子类ISBN-10和ISBN-13，它们都扩展了超类ISBN，如图1-4所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201126901.png" alt="image-20231020112626871"></p>
+<p>再比如，假设现在要实现一个功能，让A用户可以给用户B支付x元，可能的实现如下：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201128162.png" alt="image-20231020112810138"></p>
+<p>如果这是境内转账，并且境内的货币永远不变，该方法似乎没什么问题。但如果有一天货币变更了（比如欧元区曾经出现的问题），或者我们需要做跨境转账，该方法有明显的bug，因为money对应的货币不一定是CNY。</p>
+<p>在这里，当我们说“支付x元”时，除了x本身的数字，实际上还有一个隐含的概念，那就是货币“元”。但是在原始的入参里，之所以只用了BigDecimal，是因为我们认为CNY货币是默认的，是一个隐含的条件。然而在我们写代码时，需要把所有隐性的条件显性化。</p>
+<p>所以当我们实现支付功能时，实际上需要的一个入参是“支付金额+支付货币”。我们可以把这两个概念组合成为一个独立的完整概念——Money。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201130008.png" alt="image-20231020113005978"></p>
+<p>而原有的代码则变为：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201130825.png" alt="image-20231020113015805"></p>
+<p>通过将默认货币这个隐性的概念显性化，并且和金额合并为Money这个抽象概念，我们可以避免很多当前看不出来但未来可能会“爆雷”的bug。</p>
+<p>将前面的案例升级一下，假设用户可能要做跨境转账（从CNY到USD），并且货币汇率随时在波动：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201131276.png" alt="image-20231020113140250"></p>
+<p>现在最大的问题在于，金额的计算被包含在了支付的服务中，涉及的对象也有2个Currency、2个Money、1个BigDecimal，总共5个对象。这种涉及多个对象的业务逻辑，需要一个新的抽象概念进行封装。</p>
+<p>我们可以考虑将转换汇率的功能封装到一个叫作ExchangeRate的DP(Domain Primitive)[插图]里：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201133831.png" alt="image-20231020113343775"></p>
+<p>ExchangeRate汇率对象通过封装金额计算逻辑及各种校验逻辑，使原始代码变得极其简单：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201135813.png" alt="image-20231020113507786"></p>
+<h4 id="1-4-4-抽象缺失之重复代码"><a href="#1-4-4-抽象缺失之重复代码" class="headerlink" title="1.4.4 抽象缺失之重复代码"></a>1.4.4 抽象缺失之重复代码</h4><p>如果说抽象源于对共性的提取，那么代码中的重复代码是不是就意味着抽象缺失呢？</p>
+<p>重复代码是典型的代码坏味道，其本质问题就是抽象缺失。使用“Ctrl+C”加“Ctrl+V”的工作习惯导致没有对共性代码进行抽取，或者虽然抽取了，但没有设置一个合适的名字，没有正确地反映这段代码所体现的抽象概念，这些都属于抽象不到位。</p>
+<p>有一次，我在审查团队代码的时候，发现有一段组装搜索条件的代码，这段代码在几十个地方都有重复。</p>
+<p>这个搜索条件比较复杂，是以元数据的形式存在于数据库中的，因此组装的过程分为两步。</p>
+<p>(1)从缓存中把搜索条件列表取出来。</p>
+<p>(2)遍历这些条件，将搜索的值填充进去。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201138113.png" alt="image-20231020113821024"></p>
+<p>简单的重构无外乎就是把这段代码提取出来，放到一个Util类中以便复用。然而我认为这样的重构只是完成了一半的工作——只是做了简单的归类，并没有做抽象提炼。</p>
+<p>简单分析，不难发现，此处我们缺失了两个概念：一个是用来表达搜索条件的类——SearchCondition，另一个是用来组装搜索条件的类——SearchConditionAssembler。只有配合命名，显性化地将这两个概念表达出来，才是一个完整的重构。</p>
+<p>重构后，搜索条件的组装会变成一种非常简洁的形式，几十处的代码复用只需要引用SearchConditionAssembler就好了：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201140843.png" alt="image-20231020114011822"></p>
+<p>由此可见，<strong>提取重复代码只是重构工作的第一步。对重复代码进行概念抽象，寻找有意义的命名才是我们工作的重点</strong>。</p>
+<p>因此，每次遇到重复代码需要重构的时候，你都应该感到兴奋，这是一次锻炼抽象能力的绝佳机会。</p>
+<h4 id="1-4-5-抽象设计要完整"><a href="#1-4-5-抽象设计要完整" class="headerlink" title="1.4.5 抽象设计要完整"></a>1.4.5 抽象设计要完整</h4><p>好的抽象设计是内聚而完整的。为了支持相关的方法，可能会影响抽象的内聚性和完整性。例如，要在数据结构中添加和删除元素，抽象该数据结构的类型必须同时支持方法add()和remove()；如果只支持相关方法中的一个，那么抽象设计就不是内聚和完整的。</p>
+<p>例如，在JDK 1.1的接口javax.swing.ButtonModel中，只提供了setGroup()方法，而没有提供getGroup()，这是一种典型的“不完整的抽象设计”坏味道。修复它的最理想的方法是在这个接口中定义方法getGroup()，然而由于JDK是公开的API，在接口上添加方法将破坏实现了该接口的既有类。为了向后兼容，在JDK 1.3中，将方法getGroup()加入了派生类DefaultButtonModel中。</p>
+<p>这个例子告诉我们：修改接口是一件很难的事情，因此在最初设计API的时候，要尽量做到抽象完整。</p>
+<p>有一种检查抽象设计是否完整的方法，是查看接口或类是否缺少“互补和对称”。如果缺少，则可能存在着“不完整的抽象设计”。表1-1列出了一些常见的互补方法对，请注意这些方法名会根据不同的情况而有差异。例如，在表示栈的类中，会使用操作名push和pop；而在数据流中，同样的操作可能使用名称source和sink。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201142690.png" alt="image-20231020114232652"></p>
+<h4 id="1-4-6-不要为了抽象而抽象"><a href="#1-4-6-不要为了抽象而抽象" class="headerlink" title="1.4.6 不要为了抽象而抽象"></a>1.4.6 不要为了抽象而抽象</h4><p>抽象的前提是共性抽取，抽象思维之所以如此重要，因为它涉及软件设计的方方面面，小到一个方法、一个类的设计，大到系统架构。有时，不合理地抽象比没有抽象对系统的伤害更大。</p>
+<p>假如某互联网公司同时开展了电商业务和电影票业务，每条业务线都有独立的C端系统、后台交易系统（包括商品管理、订单管理、营销管理）来支持业务。为了追逐潮流，公司决定将两条业务线的订单中心合并，实现订单中台，如图1-6所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201143636.png" alt="image-20231020114352592"></p>
+<p>实际上，公司经营的B2C电商业务和电影票业务，在交易形态上有较大的区别，尤其体现在订单模块的设计上，订单的状态机、数据模型和财务账务处理模式完全不同。两者并没有太多的共性模块和功能，强行将两者合并后，最终只是表面上看起来实现了订单中台，但是其中的功能模块各自独立运转，完全没有实现抽象和复用。</p>
+<p>现在，公司管理者以为拥有了强大的订单中台，可以为快速开展新业务提供支持。很快，公司决定开展机票售卖业务，针对机票业务，有独立的C端、商品管理、促销管理。</p>
+<p>但是当产品经理和工程师开始期待订单中台的强大功能时，却遗憾地发现：订单中台无法给机票业务提供任何现成的功能复用能力，机票的订单模型和电商、电影票都不相同。</p>
+<p>机票业务线的设计人员面临一个尴尬的局面。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">• 要么按部就班地将机票订单中心纳入订单中台，统一建设——但实际上这会严重降低开发效率，因为中台研发团队肯定不会像机票业务研发团队那样重视新业务的开展。</span><br><span class="line">• 要么抛弃订单中台，机票业务研发团队独立开发订单模块，但这样做又会显得订单中台没有产生应有的价值。</span><br></pre></td></tr></table></figure>
+<p>此时的系统架构如图1-7所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201146798.png" alt="image-20231020114610751"></p>
+<p>可见，在不同的业务模式下，订单中心并不一定适用于中台化建设，设计人员要有足够的思辨能力，判断产品形态上是否值得抽象下沉、是否能够提供复用能力。然而，这也是软件工程设计中非常难的部分。</p>
+<p>任何软件系统的设计都基于归纳法，而非演绎法，即软件设计人员总是通过对现有世界和业务的总结提炼，而无法通过推测演绎完成软件设计。设计人员无法对业务的未来做出预测，只能基于有限的经验，尽量保证设计的灵活性和正确性。</p>
+<p>理解这一点非常重要，这会让你在软件设计、产品设计时心存敬畏，不会因一味地追求短期无法论证的结论而产生严重的过度设计。在实践中，对于基于抽象复用的平台建设，有以下几条建议。</p>
+<p>(1)对于明显具备共性的模块，尽早抽象。</p>
+<p>在B端产品的体系化设计中，很多形态的产品是具备明显共性的，我们可以尽早地进行抽象设计，这样在系统架构建设的早期就能做出正确的设计方案，而且并不会过多地增加研发工作量，相反会让未来的系统扩展更加轻松。例如，业务系统中的统一权限管理系统、单点登录系统、组织架构系统、公告系统、短信系统等，都应该尽早完成抽象建设。</p>
+<p>(2)对于共性不确定的模块，事后抽象。</p>
+<p>对于统一客户视图、订单中心、商品系统等软件模块，很难判断在多业务线场景下是否能够完全复用。如果对于是否进行抽象拿不准主意，那么完全可以先不做，等业务渐渐明确后，有足够的信息做出充分的分析和判断时，再决定是否合并抽象设计。</p>
+<h3 id="1-5-抽象的层次性"><a href="#1-5-抽象的层次性" class="headerlink" title="1.5 抽象的层次性"></a>1.5 抽象的层次性</h3><p>除抽象概念之外，另一个我们必须要深入理解的概念就是抽象的层次性。小到一个方法要怎么写，大到一个系统要如何架构，以及第3章中介绍的结构化思维，都离不开抽象层次。</p>
+<h4 id="1-5-1-对抽象层次的权衡"><a href="#1-5-1-对抽象层次的权衡" class="headerlink" title="1.5.1 对抽象层次的权衡"></a>1.5.1 对抽象层次的权衡</h4><p>回到毕加索的抽象画，如图1-8所示。如果映射到面向对象编程，抽象牛就是抽象类(Abstract Class)，代表了所有牛的抽象。抽象牛可以被泛化成更多的牛，比如水牛、奶牛、牦牛等。每一种牛都代表了一类(Class)牛，对于每一类牛，我们可以通过实例化，得到一个具体的牛实例(Instance)。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201151052.png" alt="image-20231020115153918"></p>
+<p>从这个简单的案例中，我们可以总结出抽象的3个特点。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)抽象是忽略细节的。抽象类是最抽象的，忽略的细节也最多，就像抽象牛，只是几根线条而已。在代码中，这种抽象既可以是抽象类，也可以是接口(Interface)。</span><br><span class="line">(2)抽象代表了共同性质。类代表了一组实例的共同性质，抽象类代表了一组类的共同性质。对于上面的案例来说，共同性质就是抽象牛的那几根线条。</span><br><span class="line">(3)抽象具有层次性。抽象层次越高，其内涵越小、外延越大，也就是说它的含义越小、泛化能力越强。比如，牛就要比水牛的抽象层次更高，因为它可以表达所有的牛，水牛只是牛的一个种类。</span><br></pre></td></tr></table></figure>
+<p>而抽象的层次性主要涉及一个概念的外延和内涵，所以在进一步讲解抽象层次之前，我们有必要先理解一下外延和内涵的概念。</p>
+<p>抽象是以概念（词语）来反映现实的过程，每一个概念都有一定的外延和内涵。概念的外延就是适合这个概念的一切对象的范围，而概念的内涵就是这个概念所反映的对象的本质属性的总和。例如“平行四边形”这个概念，它的外延包含着一切正方形、菱形、矩形及一般的平行四边形，而它的内涵包含着一切平行四边形所共有的“有四条边，两组对边互相平行”这两个本质属性。</p>
+<p>一个概念的内涵愈广，则其外延愈狭；反之，内涵愈狭，则其外延愈广。例如，“平行四边形”的内涵是“有四条边，两组对边互相平行”，而“菱形”的内涵除这两条本质属性外，还包含着“四边相等”这一本质属性。“菱形”的内涵比“平行四边形”的内涵广，而“菱形”的外延要比“平行四边形”的外延狭。</p>
+<p>内涵决定外延，但外延并不决定其内涵，比如“等边三角形”和“等角三角形”有相同的外延，但是却指向不同的内涵。外延和内涵也并非总是反向变化，事实并非如此，当内涵对其外延没有影响的时候，内涵的增加并不会导致外延的变小，比如“活着的人”“活着的不超过1000岁的人”。内涵虽然增加了，但其外延是一样的。</p>
+<p>抽象的层次性主要体现在概念的内涵和外延上，而这种层次性基本可以体现在任何事物上。比如一份报纸就存在多个层次上的抽象，“出版物”最抽象，其内涵最小，但外延最大，因为“出版物”不仅可以包含报纸，还可以包含书籍、期刊、杂志等。报纸的抽象层次如下。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">• 第一层：一个出版物。</span><br><span class="line">• 第二层：一份报纸。</span><br><span class="line">• 第三层：《旧金山纪事报》。</span><br><span class="line">• 第四层：5月18日的《旧金山纪事报》。</span><br></pre></td></tr></table></figure>
+<p>不同的抽象层次有不同的用途。当我要统计美国有多少种出版物时，就要用到最上面第一层“出版物”的抽象；如果我要查询旧金山5月18日当天的新闻，就要用到最下面第四层“5月18日的《旧金山纪事报》”的抽象。</p>
+<p><strong>对于程序员来说，对抽象层次的权衡是对我们设计能力的考验，要根据业务的需要，选择合理的抽象层次，既不能太高，也不能太低。</strong></p>
+<p>例如，现在要写一个关于水果的程序，我们需要对水果进行抽象，因为水果里面有红色的苹果，我们当然可以建一个RedApple的类，但是这个抽象层次有点低，只能用来表达“红色的苹果”。假如来一个绿色的苹果，你还得新建一个GreenApple类。</p>
+<p>如图1-9所示，为了提升抽象层次，我们可以把RedApple类改成Apple类，让颜色变成Apple的属性，这样红色和绿色的苹果就都能用Apple表达了。再继续往上抽象，我们还可以得到水果类、植物类等。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201158783.png" alt="image-20231020115853726"></p>
+<p>前面提到，抽象层次越高，内涵越小，外延越大，泛化能力越强。然而，其代价就是业务语义表达能力越弱。</p>
+<p>具体要抽象到哪个层次，要视具体的情况而定，比如这段程序如果专门用于研究苹果，那么可能到Apple就够了；如果是卖水果的，则可能需要到Fruit；如果是做植物研究的，可能要到Plant，但很少需要到Object。</p>
+<p>我经常开玩笑说：“为了通用性，把所有的类都设置为Object，把所有的参数都设置为Map的系统，是最通用的。”因为Object和Map的内涵最小，其泛化能力最强，可以适配所有的扩展。从原理上来说，这种抽象也是对的，万物皆对象嘛！但我们为什么不这么做呢？</p>
+<p>这是因为，越抽象、越通用、可扩展性越强，其语义的表达能力就越弱；越具体、越不好延展，其语义表达能力却越强。<strong>所以，对于抽象层次的权衡是我们系统设计的关键所在，也是区分普通程序员和优秀程序员的重要参考指标。</strong></p>
+<h4 id="1-5-2-软件中的分层抽象"><a href="#1-5-2-软件中的分层抽象" class="headerlink" title="1.5.2 软件中的分层抽象"></a>1.5.2 软件中的分层抽象</h4><p>越是复杂的问题越需要分层抽象，分层是分而治之，抽象是对问题域的合理划分和概念语义的表达。不同层次提供不同的抽象结果，下层对上层隐藏实现细节，通过这种层次结构，我们才有可能应对像网络通信、云计算等超级复杂的问题</p>
+<p>网络通信是互联网最重要的基础设施之一，但同时它又是一个很复杂的过程，你既要知道把数据包传给谁——IP协议，还要知道一旦在这个不可靠的网络上出现状况要怎么办——TCP协议。有这么多的事情需要处理，我们可不可以在一个层次中都实现呢？当然是可以的，但显然不科学。因此，国际标准化组织(ISO)制定了网络通信的七层参考模型(OSI)，每一层只处理一件事情，下层为上层提供服务，直到应用层把HTTP、FTP等方便理解和使用的协议暴露给用户，如图1-10所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201202030.png" alt="image-20231020120205980"></p>
+<p>编程语言的发展史也是一部典型的分层抽象的演化史。</p>
+<p>机器能理解的只有机器语言，即各种二进制的01指令。如果我们采用01的输入方式，其编程效率极低。学过数字电路的读者应该还记得用开关实现加减法的实验，反正我当时拨了半天，才勉强把3+4的答案算对。所以之后我们用汇编语言抽象了二进制指令，然而即使是简单的3+4，使用汇编指令实现也比较麻烦，示例如下：<img src="https://gitee.com/fjkf/images/raw/master/202310201202429.png" alt="image-20231020120250398"></p>
+<p>于是我们进一步用C语言抽象了汇编语言，而高级编程语言Java是对类似于C这样低级语言的进一步抽象，这种逐层抽象显著提升了编程效率，如图1-11所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201203091.png" alt="image-20231020120312053"></p>
+<h4 id="1-5-3-强制类型转换中的抽象层次问题"><a href="#1-5-3-强制类型转换中的抽象层次问题" class="headerlink" title="1.5.3 强制类型转换中的抽象层次问题"></a>1.5.3 强制类型转换中的抽象层次问题</h4><p>面向对象设计中有一个著名的SOLID原则，它是由Bob大叔(Robert C.Martin)提出来的，其中，L代表LSP，即Liskov Substitution Principle（里氏替换原则）。简单来说，里氏替换原则就是子类应该可以替换任何父类会出现的地方，并且经过替换以后，代码还能正常工作。</p>
+<p>思考一下，我们在写代码的过程中，什么时候会用到强制类型转换呢？当然是LSP不能被满足的时候，也就是说子类的方法超出了父类的类型定义范围，为了使用子类的方法，只能使用类型强制转换将类型转成子类类型。</p>
+<p>举个例子，在苹果(Apple)类上，有一个isSweet()方法用于判断水果甜不甜；在西瓜(Watermelon)类上，有一个isJuicy()用于判断水分是否充足的；同时，它们都共同继承一个水果(Fruit)类。</p>
+<p>此时，我们需要挑选出甜的水果和有水分的西瓜，会编写如下一段程序：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201209836.png" alt="image-20231020120910801"></p>
+<p>因为pickGood()方法的入参的类型是Fruit，所以为了获得Apple和Watermelon上的特有方法，我们不得不使用instanceof做一个类型判断，然后使用强制类型将其转换为子类类型，以便获得它们的专有方法，很显然，这违背了里氏替换原则。</p>
+<p>问题出在哪里呢？对于这样的代码，我们要如何去优化呢？仔细分析一下，可以发现，根本原因在于isSweet()和isJuicy()的抽象层次不够，站在更高的抽象层次，也就是Fruit的视角看，我们挑选的就是可口的水果，只是具体到苹果时，我们看甜度；具体到西瓜时，我们看水分而已。</p>
+<p>因此，解决方法是对isSweet()和isJuicy()进行抽象层次提升，在Fruit上创建一个isTasty()的抽象方法，然后让苹果和西瓜类分别去实现这个抽象方法就好了，如图1-12所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201210314.png" alt="image-20231020121017274"></p>
+<p>下面是重构后的代码，通过提升抽象层次，我们消除了instanceof判断和强制类型转换，让代码重新满足了里氏替换原则，也使代码重新变得优雅了。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201211547.png" alt="image-20231020121109520"></p>
+<p>所以，每当在程序中准备使用instanceof做类型判断，或者用cast做强制类型转换的时候，再或者程序不满足LSP的时候，我们都应该警醒一下：好家伙！这又是一次锻炼抽象能力的绝佳机会。</p>
+<h4 id="1-5-4-抽象层次一致性原则"><a href="#1-5-4-抽象层次一致性原则" class="headerlink" title="1.5.4 抽象层次一致性原则"></a>1.5.4 抽象层次一致性原则</h4><p>抽象层次要保持一致，一致性可以减少混乱，并降低理解成本。比如，你把水果、苹果、香蕉归类放在一起，就会显得不协调，自己心里也会犯嘀咕：为什么要把水果和苹果、香蕉放在一起呢？水果和苹果、香蕉不是一个抽象层次的（水果比另两者高一个抽象层次）。同样，我们在写代码的时候，如果把不同抽象层次的代码放在一起，也会在无形中提高认知和理解成本。</p>
+<p>鉴于此，抽象层次一致性原则(Single Level of Abstration Principle, SLAP)应运而生。SLAP是ThoughtWorks的总监级咨询师Neal Ford在《卓有成效的程序员》一书中提出来的概念，其思想源自Kent Beck提出的组合方法模式(Composed Method Pattern, CMP)。</p>
+<p>SLAP强调每个方法中的所有代码都处于同一级抽象层次。如果高层次抽象和底层细节杂糅在一起，就会显得代码凌乱，难以理解，从而造成复杂性。</p>
+<p>举个例子，假如有一个冲泡咖啡的原始需求，其制作咖啡的过程分为3步。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1)倒入咖啡粉。(2)加入沸水。(3)搅拌。</span><br></pre></td></tr></table></figure>
+<p>其伪代码(pseudo code)如下：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201213443.png" alt="image-20231020121325418"></p>
+<p>这时新的需求来了，需要允许选择不同的咖啡粉，以及选择不同的风味。于是上述代码从一开始的“眉清目秀”变成了下面这样。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201214595.png" alt="image-20231020121412556"></p>
+<p>如果再有更多的需求过来，代码还会进一步恶化，最后就变成一个谁也看不懂的“逻辑迷宫”、一个难以维护的“焦油坑”。</p>
+<p>我们再回来看一下，新需求的引入当然是根本原因，但是除此之外，另一个原因是新代码已经不再满足SLAP了。具体选择用什么样的咖啡粉是“倒入咖啡粉”这个步骤应该考虑的实现细节，和主流程步骤不在一个抽象层次上。同理，加糖、加奶也是实现细节。</p>
+<p>因此，在引入新需求以后，制作咖啡的主要步骤从原来的3步变成了4步。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(1)倒咖啡粉，存在不同的选择。</span><br><span class="line">(2)倒开水。</span><br><span class="line">(3)调味，根据需求加糖或加奶。</span><br><span class="line">(4)搅拌。</span><br></pre></td></tr></table></figure>
+<p>根据组合方法模式和SLAP，我们要在入口函数中只显示业务处理的主要步骤。其具体实现细节通过私有方法进行封装，并通过抽象层次一致性来保证，一个函数中的抽象应该在同一个水平上，而不是将高层抽象和实现细节混在一起。</p>
+<p>根据SLAP，我们可以将代码重构为：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201216322.png" alt="image-20231020121613283"></p>
+<p>重构后的makeCoffee()又重新变得整洁如初了，实际上，这种代码重构也是一种结构化思维的体现。<strong>在结构化思维中，有一个要点就是结构的每一层要属于同一个逻辑范畴、同一个抽象层次</strong>。更多关于结构化思维的内容会在第3章中详细介绍。</p>
+<p>接下来，我们看一个真实的案例。在Spring中，做上下文初始化的核心类AbstractApplicationContext的refresh()方法，可以说在如何遵循SLAP方面给我们做了一个很好的示范。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201217490.png" alt="image-20231020121705449"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201217047.png" alt="image-20231020121711018"></p>
+<p>试想：如果上面的逻辑混乱、无序地平铺在refresh()方法中，其结果会是怎样的？</p>
+<h3 id="1-6-锻炼抽象思维能力"><a href="#1-6-锻炼抽象思维能力" class="headerlink" title="1.6 锻炼抽象思维能力"></a>1.6 锻炼抽象思维能力</h3><p>抽象思维能力是我们人类特有的、与生俱来的能力，除了上面说的在编码过程中可以锻炼抽象能力，我们还可以通过一些其他的练习不断地提升抽象能力。</p>
+<h4 id="1-多阅读"><a href="#1-多阅读" class="headerlink" title="1.多阅读"></a>1.多阅读</h4><p>为什么阅读书籍比看电视更好呢？因为图像比文字更加具象，阅读的过程可以锻炼我们的抽象能力、想象能力，而画面会将我们的大脑铺满，较少需要用到抽象和想象。这也是我们不提倡让小孩子过多地暴露在电视或手机屏幕前的原因，因为这样不利于锻炼他们的抽象思维。</p>
+<h4 id="2-勤总结"><a href="#2-勤总结" class="headerlink" title="2.勤总结"></a>2.勤总结</h4><p>我小时候不理解语文老师为什么总是要求我们总结段落大意、中心思想，现在回想起来，这种思维训练在基础教育中非常必要，其实质就是帮助学生提升抽象思维能力。</p>
+<p>记录也是很好的总结习惯。就拿读书笔记来说，最好不要原文摘录书中的内容，而是要用自己的话总结和归纳书中的内容，这样不仅可以让我们加深理解，还可以提升抽象思维能力。</p>
+<p>我从4年前开始系统地记录笔记，做总结沉淀，构建自己的知识体系。这种思维训练的好处显而易见，可以说《代码精进之路》和本书的写作都得益于我总结沉淀的习惯。</p>
+<h4 id="3-命名训练"><a href="#3-命名训练" class="headerlink" title="3.命名训练"></a>3.命名训练</h4><p>每一次的变量命名、方法命名、类命名都是难得的训练抽象思维的机会。前面提到，语言和抽象是一体的，命名的好坏直接反映了我们对问题域的思考是否清晰、抽象是否合理。</p>
+<p>然而现实情况是，很多工程师常常忽略了命名的重要性，只要能实现业务功能，名字从来就不是重点。实际上，这既是对系统的不负责任，也是对自己的不负责任，更是对后期维护系统的人不负责任。<strong>写程序和写文章有极强的相似性，本质上都是用语言阐述一件事情</strong>。试想，如果文章中用的都是一些词不达意的句子，这样的文章谁能看得懂，谁又愿意去看呢？</p>
+<p>同样，我一直强调代码要显性化地表达业务语义，命名在这个过程中扮演了极其重要的角色。为了代码的可读性，为了系统的长期可维护性，为了我们自身抽象思维的训练，我们都不应该放过任何一个带有歧义、表达模糊、语义不清的命名。</p>
+<h4 id="4-领域建模训练"><a href="#4-领域建模训练" class="headerlink" title="4.领域建模训练"></a>4.领域建模训练</h4><p>对于技术领域的读者来说，还有一个非常好的提升抽象能力的手段——领域建模。当我们对问题域进行分析、整理和抽象的时候，当我们对领域进行划分和建模的时候，实际上都是在锻炼我们的抽象能力。</p>
+<p>我们可以对自己工作中的问题域进行建模，当然也可以通过研究一些优秀源码背后的模型设计来学习如何抽象、如何建模。比如，我们知道Spring的核心功能是Bean容器，那么在看Spring源码的时候，可以着重去看它是如何进行Bean管理的、它使用的核心抽象是什么。不难发现，Spring使用BeanDefinition、BeanFactory、BeanDefinitionRegistry、BeanDefinitionReader等核心抽象实现了Bean的定义、获取和创建。抓住了这些核心抽象，我们就抓住了Spring设计主脉。</p>
+<p>除此之外，我们还可以进一步深入思考：它为什么要这么抽象？这样抽象的好处是什么？它是如何支持XML和Annotation（注解）这两种关于Bean的定义的？</p>
+<p>这样的思考和对抽象思维的锻炼，对提升抽象能力和建模能力非常重要。关于这一点，我深有感触，初入职场，当我尝试对问题域进行抽象和建模的时候，会觉得无从下手，建出来的模型也感觉很别扭。然而，经过长期、刻意地学习和锻炼之后，我可以很明显地感觉到自己的建模能力和抽象能力都有很大的提升，不但分析问题的速度更快了，而且建出来的模型也更加优雅了。</p>
+<h2 id="2-逻辑思维"><a href="#2-逻辑思维" class="headerlink" title="2 逻辑思维"></a>2 逻辑思维</h2><p>“你讲话要有逻辑！”</p>
+<p>“你的逻辑不对！”</p>
+<p>“你的底层逻辑是什么？”</p>
+<p>“说说你的逻辑思维能力体现在哪儿？”</p>
+<p>在日常交流中，我们会频繁使用“逻辑”这个词，但能够清晰说出其定义的人应该不多，能够正确掌握逻辑推理的人就更少了。对于大部分人来说，逻辑更像一个“熟悉的陌生人”，因为在我们从小所接受的应试教育中，<strong>其实一直缺乏对逻辑的系统性训练</strong>。</p>
+<p>举个例子。</p>
+<p>小王说：“Frank真不是男人，竟然会怕老鼠。”</p>
+<p>小张说：“Frank怎么不是男人，如果他不是男人，怎么会有鼓鼓的肱二头肌呢？”</p>
+<p>你觉得小张的反驳有道理吗？如果你觉得有问题，那么问题出在哪里呢？这其实一个典型的逻辑谬误（先卖个关子，在2.6节会给出答案）。类似于这样的逻辑谬误，每天都会发生在我们的沟通交流中，只是因为我们缺乏相应的逻辑知识，不能识别罢了。因此，作为以逻辑思维缜密自居的程序员，我们有必要好好地探究一下逻辑思维。</p>
+<p>然而，逻辑学是一门非常复杂的学科，一本《逻辑学导论》就有七百多页。本章的目的不是系统地介绍逻辑学，而是科普逻辑知识，从而唤起大家的理性意识，使读者掌握一些逻辑学的基本知识，并具备一些逻辑思维能力——在和别人争辩的时候，能发现对方的逻辑谬误；在思考问题的时候，能尽量做到逻辑完整；在表达观点的时候，能尽量做到逻辑清晰。</p>
+<p>下次，当别人对你说“你的逻辑不对”的时候，你能知道他是在说什么。同样，当你对他人说“你的逻辑不对”的时候，也知道自己在说什么。</p>
+<h3 id="2-1-逻辑就是关系"><a href="#2-1-逻辑就是关系" class="headerlink" title="2.1 逻辑就是关系"></a>2.1 逻辑就是关系</h3><p>逻辑(logic)，源自古希腊语逻各斯(logos)，最初的意思是“词语”或“言语”，引申出意思“思维”或“推理”。逻各斯，是古希腊哲学家赫拉克利特最早引入的哲学概念，古希腊哲学从探求世界本原问题开始，从泰勒斯的水本原（具象），认为水是万物之源，到赫拉克利特的逻各斯（抽象），再到柏拉图的理念论，完成了从自然哲学到形而上学的发展。</p>
+<p>简而言之，逻各斯是指一切可理解的规律，逻辑是指思维的规律和规则。</p>
+<p>除了指思维规律，逻辑在狭义上也有逻辑学的含义。按照《逻辑学导论》中的定义，<strong>逻辑学是研究用于区分正确推理(inference)与不正确推理的方法和原理的学问</strong>。</p>
+<p>与上述定义相比，我觉得芝本秀德在《深度思考法》中对逻辑的定义要更易于理解，他认为“逻辑就是关系”。</p>
+<p>我们说某人逻辑性太差，其实正是因为他们没有在想表达的东西之间建立关系。例如，对方说“今天的天气真不错”，我们认为诸如“是啊，天气太好了”或者“天气让人心情都变好了”这样的回答是有逻辑性的。可是如果回答是“我肚子好饿啊”，那么这种答非所问的内容就完全不符合逻辑。<strong>所以说，“无逻辑”就是没有建立起事物之间的正确关系，即“有逻辑”就是能建立事物之间的正确关系。</strong></p>
+<p>这种表述有一定的道理，因为逻辑学就是研究多个语句(sentence)之间推理是否正确的学问，所以从这个意义上来说，逻辑学就是研究语句之间关系的学问。不过，这个“关系”并不都像“天气好”和“心情好”这样显而易见，有些关系很复杂，有些关系很隐蔽，需要我们借助更多逻辑学的知识来分析它们的有效性。</p>
+<p>不管怎样，从理解的角度来说，记住“逻辑就是关系”还是很有用的，关于逻辑关系的内容，会在第3章中进行更加详细的阐述。这里我们还是先研究一下逻辑思维自身。</p>
+<p>逻辑思维基本包含3个方面的要素。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)概念：概念是思维的基本单位。</span><br><span class="line">(2)判断（proposition，在逻辑学中也叫命题）：通过概念对事物是否具有某种属性进行肯定或否定的回答，就是判断。</span><br><span class="line">(3)推理（argument，在逻辑学中也叫论证）：由一个或几个判断推出另一判断的思维形式，就是推理。</span><br></pre></td></tr></table></figure>
+<p>如图2-1所示，逻辑思维的核心是要学会明确的定义概念，正确地使用判断，合理地进行推理。实际上，一本书的逻辑也包含这三个要素，《如何阅读一本书》中提到的分析阅读，说的就是如何通过提炼一本书的关键字词（概念）、关键句子（判断）及关键论述（推理）来分析一本书的主旨。我们可以利用这种方式快速地厘清一本书或一篇文章的逻辑。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201230170.png" alt="image-20231020123003132"></p>
+<p>综上，逻辑思维的要义在于正确运用概念、判断、推理的思维形式。想要正确掌握逻辑思维，就要从这三个方面学起。</p>
+<h3 id="2-2-逻辑三要素之概念"><a href="#2-2-逻辑三要素之概念" class="headerlink" title="2.2 逻辑三要素之概念"></a>2.2 逻辑三要素之概念</h3><p>概念是思维的基本单位，是反映事物本质属性或特有属性的思维形式。英语字典中对“Concept”的解释为“An idea or a principle that is connected with something abstract”。也就是说，概念是指一些关于抽象事物的思考和定义。</p>
+<p>这个世界有很多事物是通过我们的思维去赋予它们意思或意义，然后通过语言符号呈现出来的。所以说，这些意思或意义就是概念的思维内显形式，语言是概念的外显形式。</p>
+<p>可以说，明晰概念是我们了解事物的第一步，是我们学习、研究和讨论的基础。认知水平越高的人，越能认识到概念的重要性。</p>
+<p>《思辨与立场》一书中提到，<strong>学习一门课程应该从理解课程的最基本概念开始</strong>。比如，“稀缺”是经济学中的基本概念，其他经济学概念都与这一中心概念有关：稀缺意味着我们任何一个人都不可能拥有所有想要的资源（稀缺的事实），我们想要得到一些东西的前提是必须先放弃另一些东西。</p>
+<p>再比如，2016年11月9日下午，在北京举办的“朗润·格政”国家发展研究院论坛上，两位著名经济学家林毅夫和张维迎在北京大学朗润园进行了一场十分精彩的辩论。他们辩论的主题是“产业政策”。在辩论的开始，林毅夫首先开讲，在说完客套话后他提到，</p>
+<p>在准备这个报告的时候，他们给我一个任务，你在讲你的看法之前先定义一下什么是产业政策，我想定义是非常重要的，不然会各说各话，谈论过程当中就没有激情。</p>
+<p>由此可见，在我们的学习交流中，概念有多么重要。</p>
+<h4 id="2-2-1-概念要明确且清晰"><a href="#2-2-1-概念要明确且清晰" class="headerlink" title="2.2.1 概念要明确且清晰"></a>2.2.1 概念要明确且清晰</h4><p>对概念的明晰和定义是我们设计过程中的重要内容。在一个领域内，如果一个系统的核心概念的定义出现了问题，可能会给上层的业务带来毁灭性的打击。</p>
+<p>此前我们在做社区团购业务的时候，由于系统是从盒马交接过来的，而在之前的系统中并没对商品、货品这两个重要概念进行区分，导致后续出现了领域边界不清、团队职责不清、系统修改困难等一系列问题。</p>
+<p>例如，我负责的商品系统对外会被供应链、仓库物流消费使用。作为商业的基本要素，商品被外部系统依赖本来也是正常的，只是原来的系统并没有清晰地明确商品和货品的概念，导致商品系统在承载商品管理职责的同时，还承载了货品的职责。管理的是商品，发布的是商品，采购的是商品，销售的是商品，仓内扫码作业还是商品。这种不区分上下文地使用“商品”这个概念，导致商品就像洪水一样以一种模糊的方式泛滥到各个系统中。</p>
+<p>比如，仓库的扫码作业依赖商品系统去找到条码和货品的关系。这种不合理的依赖关系，以及商品和货品概念的耦合，导致商品系统非常脆弱。仓内扫码作业经常会出现条码正确，但背后的货品信息出不来的问题，进而导致在面对新的业务场景时，系统不能“正确”地提供支撑。为了让业务可以继续下去，技术人员不得已在错误的模型基础上采用了各种补丁办法，导致系统的复杂度呈指数级上升。</p>
+<p>在深入理解了系统的关联关系后，我发现了“货品”概念的缺失。当我把这个概念显性化出来之后，整个系统的边界关系、底层模型之间的关联关系也明朗了起来，如图2-2所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201234428.png" alt="image-20231020123459385"></p>
+<h4 id="2-2-2-制定团队通用语言"><a href="#2-2-2-制定团队通用语言" class="headerlink" title="2.2.2 制定团队通用语言"></a>2.2.2 制定团队通用语言</h4><p>以往在演讲中分享领域驱动设计(Domain Driven Design, DDD)时，我总是会花很多时间介绍概念的重要性。实际上，DDD的核心就是强调概念和语义，概念的重要性体现在通用语言(Ubiquitous Language)上，语义的重要性体现在界限上下文(Bounded Context)中。一个团队只有具有统一的语言概念基础，并划分了清晰的边界，才能更好地沟通协作；文档和代码中的核心概念只有保持一致，才会具备更好的可读性和可理解性。因此，<strong>我建议，任何领域都应该有一份核心领域词汇表，方便团队在这些核心概念的表达和命名上达成共识。</strong></p>
+<p>表2-1是我在做商品业务时和团队一起制定的核心领域词汇表，我要求团队（包括业务方、产品经理）在开会、写文档（需求文档、设计文档），以及写代码的时候都必须使用“通用语言”。我们的确也是这样做的，实践证明，这样做显著提高了我们的沟通协作效率，因为有“通用语言”，文档和代码的可理解性也会提升不少。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201236829.png" alt="image-20231020123645793"></p>
+<p>概念是一切的基础，要提高逻辑思维能力，就要从弄清楚每一个概念所表达的具体内容（内涵和外延）开始。</p>
+<h4 id="2-2-3-管理者的概念技能"><a href="#2-2-3-管理者的概念技能" class="headerlink" title="2.2.3 管理者的概念技能"></a>2.2.3 管理者的概念技能</h4><p>在管理学中，有一个著名的模型叫作罗伯特卡茨模型，其中提出管理者必须具备3种必要的技能，分别是技术技能(Technical Skill)、人际关系技能(Human Skill)和概念技能(Conceptual Skill)，如图2-3所示。我们可以看到，越高阶的管理者对技术技能要求越少，但对概念技能的要求越高。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201237043.png" alt="image-20231020123740993"></p>
+<p>这是因为概念技能是管理者统观全局、面对复杂多变的环境，具有分析、判断、抽象和概括并认清主要矛盾，抓住问题实质，形成正确概念，从而形成正确决策的能力，即洞察组织与环境要素间相互影响和作用关系的能力。也就是说，概念技能可以帮助我们感知和发现环境中的机会与威胁，以及权衡不同方案的优劣和内在风险。</p>
+<p>管理者的概念技能是指管理者提出自己的观点并经过加工处理，将关系抽象化、概念化的能力。具有概念技能的管理者会把自己的组织看作一个统一的整体，并且熟悉各个小组之间的关系，能够正确地运用自己的各种技能来处理组织中出现的问题，将问题细化并各个击破，实现企业的目标。具有很强的概念技能的管理者能够认识到组织中存在的问题，正确地分析组织中出现的问题，并且拟定正确的解决方案加以实施。从这里我们可以看出，管理者的概念技能对于高级的管理者是最重要的，对于中级的管理者次之。</p>
+<p>前面提到，<strong>概念技能是管理者对复杂情况进行抽象和概念化的技能。</strong>在基础管理中，技术技能所占的比例较大；而在高层管理中，处理无形事物的概念技能就显得尤为重要了。因为越到高层，越需要快速的理解能力、良好的表达能力，以及快速抓住问题本质的能力。</p>
+<h3 id="2-3-逻辑三要素之判断"><a href="#2-3-逻辑三要素之判断" class="headerlink" title="2.3 逻辑三要素之判断"></a>2.3 逻辑三要素之判断</h3><p>判断（也叫作命题）是推理的基础，一个判断就是一个断言(Assert)，它断定了一个事情是这样或者不是这样。因此，每个判断都是或真或假的。</p>
+<p>一个问题没有断言任何东西，因此它不是判断。“你知道下象棋吗？”这的确是一个句子，但没有做出关于这个世界的断定。命令（“快点！”）或者感叹（“我的天哪！”）也不是判断，因为命令和感叹都是非真且非假的。</p>
+<p>判断一般用陈述句来表达，如“世界上的所有人都是善良的”是一句肯定判断。只要该判断符合对象的实际情况，它就是真的，反之就是假的。</p>
+<p><strong>判断是概念的展开，没有判断，就不能揭示和说明概念。同时，判断也是推理的前提，是正确运用各种推理的必要条件。</strong></p>
+<p>我们都知道“世界上的所有人都是善良的”这个判断是假的，否则这个世界就没有违法犯罪的人了。由此，我们可以得出判断的两个重要特征。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1)判断有肯定或者否定之分，即有肯定判断和否定判断。</span><br><span class="line">(2)判断有真假之分，一个判断要么真、要么假，不能非真非假。</span><br></pre></td></tr></table></figure>
+<p>准确地运用判断，我们才能够进行正确的思考，而思考的形式就是推理了。</p>
+<h3 id="2-4-逻辑三要素之推理"><a href="#2-4-逻辑三要素之推理" class="headerlink" title="2.4 逻辑三要素之推理"></a>2.4 逻辑三要素之推理</h3><p>前面提到，逻辑就是关系。所谓推理，就是研究语句、判断、命题之间相互关系的学问。逻辑推理可以分为演绎推理(Deductive Inference)、归纳推理(Inductive Inference)和溯因推理(Abductive Inference)。</p>
+<h4 id="2-4-1-演绎推理：因为，因为，所以"><a href="#2-4-1-演绎推理：因为，因为，所以" class="headerlink" title="2.4.1 演绎推理：因为，因为，所以"></a>2.4.1 演绎推理：因为，因为，所以</h4><p>演绎推理旨在阐明前提和结论之间的关系，为评估演绎论证是否有效提供方法。</p>
+<p>演绎推理是一个从一般到特殊的过程。我们通常说的“大前提、小前提、结论”的三段论形式就是典型的演绎推理。</p>
+<p>例如，“所有人都会死，苏格拉底是一个人，因此苏格拉底会死”。大前提是“所有人都会死”，小前提是“苏格拉底是一个人”，结论是“苏格拉底会死”。这是一种必然性推理（保真推理），因为其结论就包含在前提之中，“所有人会死”本身就包含“苏格拉底会死”。</p>
+<p>演绎逻辑在历史上出现了两种杰出的理论。一种被称为“古典逻辑”或“亚里士多德逻辑”，开创这种理论的是古希腊哲学家亚里士多德，他关于推理的论述被收集成册，称为《工具论》；另一种被称为“现代逻辑”或“现代符号逻辑”，主要形成于20世纪。</p>
+<p><strong>古典逻辑和符号逻辑都是研究演绎推理的形式(form)，所以也被称为形式逻辑。</strong></p>
+<p>也就是说，对于一个推理来说，首先要保证其在形式上是有效的。如果推理形式有效且前提为真，那么结论必定为真；如果形式是无效的，即使前提为真，结论也不一定为真。“真”和“假”的概念适用于命题，“有效性”和“无效性”适用于逻辑形式。</p>
+<p>例如下面的论证：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201244330.png" alt="image-20231020124457304"></p>
+<p>虽然前提(premise)是真的，但是其论证形式是无效的（否定前件谬误，后续会介绍），所以其结论是无效的，同时也是假的。</p>
+<h5 id="1-古典逻辑"><a href="#1-古典逻辑" class="headerlink" title="1.古典逻辑"></a>1.古典逻辑</h5><p><strong>古典逻辑（亚里士多德逻辑）主要处理不同对象的类之间关系的论证</strong>。类是指共有某种特定属性的对象的汇集。</p>
+<p>类与类之间的3种关联方式如下。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1)全包含(wholly included)，例如狗的类和哺乳动物的类。(2)部分包含(partially included)，例如运动员的类和女人的类。</span><br><span class="line">(3)互斥(exclude)，例如三角形的类和圆形的类。</span><br></pre></td></tr></table></figure>
+<p>基于类和类之间的关系，有以下4种直言命题。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)全称肯定命题（A命题）：所有S是P。例如所有政客都是说谎者。</span><br><span class="line">(2)全称否定命题（E命题）：没有S是P。例如没有政客是说谎者。(3)特称肯定命题（I命题）：有S是P。例如有政客是说谎者。</span><br><span class="line">(4)特称否定命题（O命题）：有S不是P。例如有政客不是说谎者。</span><br></pre></td></tr></table></figure>
+<p>基于这些命题，有多种组合形式。古典逻辑学家很细致地研究了这些形式，总结出三段论的15个有效形式。</p>
+<p>例如下面的论证：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201247073.png" alt="image-20231020124759040"></p>
+<p>因为这个论证形式是EAE-1，而EAE-1是15个有效论证形式之一，所以这是一个有效论证。又因为其前提是真的，所以结论也是真的。</p>
+<h5 id="2-符号逻辑"><a href="#2-符号逻辑" class="headerlink" title="2.符号逻辑"></a>2.符号逻辑</h5><p><strong>所谓符号逻辑，就是利用符号来表示逻辑中的各种概念。</strong>1847年，英国数学家布尔出版了著作《逻辑的数学分析》，建立了“布尔代数”，并创造了一套符号系统。布尔建立了一系列的运算法则，利用代数的方法研究逻辑问题，初步奠定了数理逻辑的基础。</p>
+<p>目前，符号逻辑已经超出逻辑学的范畴，成为数学的一个分支，同时也是计算机科学的基础。</p>
+<p>逻辑代数也叫作开关代数，它的基本运算是逻辑加、逻辑乘和逻辑非，也就是命题演算中的“或”“与”“非”。运算对象只有两个数0和1，相当于命题演算中的“真”和“假”。逻辑代数的运算特点如同电路分析中的开和关、高电位和低电位、导电和截止等现象一样，都只有两种不同的状态，因此它在电路分析中得到了广泛的应用。</p>
+<p>利用符号化和公式化，我们可以对逻辑命题进行数学演算，比如符号～代表否定，因此p=q和p=～～q是等价的，即双重否定等于肯定。同样，我们在计算机中的逻辑运算（与、或、非）也是完全符合符号逻辑的。</p>
+<p>再比如，如下的论证形式都是无效的，因为犯了肯定后件和否定前件的谬误。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201250342.png" alt="image-20231020125007309"></p>
+<p>这两个谬误很容易通过例子看出来，前面的“比尔·盖茨不是富有的”的例子就是一个典型的否定前件谬误；而如下的“华盛顿之死”的例子是肯定后件谬误。因此，所有否定前件或者肯定后件的论证形式，都是无效的。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201250689.png" alt="image-20231020125042659"></p>
+<h4 id="2-4-2-归纳推理：从特殊到一般"><a href="#2-4-2-归纳推理：从特殊到一般" class="headerlink" title="2.4.2 归纳推理：从特殊到一般"></a>2.4.2 归纳推理：从特殊到一般</h4><p>归纳推理是以一类事物中的若干个别对象的具体知识为前提，得出有关该类事物的普遍性知识的结论的过程。</p>
+<p>例如：</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201251057.png" alt="image-20231020125123019"></p>
+<p>这就是一个典型的归纳推理。然而，同样的推理用在下面的案例中就出现了问题，因为我们知道还有黑天鹅的存在。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201251292.png" alt="image-20231020125136265"></p>
+<p>然而科学知识都是来自科学归纳法的，所以真正的科学都是可以被证伪的，即当一种科学理论与最新的发现发生矛盾的时候，就需要一种新的理论来代替它。爱因斯坦的相对论虽然在牛顿力学的基础上迈出了一大步，但还是受到了量子力学的挑战，因此我们还需要一个能够解释所有力学现象的统一场论。这也是爱因斯坦终其一生都没有完成的工作，只能期待另一个“爱因斯坦”来完成了。</p>
+<p>实际上，归纳和演绎并不是割裂的，而是彼此联系的，主要有以下两个原因。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1)为了提高归纳推理的可靠程度，需要运用已有的理论知识对归纳推理的个别性前提进行分析，把握其中的因果性、必然性，这就要用到演绎推理。</span><br><span class="line">(2)归纳推理依靠演绎推理来验证自己的结论。同样，演绎推理要以一般性知识为前提，这通常要依赖归纳推理来提供一般性知识。</span><br></pre></td></tr></table></figure>
+<p>这一点在软件工程的建模工作中得到了充分的体现，<strong>建模是一个归纳工作，我们通过抽象问题域里具有共同特性的类来建立模型。为了验证模型的有效性，我们会使用演绎的方法去推演不同的业务场景，看看模型是否能满足业务的需要。</strong>这样的工作往往不是一次成型的，而是交替往复，最终才能得到一个相对合理的模型。</p>
+<h4 id="2-4-3-溯因推理：大胆假设，小心求证"><a href="#2-4-3-溯因推理：大胆假设，小心求证" class="headerlink" title="2.4.3 溯因推理：大胆假设，小心求证"></a>2.4.3 溯因推理：大胆假设，小心求证</h4><p>溯因推理就是我先知道了答案，再去追溯原因的推理。这种推理方法最早也是由亚里士多德提出的，他在著作《前分析篇》中提到了一种“还原推理模式”，说的正是溯因推理。</p>
+<p>演绎推理的方法是由A推理出B，而溯因推理是在看到了B后，推理出导致B的最佳解释，可以理解为根据结果B去推测原因A的推理方法。换句话说，溯因推理是解释已知事物的过程。</p>
+<p>如何进行溯因推理呢？简单来说，就是8个字：<strong>大胆假设、小心求证。</strong></p>
+<p>假如你家卫生间的地上出现了一滩积水，需要你去推理一下它的成因，你该怎么办？</p>
+<p>按照这8个字，你首先要做的是“大胆假设”。能够造成卫生间地上有积水的原因比较多，比如卫生间的屋顶漏水、抽水马桶漏水，或者有人在地上放了冰块。</p>
+<p>接下来，要从众多可能原因中找到一个最贴近现实的假设。因为屋顶漏水和地上有冰块都难以解释水是在抽水马桶一侧的现象，而且冰块也不大可能出现在卫生间。综合考虑这些因素后，你就能得出一个最贴近现实的假设，那就是抽水马桶漏水。</p>
+<p>那么，怎样才能知道卫生间的积水是来自抽水马桶漏水呢？这就需要对这个假设进行验证了，也就是“小心求证”。这里的验证并不困难，你只需要擦干地上的水，看是不是有水从马桶里漏出来，即可验证假设是否正确。</p>
+<p>做科学研究，也离不开大胆假设、小心求证。</p>
+<p>1845年，科学家发现天王星的运动数据和其他行星比起来出现了2分钟的弧度差值。勒维耶提出一个假设：天王星的差值是由另一颗（未发现的）行星引起的，基于这样的假设，那颗新行星——海王星很快被发现。</p>
+<p>对于程序员来说，基本每天都在运用这种溯因推理。我们通常说的故障排查(Trouble Shooting)就是溯因推理，用的手段基本上也是假设和求证。</p>
+<p>比如，我们收到系统异常报警后去查看系统日志，发现是一个依赖服务报了超时(Timeout)错误。我们的第一反应是：是不是网络出现了问题（假设）？接下来开始ping依赖服务的IP，发现网络没问题（求证）。于是我们提出了新的假设：是不是依赖服务内部出现了什么问题？接下来开始排查依赖服务的日志，发现是因为一个数据库操作过于频繁，导致响应时间超时。可是这部分的代码很长时间没有修改了，为什么偏偏今天出现问题呢？通过进一步排查，我们发现是缓存服务器出现了问题，导致本来调用缓存的操作全部被打到了数据库上。那么为什么缓存服务器会宕机呢？通过进一步追查，发现是最近使用缓存的人比较多，内存空间不足导致了宕机。至此，我们才算真正找到了问题的根因(Root Cause)。</p>
+<h3 id="2-5-逻辑链"><a href="#2-5-逻辑链" class="headerlink" title="2.5 逻辑链"></a>2.5 逻辑链</h3><p>通常情况下，你会觉得什么样的人说话特别有深度呢？是不是那种他一说话会让你有茅塞顿开的感慨，甚至忍不住发出“Aha”的惊叹的人？这种人通常会有深度思考的习惯，他们的逻辑链比普通人要长，更擅长深度思考，因此他们可以挖掘事物的根本原因，推断事物的深远发展结果。</p>
+<p>在现实中，不是所有的逻辑链路都是简单的“因为……，所以……”，而是有可能在“因”和“果”两个方向上进行拓展。</p>
+<h4 id="2-5-1-5Why思考法"><a href="#2-5-1-5Why思考法" class="headerlink" title="2.5.1 5Why思考法"></a>2.5.1 5Why思考法</h4><p>大多数情况下，我们的思维逻辑链都比较短，短就意味着肤浅，找不到问题的根本原因。延长思维逻辑链的方法之一是5Why思考法，它能够帮助我们找到问题的根本原因。</p>
+<p>5Why思考法，是指对一个问题连续多次追问为什么，直到找出问题的根本原因。注意：这里的5Why不是一定要问5次，而是要灵活运用延长逻辑链来找到问题的根本原因。到底要问几个Why呢？确定这个数字的原则是：不断追问下去，直到问题变得没有意义为止</p>
+<p>例如，一个问题出现的原因可能是这样一个因果逻辑链：A导致了B的发生，B导致了C的发生，C导致了D的发生，D又导致了E的发生，如图2-4所示。所以，在看到E时，如果我们只追问到D这一层，就是没有找到问题的根源所在。比如上面提到的服务器超时问题，其表象原因是数据库操作错误，根本原因却是缓存服务器的内存空间不足。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201802516.png" alt="image-20231020180228401"></p>
+<p>凡事我们要多问几个“为什么”，有一个著名的提问法叫作5Why提问法。对于任何问题，如果你能扛得住5个以上的“为什么”，那么说明你真正理解了这个问题。</p>
+<p>丰田汽车公司前副社长大野耐一曾经举了一个通过5Why提问法找到问题根本原因的实例。</p>
+<p>有一次，大野耐一先生见到生产线上的机器总是停转，虽然修过多次但仍不见好转，便上前询问现场的工作人员。</p>
+<p>问：“为什么机器停了？”(1Why)</p>
+<p>答：“因为机器超载，保险丝烧断了。</p>
+<p>”问：“为什么机器会超载？”(2Why)</p>
+<p>答：“因为轴承的润滑不足。”</p>
+<p>问：“为什么轴承会润滑不足？”(3Why)</p>
+<p>答：“因为润滑泵吸不上来油。”</p>
+<p>问：“为什么润滑泵吸不上来油？”(4Why)</p>
+<p>答：“因为油泵轴磨损、松动了。”</p>
+<p>问：“为什么油泵轴磨损了？”(5Why)</p>
+<p>答：“因为没有安装过滤器，润滑油里混进了铁屑等杂质。”</p>
+<p>在我们的实际工作中也是如此，凡事多问几个为什么，做到知其然，亦知其所以然。这种触达问题本质的思考会显著提升我们的认知水平和解决问题的能力。</p>
+<p>深度思维能够带给我们各种各样的好处——在学习、工作、管理、投资等方面，而思维逻辑链的延长则是深度思维的重要表现。</p>
+<h4 id="2-5-2-5So思考法"><a href="#2-5-2-5So思考法" class="headerlink" title="2.5.2 5So思考法"></a>2.5.2 5So思考法</h4><p>5So思考法，是指对一个现象连续追问其产生的结果，以探求它对未来可能造成的深远影响。凡事多问几个“所以呢”，能让我们拥有推演事物长远影响的能力。</p>
+<p>如图2-5所示，如果说5Why是在“因”的方向上进行拓展，回溯问题的根本原因，那么5So就是在“果”的链路上进行拓展，旨在洞悉事物未来的发展趋势。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310201805872.png" alt="image-20231020180527825"></p>
+<p>当年，年轻的马云访问美国，在朋友家第一次接触到互联网，他在电脑上小心翼翼地输入“beer”并按下回车键，电脑上出现了美国的啤酒、日本的啤酒、德国的啤酒……唯独没有中国的啤酒，这个场景深深触动了马云。</p>
+<p>如果我们站在马云的角度，他当时内心的思考过程也许是这样的。</p>
+<p>互联网这么方便，可以快速获取这么多信息，所以呢？”(1So)</p>
+<p>“互联网技术就是未来。”</p>
+<p>“所以呢？”(2So)“</p>
+<p>中国当前还没有像样的互联网公司。”</p>
+<p>“所以呢？”(3So)</p>
+<p>“随着改革开放，中国必将拥有大型互联网公司。”</p>
+<p>“所以呢？”(4So)</p>
+<p>“我回国后要顺应大势，创办中国的互联网公司。”</p>
+<p>在这样的背景下，马云开启了他的第一次创业——创办中国黄页。</p>
+<h3 id="2-6-逻辑谬误"><a href="#2-6-逻辑谬误" class="headerlink" title="2.6 逻辑谬误"></a>2.6 逻辑谬误</h3><p>所谓谬误(Fallacy)，就是推理中的欺骗手段。常见的谬误有错误假设、理由和结论不相关（偷换概念）等。</p>
+<p>虽然前面只对形式逻辑（古典逻辑、符号逻辑）进行了简单的介绍，但我们已充分感受到了它的抽象和复杂。是的，形式逻辑虽然强大，但远离生活，比如在与人沟通和辩论时，是很难用形式逻辑做算式推导的。</p>
+<p>出于实用性的考虑，逻辑学家发展出了非形式逻辑(Informal Logic)，它既不依赖于形式逻辑的概念，也不依赖于形式逻辑的主要评价功能——有效性。非形式逻辑可以用在日常生活中，辅助我们进行逻辑分析和批判性思考。</p>
+<p>为了方便运用，逻辑学家对这些逻辑谬误进行了分类，并给予它们易于记忆的命名。这样我们在碰到类似的场景时，便可以拿这些谬误分类作为武器，为我们的批判、分析、讨论提供“防卫”</p>
+<p>这些谬误包括偷换概念、错误假设、以偏概全、转移话题、人身攻击、以势压人、以众压人、循环论证、不适当地诉诸权威、不适当地诉诸情感、窃取论题、得寸进尺，等等。更多关于逻辑谬误的知识，推荐大家去看看《学会提问》这本书，接下来我会挑选几个常见的逻辑谬误进行简单介绍。</p>
+<h4 id="2-6-1-偷换概念"><a href="#2-6-1-偷换概念" class="headerlink" title="2.6.1 偷换概念"></a>2.6.1 偷换概念</h4><p>回到本章开头关于“Frank不是男人”的例子，这里小张就使用了偷换概念的花招。小王说的“男人”是指男子汉气概，而小张说的“男人”是指生理男人，两个“男人”指向的不是同一个概念。</p>
+<p>当你看到一个关键词在论证中不止一次地出现时，就要注意其意义有没有发生改变，如果意思发生改变，那么要警惕偷换概念的谬误。高度含混的术语和词组是偷换概念的绝佳材料。</p>
+<p>偷换概念也是一种常见的诡辩手法，主要有以下几种表现。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)任意改变一个概念的内涵和外延，使之变成另一个概念。</span><br><span class="line">(2)利用多义词可以表达几个不同概念的特点，故意把不同的概念混淆起来。</span><br><span class="line">(3)抓住概念之间的某些相似之处，抹杀不同概念的本质区别。</span><br></pre></td></tr></table></figure>
+<p>比如，在黑格尔的《哲学史讲演录》中有这样一个故事，当有人说欧谛德谟说谎时，他狡辩说：“说谎就是在说不存在的东西，而不存在的东西是无法说的，所以没有人能说谎。”</p>
+<p>在欧谛德谟的狡辩中，两次使用了“不存在的东西”这一词语，但其所表达的概念却是不同的。前者表达的是“不符合事实”的概念，后者表达的是“根本不存在的事物”的概念，他故意用后一概念偷换了前一概念。</p>
+<h4 id="2-6-2-错误假设"><a href="#2-6-2-错误假设" class="headerlink" title="2.6.2 错误假设"></a>2.6.2 错误假设</h4><p>在论证中，总有一些被认为是理所当然的特定假设，但通常情况下，它们却不会被人明说出来。因此乍一看，几乎每个论证都显得有道理，其外表结构看起来完美无缺，但有些内在的、没有说出来的看法——隐含假设，也起到了同样重要的作用。</p>
+<p>假设你戴了一副镜片严重扭曲的眼镜，却没有意识到这个问题，那么你有理由相信一切人、事物都是你看到的那样，而事实上这并不是它们本来的面貌。当你和他人分享你的感知而受到质疑时，你会惊讶不已，并对他们不能像你一样清晰地观察世界而困惑不解。最后，你要么停止与他人进行交流，要么变得更加武断。[插图]</p>
+<p>实际上，我们每个人都戴着一副“有色眼镜”在观察这个世界，这个世界呈现给我们的也并非其本来的面目，就像对于盲女（见图2-6）来说，她永远也无法感知彩虹的颜色。我们看待事物的方式或多或少地受到我们的认知、价值观、信念的影响，在我们进行逻辑推理时，这些“认知、价值观、信念”通常自然而然地作为“底色”参与其中，也正是基于这些错误假设的掩盖，很多谬误才很难被发现。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310202237934.png" alt="image-20231020223753771"></p>
+<p>举个例子，我们思考一下这个说法：一个小学没有毕业的人早早地进入社会挣了很多钱，但是一个博士毕业的人没有挣到太多钱，所以读书无用，小学没有毕业的人可以比博士更成功。</p>
+<p>这种说法中就暗含了一个隐含的价值观假设：即金钱是唯一的衡量标准，金钱是最重要的。但金钱至上的价值观并不是普适的，如果你不认同这样的价值观（比如认为精神富足更重要），那么这个论证就不成立了。</p>
+<p>再比如，在面对烂系统时，阿里巴巴内部经常有一个说辞叫“野蛮生长”，言外之意是业务发展很快，技术来不及优化，只能草率支撑。这其中就隐含着一个前提假设——时间有限，系统就会烂。然而这个前提假设在逻辑上是不严密的，有没有可能在同等的时间下做到“既快又好”呢？我想，随着技术能力水平的提升，是有可能做到的。</p>
+<p>每个人的背景和身份不一样，代表的利益不一样，所以在话语中经常带有自己的价值倾向，只有把这些隐含的假设暴露出来，我们才能进行正确的判断。</p>
+<h4 id="2-6-3-循环论证"><a href="#2-6-3-循环论证" class="headerlink" title="2.6.3 循环论证"></a>2.6.3 循环论证</h4><p>循环论证是指一个结论会自己证明自己，只不过措辞有所改变。例如：</p>
+<p>一个瘦子问胖子：“你为什么长得胖？”</p>
+<p>胖子回答：“因为我吃得多。”</p>
+<p>瘦子又问胖子：“你为什么吃得多？”</p>
+<p>胖子回答：“因为我长得胖。”</p>
+<p>电视剧《士兵突击》里的经典对白也是如此。</p>
+<p>老马：“可是什么有意义呢，许三多？人这辈子绝大多数时候都在做没意义的事情。”</p>
+<p>许三多：“有意义就是好好活。”</p>
+<p>老马：“那什么是好好活呢？”</p>
+<p>许三多：“好好活就是做有意义的事情，（看一眼老马后再强调）做很多很多有意义的事情。”</p>
+<p>再比如，论证“逃课不好”，因为“逃课是不对的”，“不好”和“不对”是一个意思，等于没有论证，是在同义反复。</p>
+<h4 id="2-6-4-以偏概全"><a href="#2-6-4-以偏概全" class="headerlink" title="2.6.4 以偏概全"></a>2.6.4 以偏概全</h4><p>以偏概全是指依据不充分的例证得出普遍的结论。比如，你不能因为看到3个意大利人很有情调，就说所有的意大利人都是浪漫的。</p>
+<p>以偏概全是使用归纳法时常见的谬误，即使用过小的样本量或者不具代表性的样本，归纳得到一个错误的结论。比如，用某一张偏方治好了某个人的某种疾病，如果据此得出“这张偏方具有治疗该疾病的作用”，那就错了。现代临床医学研究总是强调大样本、多中心、随机、双盲和对照试验，目的就是避免在运用归纳法时陷入以偏概全的谬误。</p>
+<p>实际上，上文中关于“读书无用论”的论证，除了有价值观假设的问题，也有以偏概全的问题。毕竟即使在经济方面，不读书能达到成功的也是极少数，从概率上来讲，更多情况是高学历的人比低学历的人在经济上要优越。</p>
+<h4 id="2-6-5-滑坡谬误"><a href="#2-6-5-滑坡谬误" class="headerlink" title="2.6.5 滑坡谬误"></a>2.6.5 滑坡谬误</h4><p>滑坡谬误是指不合理地使用一串因果关系。一个起因A引发多米诺效应，带来一系列负面事情。A并不是很糟糕，但是A导致B，B导致C，C导致D，D简直糟糕透顶。</p>
+<p>滑坡谬误和深度思考逻辑链有相似之处，都是因果逻辑链条的延伸。然而它们也有本质的不同，深度思考的逻辑链是逻辑严密的推导，而滑坡谬误的逻辑链是逻辑关系不严密的放大。这种放大或出于焦虑，或出于无知，但肯定不是严密的逻辑推导，否则它就不叫谬误，而应该是深度思考了。</p>
+<p>比如，一位母亲告诫她年轻的女儿：“亲吻自然没有什么，但是想想亲吻能带来什么，接下来又会发生什么。只有你弄清楚这些，你才会避免成为一个可怜孩子的妈妈，否则你年轻的生命就永远地毁了！”焦虑的滑坡谬误操纵者忘了一点，那就是许多行走在滑坡上的人都很小心，并不会跌倒。</p>
+<p>如今的教育“内卷”实际上也是一种滑坡谬误，很多家长不想让小孩输在起跑线上，认为不上好幼儿园就上不了好小学，不上好小学就上不了好中学，不上好中学就上不了好大学，上不了好大学这辈子就没有希望了</p>
+<p>“滑坡”在逻辑上虽然可能存在漏洞，但是作为一种修辞手法，它往往会起到比较好的喜剧效果。比如在电影《江湖》中，刘德华对张学友经典对白：“说了你又不听，听又不懂，懂又不做，做又做错，错又不认，认又不改，改又不服，不服又不讲，那叫我怎么办？”</p>
+<h3 id="2-7-非理性思考"><a href="#2-7-非理性思考" class="headerlink" title="2.7 非理性思考"></a>2.7 非理性思考</h3><p>逻辑思维需要理性的思考，但是人类并不是纯粹理性的动物，因为有时纯粹理性是无法做决策的。就像“布里丹之驴”这个故事：<strong>一只完全理性的驴恰处于两堆等量等质的干草中间，将会饿死，因为它不能对究竟该吃哪一堆干草做出任何理性的决定。</strong></p>
+<p>正如丹尼尔·卡尼曼在《快思慢想》一书中提到，<strong>人类都是主观性的动物，别说客观公正了，很多时候，连理性都没有，都是感觉直观。</strong></p>
+<p>不可否认，逻辑思维是我们最重要，也是最底层的思维能力。特别是对程序员来说，软件设计是一个纯思维的创造活动，没有清晰的逻辑思维，就不可能创造出设计感良好的软件。</p>
+<p>然而在生活上，有时我们需要“傻”一点，没必要凡事都上纲上线、理性分析。在很多场合下，我们还要有同理心，需要顾及他人的感受和情绪。尤其在家庭生活中，你要相信老婆很多时候都是“有道理的”，就拿我自己来说，虽然我认为不应该让小孩负担过重，但周日早上我还是会乖乖地陪女儿去上英语学习班。</p>
+<h2 id="3-结构化思维"><a href="#3-结构化思维" class="headerlink" title="3 结构化思维"></a>3 结构化思维</h2><p>在日常工作中，我们时常会碰到这样的情况，有的人在讲一件事情的时候逻辑非常混乱，罗列了很多事情，却说不到重点；有的人写代码，业务逻辑并没有多复杂，但呈现出的代码却像一团乱麻，混乱不堪，让人难以理解。这些都是典型的缺少结构化思维的表现，缺少结构化思维导致我们在写作（包括写代码）和表达的时候思维混乱，逻辑不清。</p>
+<p>结构化思维以逻辑思维为基础，是一种从无序到有序、从混乱到清晰的思维能力，可以帮助我们以一定的逻辑顺序从繁杂的信息中整理出清晰的结构，从而使写作和表达更清晰和易于理解。</p>
+<h3 id="3-1-结构与架构"><a href="#3-1-结构与架构" class="headerlink" title="3.1 结构与架构"></a>3.1 结构与架构</h3><p>结构可以说是万物之本。大到宇宙星系，小到尘埃颗粒，任何事物都有其特定的结构，并通过其特定的结构来体现其存在的价值和意义。</p>
+<p>在系统论中，系统是处在一定环境下的各个组成部分的整体，我们把各个组成部分称为系统的要素。显然，系统不只是要素的简单加和，还包括由内在的东西实现的各要素的普遍联系。</p>
+<p><strong>我们把这种各要素的组织形式（要素之间的关系）称为结构。</strong></p>
+<p><strong>系统的性质是由结构决定的</strong>。要素的内容是不稳定的，可能随时会被替换。就像忒休斯之船，虽然船的木板被换掉了，但只要船的结构没有变，其仍然是忒休斯之船。中国长达两千余年的封建历史也是一样，皇帝（要素）一个接一个地换，但是本质上，其背后的皇权制度没有变，旧社会的结构没有变，所以皇帝的更替并没有改变封建社会的本质。</p>
+<p>我们通常说的“结构性问题”是指那些底层的、难以改变的根本性问题。经济上的结构性问题就是作为经济这个系统的结构的经济制度——分配制度和所有制等出现了问题。</p>
+<p>我在零售通工作期间，做过一个关于价格的项目，当时的想法是试图通过价格管控让平台商品的价格更有竞争力，然而深入思考后不难发现，价格只是表象问题。如图3-1所示，在“冰山”之下，更深层次的是结构问题，即在相当长时间内，我们无法改变品牌商现有的分销渠道结构，不能让渠道更扁平化，也不能提升供应链效率，因此只是一味地管控价格注定是很难成功的。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310202252869.png" alt="image-20231020225250774"></p>
+<p><strong>架构的核心也是结构。所谓架构，就是“要素+结构”。</strong></p>
+<p>比如，组织的要素是员工，而组织架构就是规定了员工和员工之间协作关系的结构。又比如，应用系统的要素是程序（包括类、包、组件、模块和服务的不同粒度），而应用架构（如COLA架构）所要解决的就是如何处理这些程序要素之间的关系结构。</p>
+<h3 id="3-2-从无序到有序"><a href="#3-2-从无序到有序" class="headerlink" title="3.2 从无序到有序"></a>3.2 从无序到有序</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2023/10/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%BA%95%E5%B1%82%E6%80%9D%E7%BB%B4/">https://wdpname.github.io/2023/10/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%BA%95%E5%B1%82%E6%80%9D%E7%BB%B4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/10/20/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA%EF%BC%88%E7%AC%AC15%E7%89%88%EF%BC%89/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">逻辑学导论（第15版）</div></div></a></div><div class="next-post pull-right"><a href="/2023/10/16/%E7%A7%92%E6%87%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">秒懂设计模式</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">164</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">43</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-%E5%9F%BA%E7%A1%80%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B"><span class="toc-number">1.</span> <span class="toc-text">第一部分　基础思维能力</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8A%BD%E8%B1%A1%E6%80%9D%E7%BB%B4"><span class="toc-number">1.1.</span> <span class="toc-text">1 抽象思维</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%8A%BD%E8%B1%A1-%E6%8A%BD%E7%A6%BB-%E5%85%B7%E8%B1%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 抽象&#x3D;抽离+具象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%8A%BD%E8%B1%A1%E6%98%AF%E5%93%B2%E5%AD%A6%E6%80%9D%E7%BB%B4%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 抽象是哲学思维的基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E8%AF%AD%E8%A8%80%E7%9A%84%E6%8A%BD%E8%B1%A1%E6%80%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 语言的抽象性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E6%8A%BD%E8%B1%A1"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 软件设计中的抽象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%A0%B8%E5%BF%83%E6%98%AF%E6%8A%BD%E8%B1%A1"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">1.4.1 面向对象的核心是抽象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E6%8A%BD%E8%B1%A1%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%AF%84%E5%88%A4%E6%A0%87%E5%87%86"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">1.4.2 抽象设计的评判标准</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-%E6%8A%BD%E8%B1%A1%E7%BC%BA%E5%A4%B1%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B%E5%81%8F%E6%89%A7"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">1.4.3 抽象缺失之基础类型偏执</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-4-%E6%8A%BD%E8%B1%A1%E7%BC%BA%E5%A4%B1%E4%B9%8B%E9%87%8D%E5%A4%8D%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">1.4.4 抽象缺失之重复代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-5-%E6%8A%BD%E8%B1%A1%E8%AE%BE%E8%AE%A1%E8%A6%81%E5%AE%8C%E6%95%B4"><span class="toc-number">1.1.4.5.</span> <span class="toc-text">1.4.5 抽象设计要完整</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-6-%E4%B8%8D%E8%A6%81%E4%B8%BA%E4%BA%86%E6%8A%BD%E8%B1%A1%E8%80%8C%E6%8A%BD%E8%B1%A1"><span class="toc-number">1.1.4.6.</span> <span class="toc-text">1.4.6 不要为了抽象而抽象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E6%8A%BD%E8%B1%A1%E7%9A%84%E5%B1%82%E6%AC%A1%E6%80%A7"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 抽象的层次性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E5%AF%B9%E6%8A%BD%E8%B1%A1%E5%B1%82%E6%AC%A1%E7%9A%84%E6%9D%83%E8%A1%A1"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">1.5.1 对抽象层次的权衡</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-%E8%BD%AF%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%88%86%E5%B1%82%E6%8A%BD%E8%B1%A1"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">1.5.2 软件中的分层抽象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-3-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%AD%E7%9A%84%E6%8A%BD%E8%B1%A1%E5%B1%82%E6%AC%A1%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">1.5.3 强制类型转换中的抽象层次问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-4-%E6%8A%BD%E8%B1%A1%E5%B1%82%E6%AC%A1%E4%B8%80%E8%87%B4%E6%80%A7%E5%8E%9F%E5%88%99"><span class="toc-number">1.1.5.4.</span> <span class="toc-text">1.5.4 抽象层次一致性原则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E9%94%BB%E7%82%BC%E6%8A%BD%E8%B1%A1%E6%80%9D%E7%BB%B4%E8%83%BD%E5%8A%9B"><span class="toc-number">1.1.6.</span> <span class="toc-text">1.6 锻炼抽象思维能力</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%9A%E9%98%85%E8%AF%BB"><span class="toc-number">1.1.6.1.</span> <span class="toc-text">1.多阅读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%8B%A4%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.6.2.</span> <span class="toc-text">2.勤总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%91%BD%E5%90%8D%E8%AE%AD%E7%BB%83"><span class="toc-number">1.1.6.3.</span> <span class="toc-text">3.命名训练</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%A2%86%E5%9F%9F%E5%BB%BA%E6%A8%A1%E8%AE%AD%E7%BB%83"><span class="toc-number">1.1.6.4.</span> <span class="toc-text">4.领域建模训练</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%80%BB%E8%BE%91%E6%80%9D%E7%BB%B4"><span class="toc-number">1.2.</span> <span class="toc-text">2 逻辑思维</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%80%BB%E8%BE%91%E5%B0%B1%E6%98%AF%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 逻辑就是关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%80%BB%E8%BE%91%E4%B8%89%E8%A6%81%E7%B4%A0%E4%B9%8B%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 逻辑三要素之概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-%E6%A6%82%E5%BF%B5%E8%A6%81%E6%98%8E%E7%A1%AE%E4%B8%94%E6%B8%85%E6%99%B0"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">2.2.1 概念要明确且清晰</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-%E5%88%B6%E5%AE%9A%E5%9B%A2%E9%98%9F%E9%80%9A%E7%94%A8%E8%AF%AD%E8%A8%80"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2.2.2 制定团队通用语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-%E7%AE%A1%E7%90%86%E8%80%85%E7%9A%84%E6%A6%82%E5%BF%B5%E6%8A%80%E8%83%BD"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">2.2.3 管理者的概念技能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E9%80%BB%E8%BE%91%E4%B8%89%E8%A6%81%E7%B4%A0%E4%B9%8B%E5%88%A4%E6%96%AD"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 逻辑三要素之判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E9%80%BB%E8%BE%91%E4%B8%89%E8%A6%81%E7%B4%A0%E4%B9%8B%E6%8E%A8%E7%90%86"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 逻辑三要素之推理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-%E6%BC%94%E7%BB%8E%E6%8E%A8%E7%90%86%EF%BC%9A%E5%9B%A0%E4%B8%BA%EF%BC%8C%E5%9B%A0%E4%B8%BA%EF%BC%8C%E6%89%80%E4%BB%A5"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">2.4.1 演绎推理：因为，因为，所以</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%8F%A4%E5%85%B8%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.4.1.1.</span> <span class="toc-text">1.古典逻辑</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E7%AC%A6%E5%8F%B7%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.4.1.2.</span> <span class="toc-text">2.符号逻辑</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-%E5%BD%92%E7%BA%B3%E6%8E%A8%E7%90%86%EF%BC%9A%E4%BB%8E%E7%89%B9%E6%AE%8A%E5%88%B0%E4%B8%80%E8%88%AC"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">2.4.2 归纳推理：从特殊到一般</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-%E6%BA%AF%E5%9B%A0%E6%8E%A8%E7%90%86%EF%BC%9A%E5%A4%A7%E8%83%86%E5%81%87%E8%AE%BE%EF%BC%8C%E5%B0%8F%E5%BF%83%E6%B1%82%E8%AF%81"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">2.4.3 溯因推理：大胆假设，小心求证</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E9%80%BB%E8%BE%91%E9%93%BE"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 逻辑链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-5Why%E6%80%9D%E8%80%83%E6%B3%95"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">2.5.1 5Why思考法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-5So%E6%80%9D%E8%80%83%E6%B3%95"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">2.5.2 5So思考法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E9%80%BB%E8%BE%91%E8%B0%AC%E8%AF%AF"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 逻辑谬误</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-1-%E5%81%B7%E6%8D%A2%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">2.6.1 偷换概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-2-%E9%94%99%E8%AF%AF%E5%81%87%E8%AE%BE"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">2.6.2 错误假设</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-3-%E5%BE%AA%E7%8E%AF%E8%AE%BA%E8%AF%81"><span class="toc-number">1.2.6.3.</span> <span class="toc-text">2.6.3 循环论证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-4-%E4%BB%A5%E5%81%8F%E6%A6%82%E5%85%A8"><span class="toc-number">1.2.6.4.</span> <span class="toc-text">2.6.4 以偏概全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-5-%E6%BB%91%E5%9D%A1%E8%B0%AC%E8%AF%AF"><span class="toc-number">1.2.6.5.</span> <span class="toc-text">2.6.5 滑坡谬误</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E9%9D%9E%E7%90%86%E6%80%A7%E6%80%9D%E8%80%83"><span class="toc-number">1.2.7.</span> <span class="toc-text">2.7 非理性思考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BB%93%E6%9E%84%E5%8C%96%E6%80%9D%E7%BB%B4"><span class="toc-number">1.3.</span> <span class="toc-text">3 结构化思维</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E7%BB%93%E6%9E%84%E4%B8%8E%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 结构与架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%BB%8E%E6%97%A0%E5%BA%8F%E5%88%B0%E6%9C%89%E5%BA%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 从无序到有序</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/10/21/MySQL%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%90%E8%A1%8C%E7%9A%84/" title="MySQL是怎样运行的"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL是怎样运行的"/></a><div class="content"><a class="title" href="/2023/10/21/MySQL%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%90%E8%A1%8C%E7%9A%84/" title="MySQL是怎样运行的">MySQL是怎样运行的</a><time datetime="2023-10-21T01:12:50.000Z" title="发表于 2023-10-21 09:12:50">2023-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/20/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA%EF%BC%88%E7%AC%AC15%E7%89%88%EF%BC%89/" title="逻辑学导论（第15版）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逻辑学导论（第15版）"/></a><div class="content"><a class="title" href="/2023/10/20/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA%EF%BC%88%E7%AC%AC15%E7%89%88%EF%BC%89/" title="逻辑学导论（第15版）">逻辑学导论（第15版）</a><time datetime="2023-10-20T15:01:41.000Z" title="发表于 2023-10-20 23:01:41">2023-10-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%BA%95%E5%B1%82%E6%80%9D%E7%BB%B4/" title="程序员的底层思维"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="程序员的底层思维"/></a><div class="content"><a class="title" href="/2023/10/20/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%BA%95%E5%B1%82%E6%80%9D%E7%BB%B4/" title="程序员的底层思维">程序员的底层思维</a><time datetime="2023-10-20T02:53:14.000Z" title="发表于 2023-10-20 10:53:14">2023-10-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/16/%E7%A7%92%E6%87%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="秒懂设计模式"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="秒懂设计模式"/></a><div class="content"><a class="title" href="/2023/10/16/%E7%A7%92%E6%87%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="秒懂设计模式">秒懂设计模式</a><time datetime="2023-10-16T13:35:45.000Z" title="发表于 2023-10-16 21:35:45">2023-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/15/Maven%E5%AE%9E%E6%88%98/" title="Maven实战"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Maven实战"/></a><div class="content"><a class="title" href="/2023/10/15/Maven%E5%AE%9E%E6%88%98/" title="Maven实战">Maven实战</a><time datetime="2023-10-15T11:12:27.000Z" title="发表于 2023-10-15 19:12:27">2023-10-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
