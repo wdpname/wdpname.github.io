@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>每天5分钟玩转Docker容器技术 | 平博社</title><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="第1章 鸟瞰容器生态系统1.1 容器生态系统 1．容器核心技术容器核心技术是指能够让Container在host上运行起来的那些技术  （1）容器规范 这两个规范都是由OCI组织发布的。 （2）容器runtimeruntime是容器真正运行的地方。runtime需要跟操作系统kernel紧密协作，为容器提供运行环境。 java程序是容器，那么jvm就是容器runtime。！！  （3）容器管理工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天5分钟玩转Docker容器技术">
+<meta property="og:url" content="https://wdpname.github.io/2023/10/28/%E6%AF%8F%E5%A4%A95%E5%88%86%E9%92%9F%E7%8E%A9%E8%BD%ACDocker%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="第1章 鸟瞰容器生态系统1.1 容器生态系统 1．容器核心技术容器核心技术是指能够让Container在host上运行起来的那些技术  （1）容器规范 这两个规范都是由OCI组织发布的。 （2）容器runtimeruntime是容器真正运行的地方。runtime需要跟操作系统kernel紧密协作，为容器提供运行环境。 java程序是容器，那么jvm就是容器runtime。！！  （3）容器管理工具">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-28T05:38:35.000Z">
+<meta property="article:modified_time" content="2023-10-28T15:48:36.577Z">
+<meta property="article:author" content="dpWu">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2023/10/28/%E6%AF%8F%E5%A4%A95%E5%88%86%E9%92%9F%E7%8E%A9%E8%BD%ACDocker%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '每天5分钟玩转Docker容器技术',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-28 23:48:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">每天5分钟玩转Docker容器技术</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-28T05:38:35.000Z" title="发表于 2023-10-28 13:38:35">2023-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-28T15:48:36.577Z" title="更新于 2023-10-28 23:48:36">2023-10-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B9%A6%E7%B1%8D/">书籍</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="每天5分钟玩转Docker容器技术"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="第1章-鸟瞰容器生态系统"><a href="#第1章-鸟瞰容器生态系统" class="headerlink" title="第1章 鸟瞰容器生态系统"></a>第1章 鸟瞰容器生态系统</h1><h2 id="1-1-容器生态系统"><a href="#1-1-容器生态系统" class="headerlink" title="1.1 容器生态系统"></a>1.1 容器生态系统</h2><p><img src="https://gitee.com/fjkf/images/raw/master/202310281340117.png" alt="image-20231028134035950"></p>
+<h3 id="1．容器核心技术"><a href="#1．容器核心技术" class="headerlink" title="1．容器核心技术"></a>1．容器核心技术</h3><p>容器核心技术是指能够让Container在host上运行起来的那些技术</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281341714.png" alt="image-20231028134119687"></p>
+<h4 id="（1）容器规范"><a href="#（1）容器规范" class="headerlink" title="（1）容器规范"></a>（1）容器规范</h4><p><img src="https://gitee.com/fjkf/images/raw/master/202310281342376.png" alt="image-20231028134235353"></p>
+<p>这两个规范都是由OCI组织发布的。</p>
+<h4 id="（2）容器runtime"><a href="#（2）容器runtime" class="headerlink" title="（2）容器runtime"></a>（2）容器runtime</h4><p>runtime是容器真正运行的地方。runtime需要跟操作系统kernel紧密协作，为容器提供运行环境。</p>
+<p>java程序是容器，那么jvm就是容器runtime。！！</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281343158.png" alt="image-20231028134345133"></p>
+<h4 id="（3）容器管理工具"><a href="#（3）容器管理工具" class="headerlink" title="（3）容器管理工具"></a>（3）容器管理工具</h4><p>❓有了容器规范和runtime，为啥要有这个管理工具？</p>
+<p>因为就好如，在jvm中启动了一个java程序，那么你可能需要中途停止这个程序，这是需要java命令来中止，java命令就好比管理工具！！！</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281348226.png" alt="image-20231028134804195"></p>
+<h4 id="（4）容器定义工具"><a href="#（4）容器定义工具" class="headerlink" title="（4）容器定义工具"></a>（4）容器定义工具</h4><p>❓定义工具是用来干什么的？</p>
+<p>在上面提及，容器就相当于java程序，而java程序中有我们用户定义的内容和属性，那么容器中也有自己的内容，那么容器就需要定义工具。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281350621.png" alt="image-20231028135053596"></p>
+<h4 id="（5）Registry"><a href="#（5）Registry" class="headerlink" title="（5）Registry"></a>（5）Registry</h4><p>❓为什么需要一个仓库（Registry）？</p>
+<p>因为我们之后需要有许许多多的image，这些镜像需要统一管理，所以用Registry来存储这些镜像。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281353593.png" alt="image-20231028135332568"></p>
+<h4 id="（6）容器OS"><a href="#（6）容器OS" class="headerlink" title="（6）容器OS"></a>（6）容器OS</h4><p>❓为什么需要容器OS？</p>
+<p>容器运行需要容器runtime，就好如java程序运行需要jvm，但是jvm实在太大了，有没有更加快速，轻量的运行容器呢？那就要用到容器OS了。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281356230.png" alt="image-20231028135627207"></p>
+<h3 id="2．容器平台技术"><a href="#2．容器平台技术" class="headerlink" title="2．容器平台技术"></a>2．容器平台技术</h3><p>❓为什么要有容器平台技术？</p>
+<p>因为容器核心技术能够做到在单个机器上运行容器，但是要是再分布式环境中运行，那么容器核心技术就不满足了。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281401440.png" alt="image-20231028140151417"></p>
+<h4 id="（1）容器编排引擎"><a href="#（1）容器编排引擎" class="headerlink" title="（1）容器编排引擎"></a>（1）容器编排引擎</h4><p>❓什么是容器编排？</p>
+<p>类似于多个容器之间如何调度，以及如何服务发现。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281403001.png" alt="image-20231028140319970"></p>
+<h4 id="（2）容器管理平台"><a href="#（2）容器管理平台" class="headerlink" title="（2）容器管理平台"></a>（2）容器管理平台</h4><p>❓什么是容器管理平台？</p>
+<p>其实就是在容器编排引擎上实现了一个通用的平台。可以支持多种编排引擎。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281404401.png" alt="image-20231028140447373" style="zoom:80%;" /></p>
+<h4 id="（3）基于容器的PaaS"><a href="#（3）基于容器的PaaS" class="headerlink" title="（3）基于容器的PaaS"></a>（3）基于容器的PaaS</h4><p><img src="https://gitee.com/fjkf/images/raw/master/202310281407811.png" alt="image-20231028140745782"></p>
+<h3 id="3．容器支持技术"><a href="#3．容器支持技术" class="headerlink" title="3．容器支持技术"></a>3．容器支持技术</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202310281408755.png" alt="image-20231028140837729"></p>
+<h4 id="（1）容器网络"><a href="#（1）容器网络" class="headerlink" title="（1）容器网络"></a>（1）容器网络</h4><p>❓什么是容器网络？</p>
+<p>容器提供互相通信和与外部世界（包括其他容器、主机和互联网）进行通信的网络能力</p>
+<h4 id="（2）服务发现"><a href="#（2）服务发现" class="headerlink" title="（2）服务发现"></a>（2）服务发现</h4><p>❓什么是服务发现？</p>
+<p>因为在微服务环境下，各个服务组件是动态变化的，那么就需要在每次调用一个服务时，就需要服务的发现，因为有些服务会宕机。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281414775.png" alt="image-20231028141432751"></p>
+<h4 id="（3）监控"><a href="#（3）监控" class="headerlink" title="（3）监控"></a>（3）监控</h4><p>❓什么是监控？</p>
+<p>其实就是对容器状态的监控。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281414535.png" alt="image-20231028141456509"></p>
+<h4 id="（4）数据管理"><a href="#（4）数据管理" class="headerlink" title="（4）数据管理"></a>（4）数据管理</h4><p>❓为什么需要数据管理？</p>
+<p>当容器在各个host之间迁移，如何保证数据也能迁移，这就需要对数据进行管理。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281416537.png" alt="image-20231028141648515"></p>
+<h4 id="（5）日志管理"><a href="#（5）日志管理" class="headerlink" title="（5）日志管理"></a>（5）日志管理</h4><p>❓为什么要有日志管理？</p>
+<p>因为一个系统肯定会有一系列的故障，只有做好日志记录，才能对问题进行有逻辑的排查！！！</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281418047.png" alt="image-20231028141820020"></p>
+<h4 id="（6）安全性"><a href="#（6）安全性" class="headerlink" title="（6）安全性"></a>（6）安全性</h4><p>❓为什么容器需要具有安全性？</p>
+<p>因为不是每一个容器都是安全的，就比如我们去下载软件，不是每一个软件都是良性软件！！！</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281419251.png" alt="image-20231028141922228"></p>
+<h1 id="第2章-容器核心知识概述"><a href="#第2章-容器核心知识概述" class="headerlink" title="第2章 容器核心知识概述"></a>第2章 容器核心知识概述</h1><h2 id="2-3-How——容器是如何工作的"><a href="#2-3-How——容器是如何工作的" class="headerlink" title="2.3 How——容器是如何工作的"></a>2.3 How——容器是如何工作的</h2><h3 id="1-Docker架构"><a href="#1-Docker架构" class="headerlink" title="1. Docker架构"></a>1. Docker架构</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202310281533357.png" alt="image-20231028153335194"></p>
+<h3 id="2-Docker客户端"><a href="#2-Docker客户端" class="headerlink" title="2. Docker客户端"></a>2. Docker客户端</h3><p>最常用的Docker客户端是docker命令。通过docker我们可以方便地在Host上构建和运行容器。</p>
+<h3 id="3-Docker服务器"><a href="#3-Docker服务器" class="headerlink" title="3. Docker服务器"></a>3. Docker服务器</h3><p>Docker daemon是服务器组件，以Linux后台服务的方式运行</p>
+<p>默认配置下，Docker daemon只能响应来自本地Host的客户端请求。如果要允许远程客户端请求，需要在配置文件中打开TCP监听</p>
+<h3 id="4-Docker镜像"><a href="#4-Docker镜像" class="headerlink" title="4. Docker镜像"></a>4. Docker镜像</h3><p>可将Docker镜像看成只读模板，通过它可以创建Docker容器。</p>
+<h3 id="5-Docker容器"><a href="#5-Docker容器" class="headerlink" title="5. Docker容器"></a>5. Docker容器</h3><p>Docker容器就是Docker镜像的运行实例。</p>
+<h3 id="6-Registry"><a href="#6-Registry" class="headerlink" title="6. Registry"></a>6. Registry</h3><p>Registry是存放Docker镜像的仓库</p>
+<h1 id="第3章-Docker镜像"><a href="#第3章-Docker镜像" class="headerlink" title="第3章 Docker镜像"></a>第3章 Docker镜像</h1><h2 id="3-1-镜像的内部结构"><a href="#3-1-镜像的内部结构" class="headerlink" title="3.1 镜像的内部结构"></a>3.1 镜像的内部结构</h2><h3 id="3-1-1-hello-world——最小的镜像"><a href="#3-1-1-hello-world——最小的镜像" class="headerlink" title="3.1.1 hello-world——最小的镜像"></a>3.1.1 hello-world——最小的镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull hello-world</span><br></pre></td></tr></table></figure>
+<h3 id="3-1-2-base镜像"><a href="#3-1-2-base镜像" class="headerlink" title="3.1.2 base镜像"></a>3.1.2 base镜像</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202310281546568.png" alt="image-20231028154633405"></p>
+<h4 id="1-rootfs"><a href="#1-rootfs" class="headerlink" title="1. rootfs"></a>1. rootfs</h4><p>内核空间是kernel, Linux刚启动时会加载bootfs文件系统，之后bootfs会被卸载掉。用户空间的文件系统是rootfs，包含我们熟悉的 /dev、/proc、/bin等目录。</p>
+<p>对于base镜像来说，底层直接用Host的kernel，自己只需要提供rootfs就行了。</p>
+<h4 id="2-base镜像提供的是最小安装的Linux发行版"><a href="#2-base镜像提供的是最小安装的Linux发行版" class="headerlink" title="2. base镜像提供的是最小安装的Linux发行版"></a>2. base镜像提供的是最小安装的Linux发行版</h4><p><img src="https://gitee.com/fjkf/images/raw/master/202310281548742.png" alt="image-20231028154821707"></p>
+<h4 id="3．支持运行多种Linux-OS"><a href="#3．支持运行多种Linux-OS" class="headerlink" title="3．支持运行多种Linux OS"></a>3．支持运行多种Linux OS</h4><p>不同Linux发行版的区别主要就是rootfs。</p>
+<p>所以Docker可以同时支持多种Linux镜像，模拟出多种操作系统环境，如图3-8所示。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281548439.png" alt="image-20231028154856417"></p>
+<h3 id="3-1-3-镜像的分层结构"><a href="#3-1-3-镜像的分层结构" class="headerlink" title="3.1.3 镜像的分层结构"></a>3.1.3 镜像的分层结构</h3><p>❓为什么Docker镜像要采用这种分层结构呢？</p>
+<p>因为可以实现共享资源！！！</p>
+<h4 id="可写的容器层"><a href="#可写的容器层" class="headerlink" title="可写的容器层"></a>可写的容器层</h4><p>当容器启动时，一个新的可写层被加载到镜像的顶部。</p>
+<p>这一层通常被称作“容器层”，“容器层”之下的都叫“镜像层”</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310281551333.png" alt="image-20231028155112283"></p>
+<p>所有对容器的改动，无论添加、删除，还是修改文件都只会发生在容器层中。只有容器层是可写的，容器层下面的所有镜像层都是只读的。</p>
+<p>镜像层数量可能会很多，所有镜像层会联合在一起组成一个统一的文件系统。如果不同层中有一个相同路径的文件，比如 /a，上层的 /a会覆盖下层的 /a，也就是说用户只能访问到上层中的文件 /a。在容器层中，用户看到的是一个叠加之后的文件系统。</p>
+<p>只有当需要修改时才复制一份数据，这种特性被称作Copy-on-Write。可见，容器层保存的是镜像变化的部分，不会对镜像本身进行任何修改。</p>
+<h2 id="3-2-构建镜像"><a href="#3-2-构建镜像" class="headerlink" title="3.2 构建镜像"></a>3.2 构建镜像</h2><p>Docker提供了两种构建镜像的方法： docker commit命令与Dockerfile构建文件。</p>
+<h3 id="3-2-1-docker-commit"><a href="#3-2-1-docker-commit" class="headerlink" title="3.2.1 docker commit"></a>3.2.1 docker commit</h3><p>❓既然docker commit不是推荐的方法，我们为什么还要花时间学习呢？</p>
+<p>原因是：即便是用Dockerfile（推荐方法）构建镜像，底层也是docker commit一层一层构建新镜像的。学习docker commit能够帮助我们更加深入地理解构建过程和镜像的分层结构。</p>
+<h3 id="3-2-2-Dockerfile"><a href="#3-2-2-Dockerfile" class="headerlink" title="3.2.2 Dockerfile"></a>3.2.2 Dockerfile</h3><p>Dockerfile是一个文本文件，记录了镜像构建的所有步骤。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t ubuntu-with-vi-dockerfile .</span><br></pre></td></tr></table></figure>
+<h4 id="3．镜像的缓存特性"><a href="#3．镜像的缓存特性" class="headerlink" title="3．镜像的缓存特性"></a>3．镜像的缓存特性</h4><p>Dockerfile中每一个指令都会创建一个镜像层，上层是依赖于下层的</p>
+<p>无论什么时候，只要某一层发生变化，其上面所有层的缓存都会失效。</p>
+<h4 id="5-Dockerfile常用指令"><a href="#5-Dockerfile常用指令" class="headerlink" title="5. Dockerfile常用指令"></a>5. Dockerfile常用指令</h4><p>● FROM指定base镜像。</p>
+<p>● MAINTAINER设置镜像的作者，可以是任意字符串。</p>
+<p>● COPY将文件从build context复制到镜像。COPY支持两种形式： COPY src dest与COPY [“src”, “dest”]。注意：src只能指定build context中的文件或目录。</p>
+<p>● ADD与COPY类似，从build context复制文件到镜像。不同的是，如果src是归档文件（tar、zip、tgz、xz等），文件会被自动解压到dest。</p>
+<p>● ENV设置环境变量，环境变量可被后面的指令使用。例如：[插图]</p>
+<p>● EXPOSE指定容器中的进程会监听某个端口，Docker可以将该端口暴露出来。我们会在容器网络部分详细讨论。</p>
+<p>● VOLUME将文件或目录声明为volume。我们会在容器存储部分详细讨论。</p>
+<p>● WORKDIR为后面的RUN、CMD、ENTRYPOINT、ADD或COPY指令设置镜像中的当前工作目录。</p>
+<p><strong>● RUN在容器中运行指定的命令。</strong></p>
+<p><strong>● CMD容器启动时运行指定的命令。Dockerfile中可以有多个CMD指令，但只有最后一个生效。CMD可以被docker run之后的参数替换。</strong></p>
+<p><strong>● ENTRYPOINT设置容器启动时运行的命令。Dockerfile中可以有多个ENTRYPOINT指令，但只有最后一个生效。CMD或docker run之后的参数会被当作参数传递给ENTRYPOINT。</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM busybox</span><br><span class="line">MAINTAINER cloudman@example.net</span><br><span class="line">WORKDIR /testdir</span><br><span class="line">RUN touch tmpfile1</span><br><span class="line">COPY [&quot;tmpfile2&quot;,&quot;.&quot;]</span><br><span class="line">ADD [&quot;bunch.tar.gz&quot;,&quot;.&quot;]</span><br><span class="line">ENV WELCOME &quot;You are in my container,welcome!&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-RUN-vs-CMD-vs-ENTRYPOINT"><a href="#3-3-RUN-vs-CMD-vs-ENTRYPOINT" class="headerlink" title="3.3 RUN vs CMD vs ENTRYPOINT"></a>3.3 RUN vs CMD vs ENTRYPOINT</h2><p>RUN、CMD和ENTRYPOINT这三个Dockerfile指令看上去很类似，很容易混淆。本节将通过实践详细讨论它们的区别。</p>
+<p>（1）RUN：执行命令并创建新的镜像层，RUN经常用于安装软件包。</p>
+<p>（2）CMD：设置容器启动后默认执行的命令及其参数，但CMD能够被docker run后面跟的命令行参数替换。</p>
+<p>（3）ENTRYPOINT：配置容器启动时运行的命令。</p>
+<h3 id="3-3-1-Shell和Exec格式"><a href="#3-3-1-Shell和Exec格式" class="headerlink" title="3.3.1 Shell和Exec格式"></a>3.3.1 Shell和Exec格式</h3><p>我们可用两种方式指定RUN、CMD和ENTRYPOINT要运行的命令：Shell格式和Exec格式，二者在使用上有细微的区别。</p>
+<p>其中使用Exec格式和ENTRYPOINT命令 会有一个缺陷，不能解析系统变量！！！</p>
+<h4 id="1-shell格式"><a href="#1-shell格式" class="headerlink" title="1. shell格式"></a>1. shell格式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RUN apt-get install python3</span><br><span class="line">CMD <span class="built_in">echo</span> <span class="string">&quot;Hello world&quot;</span></span><br><span class="line">ENTRYPOINT <span class="built_in">echo</span> <span class="string">&quot;Hello world&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-Exec格式"><a href="#2-Exec格式" class="headerlink" title="2. Exec格式"></a>2. Exec格式</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RUN [&quot;apt-get&quot;, &quot;install&quot;, &quot;python3&quot;]</span><br><span class="line">CMD [&quot;/bin/echo&quot;, &quot;Hello world&quot;]</span><br><span class="line">ENTRYPOINT [&quot;/bin/echo&quot;, &quot;Hello world&quot;]</span><br></pre></td></tr></table></figure>
+<p>我个人感觉shell格式好很多！！！</p>
+<h3 id="3-3-2-RUN"><a href="#3-3-2-RUN" class="headerlink" title="3.3.2 RUN"></a>3.3.2 RUN</h3><p>apt-get update和apt-get install被放在一个RUN指令中执行，这样能够保证每次安装的是最新的包。如果apt-get install在单独的RUN中执行，则会使用apt-get update创建镜像层，而这一层可能是很久以前缓存的。</p>
+<h3 id="3-3-3-CMD"><a href="#3-3-3-CMD" class="headerlink" title="3.3.3 CMD"></a>3.3.3 CMD</h3><p>此命令会在容器启动且docker run没有指定其他命令时运行。</p>
+<p>CMD有三种格式：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）Exec格式：CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]这是CMD的推荐格式。</span><br><span class="line">（2）CMD[&quot;param1&quot;, &quot;param2&quot;]为ENTRYPOINT提供额外的参数，此时ENTRYPOINT必须使用Exec格式。</span><br><span class="line">（3）Shell格式：CMD command param1 param2</span><br><span class="line"><span class="code">    CMD echo &quot;Hello world&quot;</span></span><br></pre></td></tr></table></figure>
+<p>第二种格式CMD[“param1”, “param2”]要与Exec格式的ENTRYPOINT指令配合使用，其用途是为ENTRYPOINT设置默认的参数。</p>
+<p>Dockerfile片段如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMD echo &quot;Hello world&quot;</span><br></pre></td></tr></table></figure>
+<p>运行容器docker run -it [image]将输出：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello world</span><br></pre></td></tr></table></figure>
+<p>但当后面加上一个命令，比如docker run -it [image] /bin/bash, CMD会被忽略掉，命令bash将被执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@10a32dc7d3d3:/#</span><br></pre></td></tr></table></figure>
+<h3 id="3-3-4-ENTRYPOINT"><a href="#3-3-4-ENTRYPOINT" class="headerlink" title="3.3.4 ENTRYPOINT"></a>3.3.4 ENTRYPOINT</h3><p>ENTRYPOINT看上去与CMD很像，它们都可以指定要执行的命令及其参数。不同的地方在于ENTRYPOINT不会被忽略，一定会被执行，即使运行docker run时指定了其他命令。</p>
+<p>ENTRYPOINT有两种格式：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1）Exec格式：ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]这是ENTRYPOINT的推荐格式。</span><br><span class="line">（2）Shell格式：ENTRYPOINT command param1 param2。</span><br></pre></td></tr></table></figure>
+<p>在为ENTRYPOINT选择格式时必须小心，因为这两种格式的效果差别很大。</p>
+<h4 id="1-Exec格式"><a href="#1-Exec格式" class="headerlink" title="1. Exec格式"></a>1. Exec格式</h4><p>ENTRYPOINT的Exec格式用于设置要执行的命令及其参数，同时可通过CMD提供额外的参数。ENTRYPOINT中的参数始终会被使用，而CMD的额外参数可以在容器启动时动态替换掉。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202310282343874.png" alt="image-20231028234336836"></p>
+<h4 id="2-Shell格式"><a href="#2-Shell格式" class="headerlink" title="2. Shell格式"></a>2. Shell格式</h4><p>ENTRYPOINT的Shell格式会忽略任何CMD或docker run提供的参数。</p>
+<p>综上所述，用exec格式能更加的灵活，可以在docker run 命令后面加上自定义参数。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2023/10/28/%E6%AF%8F%E5%A4%A95%E5%88%86%E9%92%9F%E7%8E%A9%E8%BD%ACDocker%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/">https://wdpname.github.io/2023/10/28/%E6%AF%8F%E5%A4%A95%E5%88%86%E9%92%9F%E7%8E%A9%E8%BD%ACDocker%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/10/27/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">基于数据科学的恶意软件分析</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">167</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">44</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E9%B8%9F%E7%9E%B0%E5%AE%B9%E5%99%A8%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">第1章 鸟瞰容器生态系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AE%B9%E5%99%A8%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 容器生态系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%BC%8E%E5%AE%B9%E5%99%A8%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="toc-number">1.1.1.</span> <span class="toc-text">1．容器核心技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AE%B9%E5%99%A8%E8%A7%84%E8%8C%83"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">（1）容器规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%AE%B9%E5%99%A8runtime"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">（2）容器runtime</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">（3）容器管理工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E5%AE%B9%E5%99%A8%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">（4）容器定义工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%885%EF%BC%89Registry"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">（5）Registry</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%886%EF%BC%89%E5%AE%B9%E5%99%A8OS"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">（6）容器OS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%BC%8E%E5%AE%B9%E5%99%A8%E5%B9%B3%E5%8F%B0%E6%8A%80%E6%9C%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">2．容器平台技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AE%B9%E5%99%A8%E7%BC%96%E6%8E%92%E5%BC%95%E6%93%8E"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">（1）容器编排引擎</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">（2）容器管理平台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%9F%BA%E4%BA%8E%E5%AE%B9%E5%99%A8%E7%9A%84PaaS"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">（3）基于容器的PaaS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%EF%BC%8E%E5%AE%B9%E5%99%A8%E6%94%AF%E6%8C%81%E6%8A%80%E6%9C%AF"><span class="toc-number">1.1.3.</span> <span class="toc-text">3．容器支持技术</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">（1）容器网络</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">（2）服务发现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E7%9B%91%E6%8E%A7"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">（3）监控</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">（4）数据管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%885%EF%BC%89%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">（5）日志管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%886%EF%BC%89%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.1.3.6.</span> <span class="toc-text">（6）安全性</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E5%AE%B9%E5%99%A8%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%A6%82%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">第2章 容器核心知识概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-How%E2%80%94%E2%80%94%E5%AE%B9%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84"><span class="toc-number">2.1.</span> <span class="toc-text">2.3 How——容器是如何工作的</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Docker%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. Docker架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Docker%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. Docker客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Docker%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. Docker服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Docker%E9%95%9C%E5%83%8F"><span class="toc-number">2.1.4.</span> <span class="toc-text">4. Docker镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Docker%E5%AE%B9%E5%99%A8"><span class="toc-number">2.1.5.</span> <span class="toc-text">5. Docker容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Registry"><span class="toc-number">2.1.6.</span> <span class="toc-text">6. Registry</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC3%E7%AB%A0-Docker%E9%95%9C%E5%83%8F"><span class="toc-number">3.</span> <span class="toc-text">第3章 Docker镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E9%95%9C%E5%83%8F%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 镜像的内部结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-hello-world%E2%80%94%E2%80%94%E6%9C%80%E5%B0%8F%E7%9A%84%E9%95%9C%E5%83%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 hello-world——最小的镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-base%E9%95%9C%E5%83%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 base镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-rootfs"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">1. rootfs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-base%E9%95%9C%E5%83%8F%E6%8F%90%E4%BE%9B%E7%9A%84%E6%98%AF%E6%9C%80%E5%B0%8F%E5%AE%89%E8%A3%85%E7%9A%84Linux%E5%8F%91%E8%A1%8C%E7%89%88"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">2. base镜像提供的是最小安装的Linux发行版</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%8E%E6%94%AF%E6%8C%81%E8%BF%90%E8%A1%8C%E5%A4%9A%E7%A7%8DLinux-OS"><span class="toc-number">3.1.2.3.</span> <span class="toc-text">3．支持运行多种Linux OS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E9%95%9C%E5%83%8F%E7%9A%84%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 镜像的分层结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E5%86%99%E7%9A%84%E5%AE%B9%E5%99%A8%E5%B1%82"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">可写的容器层</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 构建镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-docker-commit"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 docker commit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-Dockerfile"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 Dockerfile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%8E%E9%95%9C%E5%83%8F%E7%9A%84%E7%BC%93%E5%AD%98%E7%89%B9%E6%80%A7"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">3．镜像的缓存特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Dockerfile%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">5. Dockerfile常用指令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-RUN-vs-CMD-vs-ENTRYPOINT"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 RUN vs CMD vs ENTRYPOINT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-Shell%E5%92%8CExec%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.3.1 Shell和Exec格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-shell%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.3.1.1.</span> <span class="toc-text">1. shell格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Exec%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.3.1.2.</span> <span class="toc-text">2. Exec格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-RUN"><span class="toc-number">3.3.2.</span> <span class="toc-text">3.3.2 RUN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-3-CMD"><span class="toc-number">3.3.3.</span> <span class="toc-text">3.3.3 CMD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-4-ENTRYPOINT"><span class="toc-number">3.3.4.</span> <span class="toc-text">3.3.4 ENTRYPOINT</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Exec%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.3.4.1.</span> <span class="toc-text">1. Exec格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Shell%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.3.4.2.</span> <span class="toc-text">2. Shell格式</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/10/28/%E6%AF%8F%E5%A4%A95%E5%88%86%E9%92%9F%E7%8E%A9%E8%BD%ACDocker%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/" title="每天5分钟玩转Docker容器技术"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每天5分钟玩转Docker容器技术"/></a><div class="content"><a class="title" href="/2023/10/28/%E6%AF%8F%E5%A4%A95%E5%88%86%E9%92%9F%E7%8E%A9%E8%BD%ACDocker%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/" title="每天5分钟玩转Docker容器技术">每天5分钟玩转Docker容器技术</a><time datetime="2023-10-28T05:38:35.000Z" title="发表于 2023-10-28 13:38:35">2023-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/27/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/" title="基于数据科学的恶意软件分析"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于数据科学的恶意软件分析"/></a><div class="content"><a class="title" href="/2023/10/27/%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E6%9E%90/" title="基于数据科学的恶意软件分析">基于数据科学的恶意软件分析</a><time datetime="2023-10-27T09:01:58.000Z" title="发表于 2023-10-27 17:01:58">2023-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/27/A-review-of-research-on-malicious-code-visual-detection-technology/" title="A review of research on malicious code visual detection technology"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="A review of research on malicious code visual detection technology"/></a><div class="content"><a class="title" href="/2023/10/27/A-review-of-research-on-malicious-code-visual-detection-technology/" title="A review of research on malicious code visual detection technology">A review of research on malicious code visual detection technology</a><time datetime="2023-10-27T00:43:59.000Z" title="发表于 2023-10-27 08:43:59">2023-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/21/MySQL%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%90%E8%A1%8C%E7%9A%84/" title="MySQL是怎样运行的"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL是怎样运行的"/></a><div class="content"><a class="title" href="/2023/10/21/MySQL%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%90%E8%A1%8C%E7%9A%84/" title="MySQL是怎样运行的">MySQL是怎样运行的</a><time datetime="2023-10-21T01:12:50.000Z" title="发表于 2023-10-21 09:12:50">2023-10-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/20/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA%EF%BC%88%E7%AC%AC15%E7%89%88%EF%BC%89/" title="逻辑学导论（第15版）"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="逻辑学导论（第15版）"/></a><div class="content"><a class="title" href="/2023/10/20/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA%EF%BC%88%E7%AC%AC15%E7%89%88%EF%BC%89/" title="逻辑学导论（第15版）">逻辑学导论（第15版）</a><time datetime="2023-10-20T15:01:41.000Z" title="发表于 2023-10-20 23:01:41">2023-10-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
