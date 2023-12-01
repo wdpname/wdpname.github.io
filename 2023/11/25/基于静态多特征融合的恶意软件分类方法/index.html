@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>基于静态多特征融合的恶意软件分类方法 | 平博社</title><meta name="keywords" content="论文"><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="大量基于加壳样本分析的静态分析方 法被提出，2015 年，在微软恶意样本分类大赛中， 获奖团队提出使用文件图像化特征、深层汇编特 征等静态特征对恶意样本进行分类，并在应用中 被证明有效 特征和模型特征工程从多维恶意样本静态特征  字节视图（.bytes文件） 汇编视图（asm文件） PE视图（PE结构化信息）  通过多源化的特征提取对抗恶意样本加 壳、混淆等技术 字节视图特征 文件大小：包括文件行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于静态多特征融合的恶意软件分类方法">
+<meta property="og:url" content="https://wdpname.github.io/2023/11/25/%E5%9F%BA%E4%BA%8E%E9%9D%99%E6%80%81%E5%A4%9A%E7%89%B9%E5%BE%81%E8%9E%8D%E5%90%88%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="大量基于加壳样本分析的静态分析方 法被提出，2015 年，在微软恶意样本分类大赛中， 获奖团队提出使用文件图像化特征、深层汇编特 征等静态特征对恶意样本进行分类，并在应用中 被证明有效 特征和模型特征工程从多维恶意样本静态特征  字节视图（.bytes文件） 汇编视图（asm文件） PE视图（PE结构化信息）  通过多源化的特征提取对抗恶意样本加 壳、混淆等技术 字节视图特征 文件大小：包括文件行">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-25T04:25:05.000Z">
+<meta property="article:modified_time" content="2023-11-25T04:41:06.553Z">
+<meta property="article:author" content="dpWu">
+<meta property="article:tag" content="论文">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2023/11/25/%E5%9F%BA%E4%BA%8E%E9%9D%99%E6%80%81%E5%A4%9A%E7%89%B9%E5%BE%81%E8%9E%8D%E5%90%88%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基于静态多特征融合的恶意软件分类方法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-25 12:41:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">187</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">基于静态多特征融合的恶意软件分类方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-25T04:25:05.000Z" title="发表于 2023-11-25 12:25:05">2023-11-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-25T04:41:06.553Z" title="更新于 2023-11-25 12:41:06">2023-11-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基于静态多特征融合的恶意软件分类方法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>大量基于加壳样本分析的静态分析方 法被提出，<strong>2015 年，在微软恶意样本分类大赛中</strong>， 获奖团队提出使用文件图像化特征、深层汇编特 征等静态特征对恶意样本进行分类，并在应用中 被证明有效</p>
+<h1 id="特征和模型"><a href="#特征和模型" class="headerlink" title="特征和模型"></a>特征和模型</h1><h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><p>从多维恶意样本静态特征</p>
+<ul>
+<li>字节视图（.bytes文件）</li>
+<li>汇编视图（asm文件）</li>
+<li>PE视图（PE结构化信息）</li>
+</ul>
+<p>通过多源化的特征提取对抗恶意样本加 壳、混淆等技术</p>
+<h3 id="字节视图特征"><a href="#字节视图特征" class="headerlink" title="字节视图特征"></a>字节视图特征</h3><ol>
+<li>文件大小：包括文件行数、文件字符总数 等文件基本信息</li>
+<li>可见字符串：统计各类可见字符串出现的 长度、频率、分布等信息</li>
+<li>程序熵值：程序的熵值作为一种描述文件 混乱程度的指标，可以很好地反映恶意样本是否 经过加壳、混淆等变化</li>
+</ol>
+<h3 id="汇编视图特征"><a href="#汇编视图特征" class="headerlink" title="汇编视图特征"></a>汇编视图特征</h3><ol>
+<li>操作码特征：采用了 opcode 的 1-gram、 2-gram 特征，选取在本文所用样本中出现的全部 汇编指令进行统计作为操作码特征</li>
+<li>寄存器特征：本文提取了各类寄存器出现的 次数</li>
+<li>函数特征：利用 IDA 分析的结 果进行软件自定义函数和系统函数的提取，，这对 于分析恶意样本的内部调用流程及混淆等行为具 有极大帮助</li>
+<li>数据定义特征：本文从助记符中单独提出 这一特征进行阐述，重点关注样本中出现的 db、 dd、dw 的相关统计信息，针对这 3 个与数据相关 的指令进行了分类统计。在分析加壳样本过程中， 样本主要存在的就是 db、dd、dw 这样的数据， 通过分析这一部分的特征，并结合样本大小、 样本压缩率、样本熵值等特征，可以发现加壳 样本的相互关联，本文希望通过对这一部分特 征进行分析，来对加壳样本有一种新的静态分 析方式。</li>
+</ol>
+<h3 id="PE-视图特征"><a href="#PE-视图特征" class="headerlink" title="PE 视图特征"></a>PE 视图特征</h3><ol>
+<li>PE 结构化特征：PE 头包含大量软件相关 的深层次数据，可以分析出一定的语义信息，本 文在这一部分提取了包括 API 调用数量、DLL 调 用数量、导入函数数量、导出函数数量、各方法 起始虚拟地址、虚拟大小、语言及编码方式等重 要的结构化特征。</li>
+<li>反检测引擎特征：Mastiff 检测结果包含 Yara-rules[16]等一系列对恶意样本针对各类杀毒方 式所做出的隐藏措施的检测，本文选择了恶意样本 所采用的虚拟逃逸手段、反调试手段、反病毒手段、 恶意片段匹配等几种典型恶意特征进行提取。</li>
+<li>编译特征：包括软件的编译时间与编译环 境以及加壳信息。根据编译信息的细微差异，可 以推断软件之间的演进关联</li>
+<li>恶意 API：研究人员在分析了 50 余万恶 意样本，多达 5 TB 数据后对恶意样本所使用的 API 进行了统计[17]，本文取其中前 100 个 API 出 现的次数作为特征。</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2023/11/25/%E5%9F%BA%E4%BA%8E%E9%9D%99%E6%80%81%E5%A4%9A%E7%89%B9%E5%BE%81%E8%9E%8D%E5%90%88%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95/">https://wdpname.github.io/2023/11/25/%E5%9F%BA%E4%BA%8E%E9%9D%99%E6%80%81%E5%A4%9A%E7%89%B9%E5%BE%81%E8%9E%8D%E5%90%88%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%BA%E6%96%87/">论文</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/28/vue%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">vue官方文档学习记录</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/24/%E5%A4%A7%E5%8D%B7%E7%A7%AF%E6%A0%B8/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">大卷积核</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/30/%E5%9F%BA%E4%BA%8ECNN%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95/" title="基于CNN的恶意软件分类方法"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-30</div><div class="title">基于CNN的恶意软件分类方法</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">187</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">特征和模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">特征工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E8%A7%86%E5%9B%BE%E7%89%B9%E5%BE%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">字节视图特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%A7%86%E5%9B%BE%E7%89%B9%E5%BE%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">汇编视图特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PE-%E8%A7%86%E5%9B%BE%E7%89%B9%E5%BE%81"><span class="toc-number">1.1.3.</span> <span class="toc-text">PE 视图特征</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/01/%E7%AE%80%E5%8E%86%E4%B9%A6%E5%86%99%E7%A7%98%E7%B1%8D/" title="简历书写秘籍"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简历书写秘籍"/></a><div class="content"><a class="title" href="/2023/12/01/%E7%AE%80%E5%8E%86%E4%B9%A6%E5%86%99%E7%A7%98%E7%B1%8D/" title="简历书写秘籍">简历书写秘籍</a><time datetime="2023-12-01T08:08:40.000Z" title="发表于 2023-12-01 16:08:40">2023-12-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/30/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E5%88%86%E7%B1%BB%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8A%80%E6%9C%AF%E7%BB%BC%E8%BF%B0/" title="恶意软件检测和分类可视化技术综述"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="恶意软件检测和分类可视化技术综述"/></a><div class="content"><a class="title" href="/2023/11/30/%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E6%A3%80%E6%B5%8B%E5%92%8C%E5%88%86%E7%B1%BB%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8A%80%E6%9C%AF%E7%BB%BC%E8%BF%B0/" title="恶意软件检测和分类可视化技术综述">恶意软件检测和分类可视化技术综述</a><time datetime="2023-11-30T07:34:39.000Z" title="发表于 2023-11-30 15:34:39">2023-11-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/30/big2015%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A6%82%E8%BF%B0/" title="big2015数据集概述"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="big2015数据集概述"/></a><div class="content"><a class="title" href="/2023/11/30/big2015%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A6%82%E8%BF%B0/" title="big2015数据集概述">big2015数据集概述</a><time datetime="2023-11-30T02:58:54.000Z" title="发表于 2023-11-30 10:58:54">2023-11-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/30/%E5%9F%BA%E4%BA%8ECNN%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95/" title="基于CNN的恶意软件分类方法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于CNN的恶意软件分类方法"/></a><div class="content"><a class="title" href="/2023/11/30/%E5%9F%BA%E4%BA%8ECNN%E7%9A%84%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6%E5%88%86%E7%B1%BB%E6%96%B9%E6%B3%95/" title="基于CNN的恶意软件分类方法">基于CNN的恶意软件分类方法</a><time datetime="2023-11-30T02:40:14.000Z" title="发表于 2023-11-30 10:40:14">2023-11-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/29/novel%E8%AE%B0%E5%BF%86%E7%AC%94%E8%AE%B0/" title="novel记忆笔记"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="novel记忆笔记"/></a><div class="content"><a class="title" href="/2023/11/29/novel%E8%AE%B0%E5%BF%86%E7%AC%94%E8%AE%B0/" title="novel记忆笔记">novel记忆笔记</a><time datetime="2023-11-29T13:54:44.000Z" title="发表于 2023-11-29 21:54:44">2023-11-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
