@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>用户中心 | 平博社</title><meta name="author" content="dpWu"><meta name="copyright" content="dpWu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="1.前端初始化12npm i @ant-design&#x2F;pro-cli -gpro create myapp   生成初始化项目后，webstorm打开，安装依赖 1yarn &#x2F;&#x2F; 在项目terminal中输入yarn，安装依赖 1yarn add @umijs&#x2F;preset-ui -D  &#x2F;&#x2F; umi ui 插件构建 让我们可以自动生成页面 1npm start 运行项目 在使用umi ui插件添">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用户中心">
+<meta property="og:url" content="https://wdpname.github.io/2023/12/05/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83/index.html">
+<meta property="og:site_name" content="平博社">
+<meta property="og:description" content="1.前端初始化12npm i @ant-design&#x2F;pro-cli -gpro create myapp   生成初始化项目后，webstorm打开，安装依赖 1yarn &#x2F;&#x2F; 在项目terminal中输入yarn，安装依赖 1yarn add @umijs&#x2F;preset-ui -D  &#x2F;&#x2F; umi ui 插件构建 让我们可以自动生成页面 1npm start 运行项目 在使用umi ui插件添">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-05T06:58:33.000Z">
+<meta property="article:modified_time" content="2023-12-06T09:45:46.929Z">
+<meta property="article:author" content="dpWu">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2023/12/05/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '用户中心',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-06 17:45:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">193</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">用户中心</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-05T06:58:33.000Z" title="发表于 2023-12-05 14:58:33">2023-12-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-06T09:45:46.929Z" title="更新于 2023-12-06 17:45:46">2023-12-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="用户中心"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="1-前端初始化"><a href="#1-前端初始化" class="headerlink" title="1.前端初始化"></a>1.前端初始化</h1><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i @ant-design/pro-cli -g</span><br><span class="line">pro create myapp</span><br></pre></td></tr></table></figure>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312051535479.png" alt="image-20231205153527428"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312051533255.png" alt="image-20231205153323075"></p>
+<p>生成初始化项目后，webstorm打开，安装依赖</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn // 在项目terminal中输入yarn，安装依赖</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @umijs/p<span class="built_in">reset-ui</span> <span class="literal">-D</span>  // umi ui 插件构建 让我们可以自动生成页面</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="built_in">start</span> 运行项目</span><br></pre></td></tr></table></figure>
+<p>在使用umi ui插件添加页面时，选择yarn管理器     </p>
+<h1 id="2-后端初始化"><a href="#2-后端初始化" class="headerlink" title="2.后端初始化"></a>2.后端初始化</h1><p><img src="https://gitee.com/fjkf/images/raw/master/202312051713696.png" alt="image-20231205171310619"></p>
+<p>一般需要这些包，然后再maven中找到并加上最新的mybatisplus依赖。</p>
+<p>必须mybtis和plus的依赖包必须都是最新的。</p>
+<p>后端写测试类可以直接使用junit5或者使用junit4+@runwith，个人喜欢junit5</p>
+<h1 id="3-数据库设计"><a href="#3-数据库设计" class="headerlink" title="3.数据库设计"></a>3.数据库设计</h1><p>想一想一个表（user表）需要那些字段</p>
+<p>然后建表</p>
+<p>给字段设置默认值，那么就设置非空，好像也没有关系</p>
+<p>对于createTime和updateTime，在mysql中不能同时创建两个默认时间。我们可以这样设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">createTime   datetime default CURRENT_TIMESTAMP null comment &#x27;创建时间&#x27;,</span><br><span class="line">updateTime   datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP comment &#x27;更新时间&#x27;,</span><br></pre></td></tr></table></figure>
+<h1 id="4-登录-注册"><a href="#4-登录-注册" class="headerlink" title="4.    登录/注册"></a>4.    登录/注册</h1><h2 id="4-1-准备工作"><a href="#4-1-准备工作" class="headerlink" title="4.1 准备工作"></a>4.1 准备工作</h2><h3 id="4-1-1规整项目目录"><a href="#4-1-1规整项目目录" class="headerlink" title="4.1.1规整项目目录"></a>4.1.1规整项目目录</h3><p>在后端中，我们首先规整项目目录</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061022886.png" alt="image-20231206102212793"></p>
+<h3 id="4-1-2根据数据库表自动生成类等"><a href="#4-1-2根据数据库表自动生成类等" class="headerlink" title="4.1.2根据数据库表自动生成类等"></a>4.1.2根据数据库表自动生成类等</h3><p>然后使用一个mybatisX插件让我们能够通过数据库表（user表）自动生成user类，UserMapper接口和UserService接口和UserServiceImpl类和在resource包下生成userMapper.xml配置文件。非常方便！！！</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061024198.png" alt="image-20231206102448123"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061025400.png" alt="image-20231206102506315"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061025402.png" alt="image-20231206102525359"></p>
+<p>想要让数据库表的列名和生成的类名字段名称相同，可以勾上Actual Column</p>
+<p>把相关的类实现了之后，我们可以先测试定义的userMapper接口是否可用！！！</p>
+<h3 id="4-1-3-测试mapper接口是否能够访问数据库"><a href="#4-1-3-测试mapper接口是否能够访问数据库" class="headerlink" title="4.1.3 测试mapper接口是否能够访问数据库"></a>4.1.3 测试mapper接口是否能够访问数据库</h3><p>可以在你想要测试哪个类（注意此类也包含接口的含义），就把鼠标放在这个类名上，然后alt+enter；</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061032307.png" alt="image-20231206103204204"></p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061032101.png" alt="image-20231206103221059"></p>
+<p>在测试时，我们需要生成一个实体类的假数据，一个一个的去set方法调用，属实难蹦，所以需要使用一个generatorAllSetter插件</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061045716.png" alt="image-20231206104501646"></p>
+<p>这样就可以生成所有默认值的一个实体类！！！非常 方便！！！</p>
+<h2 id="4-2-用户注册"><a href="#4-2-用户注册" class="headerlink" title="4.2 用户注册"></a>4.2 用户注册</h2><h3 id="4-2-1-注册逻辑"><a href="#4-2-1-注册逻辑" class="headerlink" title="4.2.1 注册逻辑"></a>4.2.1 注册逻辑</h3><ol>
+<li><p>用户在前端输入账户和密码、以及校验码() </p>
+</li>
+<li><p>校验用户的账户、密码、校验密码，是否符合要求 </p>
+<ol>
+<li>非空</li>
+<li>账户的话不小于4位 </li>
+<li>密码就不小于8位吧 </li>
+<li>账户不能重复 </li>
+<li>账户不包含特殊字符</li>
+<li>密码和校验密码相同 </li>
+</ol>
+</li>
+<li>对密码进行加密（密码干万不要直接以明文存储到数据库中) </li>
+<li>向数据库插入用户数据</li>
+</ol>
+<h3 id="4-2-2-注册实现"><a href="#4-2-2-注册实现" class="headerlink" title="4.2.2 注册实现"></a>4.2.2 注册实现</h3><p>在UserService接口中定义要实现的注册逻辑的抽象方法</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061117987.png" alt="image-20231206111709950"></p>
+<p>然后鼠标放在方法上，摁住alt+enter，在UserServiceImpl中实现这个定义方法。然后再这个UserServiceImpl类中的这个方法写代码这侧逻辑。实现注册功能。</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061117931.png" alt="image-20231206111751829"></p>
+<p>在进行校验时，每一个参数都要判空，非常麻烦，可以引入apache common lang包，非常好用！！！</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-lang3<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>最新版本<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 然后就是写注册校验逻辑</p>
+<p>写完之后，就对这个UserServiceImpl类中的注册方法进行测试。</p>
+<h2 id="4-3用户登录"><a href="#4-3用户登录" class="headerlink" title="4.3用户登录"></a>4.3用户登录</h2><h3 id="4-3-1登录接口"><a href="#4-3-1登录接口" class="headerlink" title="4.3.1登录接口"></a>4.3.1登录接口</h3><p>接受参数：用户账户、密码<br>请求类型：POST<br>请求体：SQN格式的数据</p>
+<blockquote>
+<p>请求参数很长时不建议用get</p>
+</blockquote>
+<p>返回值：用户信息（脱敏)</p>
+<h3 id="4-3-2-登录逻辑"><a href="#4-3-2-登录逻辑" class="headerlink" title="4.3.2 登录逻辑"></a>4.3.2 登录逻辑</h3><ol>
+<li>校验用户登录是否合法<ol>
+<li>非空</li>
+<li>账户的话不小于4位 </li>
+<li>密码就不小于8位吧 </li>
+<li>账户不包含特殊字符</li>
+</ol>
+</li>
+<li>校验密码是否输入正确，要和数据库中的密文密码去对比</li>
+<li>返回用户信息（脱敏，隐藏敏感信息）：脱敏其实就是在从数据库获取到一个对象时，新生成一个对象，赋值想要给他的值</li>
+<li>我们要记录用户的登录态(session),将其存到服务器上<br>(用后端SpringBoot框架封装的服务器tomcat去记录)</li>
+</ol>
+<h3 id="4-3-3如何知道那个用户登录了"><a href="#4-3-3如何知道那个用户登录了" class="headerlink" title="4.3.3如何知道那个用户登录了"></a>4.3.3如何知道那个用户登录了</h3><ol>
+<li>连接服务器端后，得到一个session1状态，返回给前端</li>
+<li>登录成功后，得到了登录成功的session,并且给该sessio<br>设置一些值（比如用户信息），返回给前端一个设置<br>cookie的”命令”</li>
+<li>前端接收到后端的命令后，设置cookie,保存到浏览器内</li>
+<li>前端再次请求后端的时候（相同的域名），在请求头中带<br>上cookie去请求</li>
+<li>后端拿到前端传来的cookie,找到对应的session</li>
+<li>后端从session中可以取出基于该session存储的变量（用<br>户的登录信息、登录名)</li>
+</ol>
+<blockquote>
+<p>在测试接口时，填写post请求体时，只包含数字的字段，比如password string类型的也可以用数字编写，json会自动转换为字符串。</p>
+</blockquote>
+<h2 id="4-4-用户管理接口"><a href="#4-4-用户管理接口" class="headerlink" title="4.4 用户管理接口"></a>4.4 用户管理接口</h2><p>!!!必须鉴权<br>1.查询用户</p>
+<ol>
+<li>允许根据用户名查询</li>
+<li>删除用户</li>
+</ol>
+<p>写增删改查接口即可</p>
+<h3 id="写代码流程"><a href="#写代码流程" class="headerlink" title="写代码流程"></a>写代码流程</h3><p>先做设计</p>
+<p>代码实现</p>
+<p>持续优化！！！ （复用代码，提取公共逻辑/常量）</p>
+<p>在优化代码结构的时候，<strong>首先在service实现类中定义一些方法比如getSaftyUser方法</strong>，编码完后，就pull到service接口中，然后在controller方法中就可以使用userService来使用这些方法了。</p>
+<h3 id="正向代理和反向代理"><a href="#正向代理和反向代理" class="headerlink" title="正向代理和反向代理"></a>正向代理和反向代理</h3><p><img src="https://gitee.com/fjkf/images/raw/master/202312061650878.png" alt="image-20231206165053811"></p>
+<h2 id="如何调通前端和后端的数据流通"><a href="#如何调通前端和后端的数据流通" class="headerlink" title="如何调通前端和后端的数据流通"></a>如何调通前端和后端的数据流通</h2><p>首先要在前端首页找到按下登录按钮时，发出的请求是什么。通过那些设置的。然后调通跨域请求，也就是代理搞一下。注意这是正向代理。</p>
+<p>在调通前端和后端的登录时，我们改了前端首页的传值</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061726290.png" alt="image-20231206172646238"></p>
+<p>修改login登录请求的地址</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061727430.png" alt="image-20231206172756394"></p>
+<p>然后更改代理即可</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061728818.png" alt="image-20231206172829777"></p>
+<p>然后后端新增上下文路径/api</p>
+<p><img src="https://gitee.com/fjkf/images/raw/master/202312061728255.png" alt="image-20231206172858190"></p>
+<p>这样，就可以调通前端和后端的登录接口了</p>
+<h2 id="前端实现登录，并且调通前后端"><a href="#前端实现登录，并且调通前后端" class="headerlink" title="前端实现登录，并且调通前后端"></a>前端实现登录，并且调通前后端</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://wdpname.github.io">dpWu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wdpname.github.io/2023/12/05/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83/">https://wdpname.github.io/2023/12/05/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wdpname.github.io" target="_blank">平博社</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/12/04/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">动态规划</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/assets/avatar.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">dpWu</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">193</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wdpname" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://1939317922@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E7%AB%AF%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">1.前端初始化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%90%8E%E7%AB%AF%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">2.后端初始化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">3.数据库设计</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%99%BB%E5%BD%95-%E6%B3%A8%E5%86%8C"><span class="toc-number">4.</span> <span class="toc-text">4.    登录&#x2F;注册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-1%E8%A7%84%E6%95%B4%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95"><span class="toc-number">4.1.1.</span> <span class="toc-text">4.1.1规整项目目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-2%E6%A0%B9%E6%8D%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E7%B1%BB%E7%AD%89"><span class="toc-number">4.1.2.</span> <span class="toc-text">4.1.2根据数据库表自动生成类等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-3-%E6%B5%8B%E8%AF%95mapper%E6%8E%A5%E5%8F%A3%E6%98%AF%E5%90%A6%E8%83%BD%E5%A4%9F%E8%AE%BF%E9%97%AE%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.1.3.</span> <span class="toc-text">4.1.3 测试mapper接口是否能够访问数据库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 用户注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-1-%E6%B3%A8%E5%86%8C%E9%80%BB%E8%BE%91"><span class="toc-number">4.2.1.</span> <span class="toc-text">4.2.1 注册逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-2-%E6%B3%A8%E5%86%8C%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.2.2.</span> <span class="toc-text">4.2.2 注册实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95"><span class="toc-number">4.3.</span> <span class="toc-text">4.3用户登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-1%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.3.1.</span> <span class="toc-text">4.3.1登录接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-2-%E7%99%BB%E5%BD%95%E9%80%BB%E8%BE%91"><span class="toc-number">4.3.2.</span> <span class="toc-text">4.3.2 登录逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-3%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E9%82%A3%E4%B8%AA%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E4%BA%86"><span class="toc-number">4.3.3.</span> <span class="toc-text">4.3.3如何知道那个用户登录了</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 用户管理接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E4%BB%A3%E7%A0%81%E6%B5%81%E7%A8%8B"><span class="toc-number">4.4.1.</span> <span class="toc-text">写代码流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">4.4.2.</span> <span class="toc-text">正向代理和反向代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%B0%83%E9%80%9A%E5%89%8D%E7%AB%AF%E5%92%8C%E5%90%8E%E7%AB%AF%E7%9A%84%E6%95%B0%E6%8D%AE%E6%B5%81%E9%80%9A"><span class="toc-number">4.5.</span> <span class="toc-text">如何调通前端和后端的数据流通</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0%E7%99%BB%E5%BD%95%EF%BC%8C%E5%B9%B6%E4%B8%94%E8%B0%83%E9%80%9A%E5%89%8D%E5%90%8E%E7%AB%AF"><span class="toc-number">4.6.</span> <span class="toc-text">前端实现登录，并且调通前后端</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/05/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83/" title="用户中心"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用户中心"/></a><div class="content"><a class="title" href="/2023/12/05/%E7%94%A8%E6%88%B7%E4%B8%AD%E5%BF%83/" title="用户中心">用户中心</a><time datetime="2023-12-05T06:58:33.000Z" title="发表于 2023-12-05 14:58:33">2023-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/04/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="动态规划"/></a><div class="content"><a class="title" href="/2023/12/04/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">动态规划</a><time datetime="2023-12-04T15:23:36.000Z" title="发表于 2023-12-04 23:23:36">2023-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/04/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%92%8C%E9%9B%86%E7%BE%A4%E7%9A%84%E5%8C%BA%E5%88%AB/" title="分布式系统和集群的区别"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分布式系统和集群的区别"/></a><div class="content"><a class="title" href="/2023/12/04/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%92%8C%E9%9B%86%E7%BE%A4%E7%9A%84%E5%8C%BA%E5%88%AB/" title="分布式系统和集群的区别">分布式系统和集群的区别</a><time datetime="2023-12-04T15:19:40.000Z" title="发表于 2023-12-04 23:19:40">2023-12-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/03/dp%E6%80%BB%E7%BB%93/" title="dp总结"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="dp总结"/></a><div class="content"><a class="title" href="/2023/12/03/dp%E6%80%BB%E7%BB%93/" title="dp总结">dp总结</a><time datetime="2023-12-03T07:38:53.000Z" title="发表于 2023-12-03 15:38:53">2023-12-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/02/Caffeine%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" title="Caffeine使用心得"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Caffeine使用心得"/></a><div class="content"><a class="title" href="/2023/12/02/Caffeine%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" title="Caffeine使用心得">Caffeine使用心得</a><time datetime="2023-12-02T13:46:39.000Z" title="发表于 2023-12-02 21:46:39">2023-12-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By dpWu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
