@@ -6,7 +6,7 @@
 <meta property="og:description" content="简易版整体流程 消费者调用rpc，触发动态代理（ServiceProxy），在代理中对请求参数处理赋值及代替消费者发送请求到服务提供者。发送请求后（其中会对请求对象进行序列化），来到了rpc模块下的请求处理器。（反着来，把拿到的字节数组反序列化为请求对象）。从拿到的请求对象的相关属性从本地服务注册地di 拿到真正要调用的服务（通过反射调用方法）。拿到结果后将结果设置到响应中。在消费者拿到响应的b">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-13T09:35:41.000Z">
-<meta property="article:modified_time" content="2024-09-22T06:18:39.217Z">
+<meta property="article:modified_time" content="2024-09-22T08:31:44.394Z">
 <meta property="article:author" content="dpWu">
 <meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/assets/avatar.jpeg"><link rel="canonical" href="https://wdpname.github.io/2024/06/13/%E6%89%8B%E5%86%99RPC%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
@@ -50,7 +50,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2024-09-22 14:18:39'
+  postUpdate: '2024-09-22 16:31:44'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -139,7 +139,7 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">233</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">自定义RPC的个人理解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-13T09:35:41.000Z" title="发表于 2024-06-13 17:35:41">2024-06-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-22T06:18:39.217Z" title="更新于 2024-09-22 14:18:39">2024-09-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="自定义RPC的个人理解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p> 简易版整体流程</p>
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/assets/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">233</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">平博社</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">自定义RPC的个人理解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-13T09:35:41.000Z" title="发表于 2024-06-13 17:35:41">2024-06-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-09-22T08:31:44.394Z" title="更新于 2024-09-22 16:31:44">2024-09-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="自定义RPC的个人理解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p> 简易版整体流程</p>
 <p>消费者调用rpc，触发动态代理（ServiceProxy），在代理中对请求参数处理赋值及代替消费者发送请求到服务提供者。发送请求后（其中会对请求对象进行序列化），来到了rpc模块下的请求处理器。（反着来，把拿到的字节数组反序列化为请求对象）。从拿到的请求对象的相关属性从本地服务注册地di 拿到真正要调用的服务（通过反射调用方法）。拿到结果后将结果设置到响应中。在消费者拿到响应的body数据，反序列化为响应对象返回给消费者。rpc调用完毕。</p>
 <p>为什么要用rpc，而不是用http请求呢</p>
 <p>需要启动etcd服务器</p>
@@ -173,35 +173,48 @@
 </li>
 </ol>
 <h1 id="关于mysql"><a href="#关于mysql" class="headerlink" title="关于mysql"></a>关于mysql</h1><ol>
-<li>表操作 是如何操作的  目标：整理出一个完整文档在表的结构设计中，<ol>
-<li>通常我会选用varchar，而不是text，这样有助于节省存储在一些高频查询的场景，我会为表增加一些冗余字段来减少联表查询，提高查询效率此外我会为关键字段设置主键和外键约束，来保证数据的完整性和一致性。</li>
+<li><p>表操作 是如何操作的  目标：整理出一个完整文档在表的结构设计中，</p>
+<ol>
+<li>通常我会选用varchar，而不是text，这样有助于节省存储</li>
+<li>在一些高频查询的场景，我会为表增加一些冗余字段来减少联表查询，提高查询效率</li>
+<li>此外我会为关键字段设置主键和外键约束，来保证数据的完整性和一致性。</li>
 </ol>
 </li>
-<li>查询优化 是如何做的  <ol>
+<li><p>查询优化 是如何做的  </p>
+<ol>
 <li>通过查看mysql的慢查询日志，找到慢查询sql</li>
 <li>通过分析，调整索引以及修改查询语句来优化</li>
 <li>比如 为常用的查询条件列设置索引，为多个字段设置联合索引</li>
 <li>在查询语句的编写中，我会避免使用select *，只选择需要的字段</li>
 <li>当数据表较大时，我通过使用mysql的分区表功能，将数据按照日期进行分区，以此来提高查询速度</li>
-<li>在一些高并发场景中，为减轻mysql的压力，引入redis缓存机制，避免频繁的数据库读取操作。同时使用redis的分布式锁，确保多个线程并发访问相同数据时，避免出现死锁和锁等待的问题。</li>
+<li>在一些高并发场景中，为减轻mysql的压力，引入redis缓存机制，避免频繁的数据库读取操作。同时使用redis的分布式锁，确保多个线程并发访问相同数据时，防止出现死锁和锁等待的问题。</li>
 </ol>
 </li>
-<li>索引设计</li>
-<li>事务管理<ol>
-<li>事务的四大特性 原子性 一致性 隔离性 持久性</li>
-<li>通过锁机制和mvcc来管理并发事务。在innodb引擎中，通过使用行锁而不是表锁来支持高并发事务。</li>
-<li>mvcc使用隐藏列和版本号来管理事务的可见性。</li>
-<li>为了较少锁冲突，使用精细度更小的行锁，以及避免长事务</li>
+<li><p>索引设计</p>
+</li>
+<li><p>事务管理</p>
+<ol>
+<li><p>事务的四大特性 原子性 一致性 隔离性 持久性 </p>
+<p>MySQL 事务管理的核心特性是 ACID，原子性保证事务中的所有操作要么全部执行成功，要么全部回滚；一致性确保事务结束后，数据库保持数据的一致性；隔离性通过不同的隔离级别来保证并发事务的操作互不影响；持久性则确保了事务提交后，数据永久存储，即使系统崩溃也能恢复数据。</p>
+</li>
+<li><p>通过 <strong>锁机制</strong> 和 <strong>mvcc</strong> 来管理并发事务。在innodb引擎中，通过使用行锁而不是表锁来支持高并发事务。</p>
+</li>
+<li><p>mvcc使用隐藏列和版本号来管理事务的可见性。mvcc技术使得读写操作不会相互阻塞，保证了高并发场景下的读写性能</p>
+</li>
+<li><p>为了较少锁冲突，使用精细度更小的行锁，以及避免长事务</p>
+</li>
 </ol>
 </li>
-<li>隔离级别<ol>
+<li><p>隔离级别</p>
+<ol>
 <li>读未提交</li>
 <li>读已提交</li>
 <li>可重复读</li>
 <li>串行化</li>
 </ol>
 </li>
-<li>高并发场景下的数据库优化<ol>
+<li><p>高并发场景下的数据库优化</p>
+<ol>
 <li>通过使用redis的缓存机制，减轻数据库的压力</li>
 <li>使用合适的索引，避免全表扫描；对查询sql进行优化。</li>
 <li>根据不同的业务场景，选用不同的隔离级别。比如读多写少的场景，可以实现读已提交隔离级别；而对于一些关键的交易场景，可以实现可串行化隔离级别，来来保证数据的绝对一致性。</li>
@@ -224,6 +237,15 @@
 <li>Redis 提供两种主要的持久化方式：RDB 和 AOF。RDB 是通过生成全量快照来保存数据，适合定期备份，缺点是无法实时保存数据，可能会有数据丢失。AOF 则通过将每次写操作记录到日志中，具备更强的实时性，但日志文件较大，重启时恢复数据速度慢。</li>
 <li>在实际项目中，如果对数据丢失比较敏感，我会选择 AOF，并且设置 appendfsync everysec 以保证数据的实时性。而对于备份需求，我会结合 RDB 进行定期快照。同时，我会定期执行 AOF 日志重写来减少文件体积。此外，使用 Redis 4.0 引入的混合持久化，可以在性能和数据安全之间取得更好的平衡。</li>
 <li>为了优化 Redis 的持久化性能，我会将持久化操作异步执行，确保不会阻塞主线程。同时，通过合理配置快照频率和使用 SSD 提升磁盘 I/O 性能，确保系统在高并发场景下的稳定性。</li>
+<li>AOF ： <ol>
+<li>rewriteaof对aof文件进行重写，以避免文件异常庞大； </li>
+<li>设置appendfsync参数，常用参数 always、everysec、以及no</li>
+</ol>
+</li>
+<li>RDB：<ol>
+<li>通过basave，save 设置自动快照的频率。</li>
+</ol>
+</li>
 </ol>
 </li>
 <li>淘汰策略<ol>

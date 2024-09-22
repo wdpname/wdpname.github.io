@@ -178,21 +178,21 @@
 <li>docker run -it cmdentrypointtest /bin/bash<br>my entrypoint /bin/bash</li>
 </ol>
 <p>1234都是容器直接退出</p>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#49;&#57;&#x33;&#x39;&#51;&#x31;&#x37;&#57;&#x32;&#x32;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#49;&#57;&#x33;&#x39;&#51;&#x31;&#x37;&#57;&#x32;&#x32;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x31;&#57;&#x33;&#57;&#x33;&#x31;&#x37;&#57;&#x32;&#x32;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#109;">&#x31;&#57;&#x33;&#57;&#x33;&#x31;&#x37;&#57;&#x32;&#x32;&#x40;&#113;&#x71;&#x2e;&#x63;&#111;&#109;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD echo $MYPATH</p>
 <ol>
 <li>docker run image2<br>/usr/local</li>
 </ol>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#x31;&#57;&#51;&#57;&#x33;&#x31;&#55;&#57;&#x32;&#x32;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#x6d;">&#x31;&#57;&#51;&#57;&#x33;&#x31;&#55;&#57;&#x32;&#x32;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#49;&#x39;&#51;&#57;&#x33;&#49;&#55;&#57;&#50;&#x32;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#49;&#x39;&#51;&#57;&#x33;&#49;&#55;&#57;&#50;&#x32;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD [“echo”, “$MYPAT”, “hello,world”]</p>
 <ol>
 <li>docker run image3<br>$MYPAT hello,world   #失效，结论不能加上多个字符串</li>
 </ol>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#49;&#x39;&#x33;&#57;&#51;&#x31;&#x37;&#x39;&#50;&#50;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#49;&#x39;&#x33;&#57;&#51;&#x31;&#x37;&#x39;&#50;&#50;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#58;&#49;&#x39;&#51;&#57;&#51;&#49;&#55;&#x39;&#x32;&#x32;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#49;&#x39;&#51;&#57;&#51;&#49;&#55;&#x39;&#x32;&#x32;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD [“echo”, “$MYPAT”]</p>
@@ -210,7 +210,7 @@
 </ol>
 <p>==&gt; 那么使用 cmd 的shell格式。  </p>
 </blockquote>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#49;&#57;&#51;&#x39;&#x33;&#x31;&#55;&#x39;&#50;&#50;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#49;&#57;&#51;&#x39;&#x33;&#x31;&#55;&#x39;&#50;&#50;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#109;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#97;&#105;&#108;&#x74;&#111;&#x3a;&#49;&#x39;&#51;&#x39;&#51;&#49;&#x37;&#57;&#50;&#50;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#49;&#x39;&#51;&#x39;&#51;&#49;&#x37;&#57;&#50;&#50;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD echo $MYPATH nihao<br>entrypoint echo nihao $MYPATH<br>entrypoint echo $MYPATH nihao</p>
@@ -220,7 +220,7 @@
 <li>docker run image7<br>/usr/local nihao nihao</li>
 <li></li>
 </ol>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#49;&#x39;&#x33;&#57;&#x33;&#x31;&#x37;&#57;&#x32;&#x32;&#x40;&#x71;&#x71;&#46;&#99;&#111;&#x6d;">&#49;&#x39;&#x33;&#57;&#x33;&#x31;&#x37;&#57;&#x32;&#x32;&#x40;&#x71;&#x71;&#46;&#99;&#111;&#x6d;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#49;&#x39;&#x33;&#57;&#x33;&#49;&#x37;&#57;&#50;&#x32;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#109;">&#49;&#x39;&#x33;&#57;&#x33;&#49;&#x37;&#57;&#50;&#x32;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#109;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD [“/bin/bash” “-c” “echo $MYPATH nihao”]<br>entrypoint [“/bin/bash” “-c” “echo nihao $MYPATH”]<br>entrypoint [“/bin/bash” “-c” “echo $MYPATH nihao”]</p>
@@ -229,7 +229,7 @@
 <ol>
 <li>docker run image8<br>/bin/sh: [/bin/bash: No such file or directory</li>
 </ol>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#97;&#105;&#x6c;&#116;&#111;&#58;&#49;&#x39;&#x33;&#57;&#x33;&#49;&#x37;&#x39;&#x32;&#50;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#109;">&#49;&#x39;&#x33;&#57;&#x33;&#49;&#x37;&#x39;&#x32;&#50;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#97;&#105;&#108;&#x74;&#x6f;&#58;&#49;&#57;&#x33;&#57;&#51;&#49;&#55;&#57;&#x32;&#x32;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#49;&#57;&#x33;&#57;&#51;&#49;&#55;&#57;&#x32;&#x32;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD [“/bin/sh” “-c” “echo $MYPATH nihao”]<br>entrypoint [“/bin/sh” “-c” “echo nihao $MYPATH”]<br>entrypoint [“/bin/sh” “-c” “echo $MYPATH nihao”]</p>
@@ -238,7 +238,7 @@
 <ol>
 <li>docker run image9<br>/bin/sh: [/bin/sh: No such file or directory</li>
 </ol>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x31;&#x39;&#51;&#x39;&#51;&#49;&#x37;&#x39;&#x32;&#x32;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#109;">&#x31;&#x39;&#51;&#x39;&#51;&#49;&#x37;&#x39;&#x32;&#x32;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x31;&#57;&#x33;&#57;&#x33;&#x31;&#55;&#x39;&#x32;&#x32;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#x31;&#57;&#x33;&#57;&#x33;&#x31;&#55;&#x39;&#x32;&#x32;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD [“/bin/sh” “-c” “echo $MYPATH nihao”]<br>entrypoint [“/bin/sh” “-c” “echo nihao $MYPATH”]<br>entrypoint [“/bin/sh” “-c” “echo $MYPATH nihao”]</p>
@@ -247,7 +247,7 @@
 <ol>
 <li>docker run image10<br>/usr/local nihao nihao</li>
 </ol>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x31;&#x39;&#51;&#x39;&#51;&#x31;&#x37;&#x39;&#x32;&#50;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#x31;&#x39;&#51;&#x39;&#51;&#x31;&#x37;&#x39;&#x32;&#50;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#49;&#x39;&#x33;&#x39;&#51;&#x31;&#x37;&#57;&#x32;&#x32;&#x40;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#49;&#x39;&#x33;&#x39;&#51;&#x31;&#x37;&#57;&#x32;&#x32;&#x40;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD echo $MYPATH nihao</p>
@@ -255,7 +255,7 @@
 <ol>
 <li>docker run image11<br>/usr/local nihao nihao</li>
 </ol>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#97;&#x69;&#108;&#116;&#111;&#x3a;&#49;&#x39;&#x33;&#57;&#x33;&#49;&#55;&#x39;&#50;&#50;&#64;&#x71;&#113;&#46;&#99;&#111;&#109;">&#49;&#x39;&#x33;&#57;&#x33;&#49;&#55;&#x39;&#50;&#50;&#64;&#x71;&#113;&#46;&#99;&#111;&#109;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#x31;&#57;&#51;&#x39;&#x33;&#x31;&#x37;&#57;&#50;&#50;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;">&#x31;&#57;&#51;&#x39;&#x33;&#x31;&#x37;&#57;&#50;&#50;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>entrypoint echo $MYPATH nihao nihao</p>
@@ -267,14 +267,14 @@
 <blockquote>
 <p>无论有没有cmd命令，只要有entrypoint命令那么就会只执行entrypoint命令，并且只执行最后的entrypoint命令，cmd命令不执行</p>
 </blockquote>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x31;&#x39;&#51;&#57;&#x33;&#x31;&#55;&#57;&#x32;&#50;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">&#x31;&#x39;&#51;&#57;&#x33;&#x31;&#55;&#57;&#x32;&#50;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x31;&#x39;&#x33;&#57;&#x33;&#x31;&#x37;&#57;&#x32;&#50;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109;">&#x31;&#x39;&#x33;&#57;&#x33;&#x31;&#x37;&#57;&#x32;&#50;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD [“echo” “${MYPATH}” “nihao”]</p>
 <ol>
 <li>docker run image13<br>/bin/sh: [echo: command not found</li>
 </ol>
-<p>FROM centos:7<br>MAINTAINER doupi<a href="&#109;&#x61;&#x69;&#x6c;&#116;&#x6f;&#58;&#x31;&#x39;&#51;&#57;&#x33;&#49;&#55;&#x39;&#x32;&#50;&#64;&#x71;&#113;&#46;&#99;&#111;&#x6d;">&#x31;&#x39;&#51;&#57;&#x33;&#49;&#55;&#x39;&#x32;&#50;&#64;&#x71;&#113;&#46;&#99;&#111;&#x6d;</a></p>
+<p>FROM centos:7<br>MAINTAINER doupi<a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#49;&#x39;&#x33;&#x39;&#x33;&#49;&#x37;&#x39;&#x32;&#50;&#x40;&#x71;&#113;&#46;&#x63;&#111;&#x6d;">&#49;&#x39;&#x33;&#x39;&#x33;&#49;&#x37;&#x39;&#x32;&#50;&#x40;&#x71;&#113;&#46;&#x63;&#111;&#x6d;</a></p>
 <p>ENV MYPATH /usr/local<br>WORKDIR $MYPATH</p>
 <p>EXPOSE 80</p>
 <p>CMD [“echo”, “${MYPATH}”, “nihao”]</p>
